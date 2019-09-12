@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "汉服执之星",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "list": [
+      {
+        "iconPath":"images/daka.png",
+        "selectedIconPath":"",
+        "pagePath": "pages/index/index",
+        "text": "打卡"
+      },
+      {
+        "iconPath": "images/huodong.png",
+        "selectedIconPath": "images/huodong.png",
+        "pagePath": "pages/index/index",
+        "text": "活动"
+      },
+      {
+        "iconPath": "images/xinpin.png",
+        "selectedIconPath": "images/huodong.png",
+        "pagePath": "pages/index/index",
+        "text": "上新"
+      },
+      {
+        "iconPath": "images/jifen.png",
+        "selectedIconPath": "images/huodong.png",
+        "pagePath": "pages/index/index",
+        "text": "积分"
+      },
+      {
+        "iconPath": "images/wode.png",
+        "selectedIconPath": "images/huodong.png",
+        "pagePath": "pages/index/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
