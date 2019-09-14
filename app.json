@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/userpage/userpage"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -39,7 +40,7 @@
       {
         "iconPath": "images/wode.png",
         "selectedIconPath": "images/huodong.png",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/userpage/userpage",
         "text": "我的"
       }
     ]

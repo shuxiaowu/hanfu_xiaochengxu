@@ -34,6 +34,7 @@ App({
     })
   },
   globalData: {
+    ceshiUrl:'',
     userInfo: null
   }
 })
