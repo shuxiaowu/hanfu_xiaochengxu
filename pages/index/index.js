@@ -21,7 +21,19 @@ Page({
   },
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap');
-    this.mapCtx.moveToLocation()
+    this.mapCtx.moveToLocation();
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy;
+
+        console.log(latitude);
+      }
+
+    })
   }, 
   daka_btn:function(){
     var that = this;
@@ -49,6 +61,7 @@ Page({
       isshow:false,
     })
   },
+ 
   maskclose: function() {
     var that = this;
     that.setData({

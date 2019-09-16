@@ -4,11 +4,12 @@
     "pages/logs/logs",
     "pages/userpage/userpage"
   ],
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
-    }
-  },
+
+"permission": {
+  "scope.userLocation": {
+    "desc": "展示自己位置" 
+  }
+},
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -51,5 +52,5 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
+  "sitemapLocation": "sitemap.json"
 }
