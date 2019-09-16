@@ -3,6 +3,21 @@
     <map id="myMap" style="width: 100%; height: 100%;position:fixed;top:0;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" covers="{{covers}}" show-location></map>
   </view>
   <view class="absolute_box">
-    <view class="play_ticke">立即打卡</view>
+    <view class="play_ticke" catchtap="daka_btn">立即打卡</view>
+  </view>
+  <!--  -->
+  <view wx:if="{{isshow}}" class="mask" catchtap="maskbtn" >
+      <view class="modelbox">
+          <view class="title_success">
+             打卡成功
+          </view>
+          <view class="text_box">
+            <view class="text_1">
+              小主打卡成功了~
+            </view>
+            <view class="text_2">+5积分</view>
+          </view>
+          <view class="mask_btn" catchtap="maskclose">朕知道了</view>
+      </view>
   </view>
 </view>

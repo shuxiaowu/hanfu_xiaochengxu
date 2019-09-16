@@ -4,6 +4,11 @@
     "pages/logs/logs",
     "pages/userpage/userpage"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -12,38 +17,39 @@
   },
   "tabBar": {
     "color": "#000000",
+    "selectedColor": "#c44845",
     "list": [
       {
-        "iconPath":"images/daka.png",
-        "selectedIconPath":"",
+        "iconPath": "images/daka.png",
+        "selectedIconPath": "images/daka_h.png",
         "pagePath": "pages/index/index",
         "text": "打卡"
       },
       {
         "iconPath": "images/huodong.png",
-        "selectedIconPath": "images/huodong.png",
+        "selectedIconPath": "images/huodong_h.png",
         "pagePath": "pages/index/index",
         "text": "活动"
       },
       {
-        "iconPath": "images/xinpin.png",
-        "selectedIconPath": "images/huodong.png",
+        "iconPath": "images/shangxin.png",
+        "selectedIconPath": "images/shangxin_h.png",
         "pagePath": "pages/index/index",
         "text": "上新"
       },
       {
         "iconPath": "images/jifen.png",
-        "selectedIconPath": "images/huodong.png",
+        "selectedIconPath": "images/jifen_h.png",
         "pagePath": "pages/index/index",
         "text": "积分"
       },
       {
         "iconPath": "images/wode.png",
-        "selectedIconPath": "images/huodong.png",
+        "selectedIconPath": "images/wode_h.png",
         "pagePath": "pages/userpage/userpage",
         "text": "我的"
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
 }

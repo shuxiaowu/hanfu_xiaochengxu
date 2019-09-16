@@ -1,3 +1,11 @@
 /**index.wxss**/
 .absolute_box{position:absolute;bottom:20rpx;width:100%;}
-.play_ticke{margin:0 auto;width:200rpx;text-align:center;background:#ff0000;color:#fff;padding:10rpx 0;}
+.play_ticke{margin:0 auto;width:300rpx;text-align:center;background:#c44845;color:#fff;padding:10rpx 0;border-radius:25px;}
+.mask{position:fixed;width:100%;height:100%; top:0;left:0;background-color:rgba(0, 0, 0, 0.7); z-index:10;}
+.modelbox{padding:15px;box-sizing:border-box; width:80%;background-color:#fff;margin:0 auto;position:relative;top:30%;}
+.title_success{text-align:center;font-size:30rpx;font-weight:700;}
+.text_box{text-align:center;padding:30rpx 0 60rpx;}
+.text_1,.text_2{font-size:26rpx;display:inline-block;vertical-align: middle;}
+.mask_btn{width:300rpx;padding:15rpx;text-align:center;color:#fff; background-color:#c44845;margin:0 auto;border-radius:8rpx;}
+.text_1{color:#000;}
+.text_2{color:#c44845;}

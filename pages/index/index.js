@@ -1,5 +1,6 @@
 Page({
   data: {
+    isshow:false,
     latitude: 23.099994,
     longitude: 113.324520,
     markers: [{
@@ -11,15 +12,47 @@ Page({
     covers: [{
       latitude: 23.099994,
       longitude: 113.344520,
-      iconPath: '/image/location.png'
+      iconPath: ''
     }, {
       latitude: 23.099994,
       longitude: 113.304520,
-      iconPath: '/image/location.png'
+      iconPath: ''
     }]
   },
   onReady: function (e) {
     this.mapCtx = wx.createMapContext('myMap');
     this.mapCtx.moveToLocation()
   }, 
+  daka_btn:function(){
+    var that = this;
+    
+    var isshow = that.data.isshow;
+    console.log(isshow);
+    that.setData({
+      isshow:!isshow,
+    })
+    // wx.showModal({
+    //   title: '打卡成功',
+    //   content: '小主打卡成功+5积分',
+    //   success(res) {
+    //     if (res.confirm) {
+    //       console.log('用户点击确定')
+    //     } else if (res.cancel) {
+    //       console.log('用户点击取消')
+    //     }
+    //   }
+    // })
+  },
+  maskbtn:function(){
+    var that = this;
+    that.setData({
+      isshow:false,
+    })
+  },
+  maskclose: function() {
+    var that = this;
+    that.setData({
+      isshow: false,
+    })
+  }
 })

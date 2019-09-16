@@ -49,16 +49,38 @@ Page({
           var code = res.code
           wx.getUserInfo({ //getUserInfo流程
             success: function (data) { //getUserInfo获取用户信息成功
-              //console.log(data)
+              // console.log(data)
               //encrypteData加密密文，iv偏移向量，encodeURIComponent把加密字符串解密成URI字符串
               var encryptedData = encodeURIComponent(data.encryptedData);
               var iv = data.iv;
               //请求自己的服务器
-              login(code, encryptedData, iv);
+              // login(code, encryptedData, iv);
               //已经授权的用户
-              wx.switchTab({
-                url: '../rec/rec',
+              // wx.switchTab({
+              //   url: '',
+              // })
+              that.setData({
+                headimg:data.userInfo.avatarUrl,
+                username: data.userInfo.nickName
               })
+            }
+          });
+          wx.getSetting({
+            success(res) {
+              console.log(res.authSetting)
+              // res.authSetting = {
+              //   "scope.userInfo": true,
+              //   "scope.userLocation": true
+              // }
+            }
+          });
+          wx.getLocation({
+            type: 'wgs84',
+            success(res) {
+              const latitude = res.latitude
+              const longitude = res.longitude
+              const speed = res.speed
+              const accuracy = res.accuracy
             }
           })
         } else {

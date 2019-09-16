@@ -6,12 +6,12 @@
     text-align: center;
     width: 650rpx;
     height: 300rpx;
-    line-height: 450rpx;
 }
  
 .header image {
     width: 200rpx;
     height: 200rpx;
+    border-radius: 60%;
 }
  
 .content {
