@@ -1,71 +1,116 @@
 Page({
   data: {
-    isshow:false,
-    latitude: 23.099994,
-    longitude: 113.324520,
-    markers: [{
-      id: 1,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      name: 'T.I.T 创意园'
-    }],
-    covers: [{
-      latitude: 23.099994,
-      longitude: 113.344520,
-      iconPath: ''
-    }, {
-      latitude: 23.099994,
-      longitude: 113.304520,
-      iconPath: ''
-    }]
+    isshow: false,
+    latitude: 28.68194,
+    longitude: 115.96191,
+    
   },
-  onReady: function (e) {
-    this.mapCtx = wx.createMapContext('myMap');
-    this.mapCtx.moveToLocation();
+  onShow: function(e) {
+    
+  },
+  onLoad: function () {
+    var that = this
+    wx.showLoading({
+      title: "定位中",
+      mask: true
+    })
     wx.getLocation({
-      type: 'wgs84',
-      success(res) {
-        const latitude = res.latitude
-        const longitude = res.longitude
-        const speed = res.speed
-        const accuracy = res.accuracy;
+      type: 'gcj02',
+      altitude: true,//高精度定位
+      //定位成功，更新定位结果
+      success: function (res) {
+        // console.log(res);
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var speed = res.speed
+        var accuracy = res.accuracy
+        
+        that.setData({
+          longitude: longitude,
+          latitude: latitude,
+          speed: speed,
+          accuracy: accuracy
+        })
+      },
+      //定位失败回调
+      fail: function () {
+        wx.showToast({
+          title: "定位失败",
+          icon: "none"
+        })
+      },
 
-        console.log(latitude);
+      complete: function () {
+        //隐藏定位中信息进度
+        wx.hideLoading()
       }
 
     })
-  }, 
-  daka_btn:function(){
-    var that = this;
-    
-    var isshow = that.data.isshow;
-    console.log(isshow);
-    that.setData({
-      isshow:!isshow,
-    })
-    // wx.showModal({
-    //   title: '打卡成功',
-    //   content: '小主打卡成功+5积分',
-    //   success(res) {
-    //     if (res.confirm) {
-    //       console.log('用户点击确定')
-    //     } else if (res.cancel) {
-    //       console.log('用户点击取消')
-    //     }
-    //   }
+  },
+  onReady: function(e) {
+
+  },
+  daka_btn: function() {
+
+    // var that = this;
+
+    // var isshow = that.data.isshow;
+    // console.log(isshow);
+    // that.setData({
+    //   isshow: !isshow,
     // })
-  },
-  maskbtn:function(){
-    var that = this;
-    that.setData({
-      isshow:false,
+    // 地图选择
+    wx.chooseLocation({
+      success: function (res) {
+        // success
+        console.log(res, "location")
+        console.log(res.name)
+        console.log(res.latitude)
+        console.log(res.longitude)
+        that.setData({
+          roomname: res.name
+        })
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
     })
   },
- 
+  maskbtn: function() {
+    var that = this;
+    that.setData({
+      isshow: false,
+    })
+  },
+
   maskclose: function() {
     var that = this;
     that.setData({
       isshow: false,
     })
+  },
+  getLocation: function () {
+    var _this = this;
+    // wx.chooseLocation({
+    //   success: function (res) {
+    //     var name = res.name
+    //     var address = res.address
+    //     var latitude = res.latitude
+    //     var longitude = res.longitude
+    //     console.log(address);
+    //     _this.setData({
+    //       name: name,
+    //       address: address,
+    //       latitude: latitude,
+    //       longitude: longitude
+    //     })
+    //   },
+    //   fail:function(){
+    //     console.log('12312');
+    //   }
+    // })
   }
 })
