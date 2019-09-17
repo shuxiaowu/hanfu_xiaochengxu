@@ -34,6 +34,15 @@ Page({
       }
     })
   },
+  // 预览图片
+  previewImg: function (e) {
+    let that = this;
+    wx.previewImage({
+      current: that.data.imgurl[e.currentTarget.dataset.id],
+      urls: that.data.imgurl,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
