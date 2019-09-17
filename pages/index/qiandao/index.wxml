@@ -1,0 +1,14 @@
+<!--pages/index/qiandao/index.wxml-->
+<view class="section">
+  <form bindsubmit="bindFormSubmit">
+    <textarea placeholder="这一刻的想法..." name="textarea" />
+    <view wx:for="{{urls}}"  wx:if="{{urls}}" class="prebox_img">
+      <view class='preview-warp'>
+        <image src='{{item}}' />
+      </view>
+    </view>
+
+    <view class='upimg' bindtap='chooseImg'>添加图片</view>
+    <button form-type="submit" class="qd_btn">立即打卡 </button>
+  </form>
+</view>

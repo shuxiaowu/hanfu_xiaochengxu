@@ -6,7 +6,7 @@
   </view>
   
   <view class="absolute_box">
-    <view class="play_ticke" catchtap="daka_btn">立即打卡</view>
+    <navigator url="qiandao/index" class="play_ticke">立即打卡</navigator>
   </view>
   <!--  -->
   <view wx:if="{{isshow}}" class="mask" catchtap="maskbtn" >
