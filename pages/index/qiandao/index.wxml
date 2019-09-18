@@ -1,16 +1,21 @@
 <!--pages/index/qiandao/index.wxml-->
 <view class="section">
   <form bindsubmit="bindFormSubmit">
-    <textarea placeholder="这一刻的想法..." name="textarea" />
-    <view wx:for="{{urls}}"  wx:if="{{urls}}" class="prebox_img" wx:key="{{index}}">
+    <textarea placeholder="这一刻的想法..." class="text_dream" name="textarea" />
+    <view wx:for="{{urls}}" wx:if="{{urls}}" class="prebox_img" wx:key="{{index}}">
       <view class='preview-warp'>
-        <image src='{{item}}' bindtap='previewImg'data-id="{{index}}" />
-        <view class="close_img">
-        <image src="../../../images/close.png"></image></view>
+        <image src='{{item}}' bindtap='previewImg' data-id="{{index}}" />
+        <view class="close_img" bindtap="delimg">
+          <image src="../../../images/close.png"></image>
+        </view>
       </view>
     </view>
 
     <view class='upimg' bindtap='chooseImg'>添加图片</view>
+    <view class="position_box" bindtap="positionbtns">
+      <image src="../../../images/position.png" class="position_img"></image>
+      <view class="position_text">{{positionname}}</view>
+    </view>
     <button form-type="submit" class="qd_btn">立即打卡 </button>
   </form>
 </view>
