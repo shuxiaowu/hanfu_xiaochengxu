@@ -81,6 +81,7 @@
     </view>
   </view>
 </view>
+
 <!-- 活动详情 -->
 <view class="art_title">
   <view class="artt_topic">活动详情</view>

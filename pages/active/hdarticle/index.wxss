@@ -67,3 +67,4 @@ button::after{
 .news_topic{text-indent:20px;line-height:22px; font-size:24rpx;color:#000; position:relative;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow: hidden}
 .content{font-size:26rpx;color:#666;padding:0 30rpx 20rpx 30rpx;padding-bottom:50px;}
 .footbtn{position:fixed;width:100%; bottom:0;height:40px;background-color:#c44845;color:#fff;font-size:14px;line-height:40px;text-align:center;}
+

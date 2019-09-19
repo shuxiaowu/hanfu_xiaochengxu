@@ -34,14 +34,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
     if (res.from == 'button') {
       console.log(res.target, res)
     }
-    return {
-      title: '这里是发送时候的标题',
-      path: '/pages/home/index',//这里是被分享的人点击进来之后的页面
-      imageUrl: '../../images/icon-logo.png'//这里是图片的路径
-    }
+    // return {
+    //   title: '这里是发送时候的标题',
+    //   path: '/pages/home/index',//这里是被分享的人点击进来之后的页面
+    //   imageUrl: '../../images/icon-logo.png'//这里是图片的路径
+    // }
   }
 })
