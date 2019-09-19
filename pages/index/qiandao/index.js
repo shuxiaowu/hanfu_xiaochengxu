@@ -104,6 +104,9 @@ Page({
     //     console.log(res);
     //   }
     // })
+    wx.setNavigationBarTitle({
+      title: '签到',
+    })
   },
 
   /**

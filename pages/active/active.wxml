@@ -1,0 +1,200 @@
+<!--pages/active/active.wxml-->
+<view class="hd_box">
+  <!-- item -->
+  <view class="hd_con">
+    <!-- w:663px h:240px -->
+    <view class="hd_conimg" bindtap="hdarticle">
+      <image src="../../images/huodong.jpg"></image>
+      <view class="hd_ps_text">
+        <view class="hd_citop">
+          <view class="hd_title">中央公园舞林大会lice</view>
+          <view class="hd_bm">报名中</view>
+         
+        </view>
+        <view class="hd_cidowm">
+          <view class="hd_date">
+            <image src="../../images/date1.png" class="hd-icon"></image>
+            <view class="hd_text">2019-08-01</view>
+          </view>
+          <view class="hd_position">
+            <image src="../../images/psi1.png" class="hd-icon_ps"></image>
+            <view class="hd_text">南昌高新大道艾溪湖A口</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="hd_tp">
+      <view class="hd_tp_left">
+        <view class="hd_tp_t1">活动经费：</view>
+        <view class="hd_tp_t2">￥80.00</view>
+      </view>
+      <view class="hd_tp_right">
+        <view class="hd_tp_r1">150人已经报名</view>
+        <view class="hd_tp_r2">
+          <view class='index'>
+            <view wx:for="{{images}}" wx:key style='transform:translateX({{-index*10}}rpx);'>
+              <image class='text' src='{{item}}' mode='aspectFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- item -->
+  <view class="hd_con">
+    <!-- w:663px h:423px -->
+    <view class="hd_conimg">
+      <image src="../../images/huodong.jpg"></image>
+      <view class="hd_ps_text">
+        <view class="hd_citop">
+          <view class="hd_title">中央公园舞林大会lice</view>
+          <view class="hd_bm">报名中</view>
+        </view>
+        <view class="hd_cidowm">
+          <view class="hd_date">
+            <image src="../../images/date1.png" class="hd-icon"></image>
+            <view class="hd_text">2019-08-01</view>
+          </view>
+          <view class="hd_position">
+            <image src="../../images/psi1.png" class="hd-icon_ps"></image>
+            <view class="hd_text">南昌高新大道艾溪湖A口</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="hd_tp">
+      <view class="hd_tp_left">
+        <view class="hd_tp_t1">活动经费：</view>
+        <view class="hd_tp_t2">￥80</view>
+      </view>
+      <view class="hd_tp_right">
+        <view class="hd_tp_r1">150人已经报名</view>
+        <view class="hd_tp_r2">
+          <view class='index'>
+            <view wx:for="{{images}}" wx:key style='transform:translateX({{-index*10}}rpx);'>
+              <image class='text' src='{{item}}' mode='aspectFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- item -->
+  <view class="hd_con">
+    <!-- w:663px h:423px -->
+    <view class="hd_conimg">
+      <image src="../../images/huodong.jpg"></image>
+      <view class="hd_ps_text">
+        <view class="hd_citop">
+          <view class="hd_title">中央公园舞林大会lice</view>
+          <view class="hd_bm">报名中</view>
+        </view>
+        <view class="hd_cidowm">
+          <view class="hd_date">
+            <image src="../../images/date1.png" class="hd-icon"></image>
+            <view class="hd_text">2019-08-01</view>
+          </view>
+          <view class="hd_position">
+            <image src="../../images/psi1.png" class="hd-icon_ps"></image>
+            <view class="hd_text">南昌高新大道艾溪湖A口</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="hd_tp">
+      <view class="hd_tp_left">
+        <view class="hd_tp_t1">活动经费：</view>
+        <view class="hd_tp_t2">￥80</view>
+      </view>
+      <view class="hd_tp_right">
+        <view class="hd_tp_r1">150人已经报名</view>
+        <view class="hd_tp_r2">
+          <view class='index'>
+            <view wx:for="{{images}}" wx:key style='transform:translateX({{-index*10}}rpx);'>
+              <image class='text' src='{{item}}' mode='aspectFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- item -->
+  <view class="hd_con">
+    <!-- w:663px h:423px -->
+    <view class="hd_conimg">
+      <image src="../../images/huodong.jpg"></image>
+      <view class="hd_ps_text">
+        <view class="hd_citop">
+          <view class="hd_title">中央公园舞林大会lice</view>
+          <view class="hd_bm">报名中</view>
+        </view>
+        <view class="hd_cidowm">
+          <view class="hd_date">
+            <image src="../../images/date1.png" class="hd-icon"></image>
+            <view class="hd_text">2019-08-01</view>
+          </view>
+          <view class="hd_position">
+            <image src="../../images/psi1.png" class="hd-icon_ps"></image>
+            <view class="hd_text">南昌高新大道艾溪湖A口</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="hd_tp">
+      <view class="hd_tp_left">
+        <view class="hd_tp_t1">活动经费：</view>
+        <view class="hd_tp_t2">￥80</view>
+      </view>
+      <view class="hd_tp_right">
+        <view class="hd_tp_r1">150人已经报名</view>
+        <view class="hd_tp_r2">
+          <view class='index'>
+            <view wx:for="{{images}}" wx:key style='transform:translateX({{-index*10}}rpx);'>
+              <image class='text' src='{{item}}' mode='aspectFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- item -->
+  <view class="hd_con">
+    <!-- w:663px h:423px -->
+    <view class="hd_conimg">
+      <image src="../../images/huodong.jpg"></image>
+      <view class="hd_ps_text">
+        <view class="hd_citop">
+          <view class="hd_title">中央公园舞林大会lice</view>
+          <view class="hd_bm">报名中</view>
+        </view>
+        <view class="hd_cidowm">
+          <view class="hd_date">
+            <image src="../../images/date1.png" class="hd-icon"></image>
+            <view class="hd_text">2019-08-01</view>
+          </view>
+          <view class="hd_position">
+            <image src="../../images/psi1.png" class="hd-icon_ps"></image>
+            <view class="hd_text">南昌高新大道艾溪湖A口</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="hd_tp">
+      <view class="hd_tp_left">
+        <view class="hd_tp_t1">活动经费：</view>
+        <view class="hd_tp_t2">￥80</view>
+      </view>
+      <view class="hd_tp_right">
+        <view class="hd_tp_r1">150人已经报名</view>
+        <view class="hd_tp_r2">
+          <view class='index'>
+            <view wx:for="{{images}}" wx:key style='transform:translateX({{-index*10}}rpx);'>
+              <image class='text' src='{{item}}' mode='aspectFill'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--  -->

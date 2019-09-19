@@ -1,0 +1,105 @@
+<!--pages/active/hdarticle/index.wxml-->
+<swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="hd_ps_text">
+  <view class="hd_citop">
+    <view class="hd_title">中央公园舞林大会lice</view>
+    <view class="hd_bm">报名中</view>
+    <view class="shar_right">
+
+      <button class="fixed-text fixed-button" open-type="share" title="分享" hover-class="none">
+        <image src="../../../images/link_icon.png" class="dis_line link-icon"></image>
+        <view class=" dis_line">分享</view>
+      </button>
+    </view>
+  </view>
+  <view class="hd_cidowm">
+    <view class="hd_date">
+      <image src="../../../images/date2.png" class="hd-icon"></image>
+      <view class="hd_text">2019-08-01</view>
+    </view>
+    <view class="hd_position">
+      <image src="../../../images/psi2.png" class="hd-icon_ps"></image>
+      <view class="hd_text">南昌高新大道艾溪湖A口</view>
+    </view>
+  </view>
+  <view class="hd_tp">
+    <view class="hd_tp_left">
+      <view class="hd_tp_t1">活动经费：</view>
+      <view class="hd_tp_t2">￥80.00</view>
+    </view>
+    <view class="hd_tp_right">
+      <view class="hd_tp_r1">150人已经报名</view>
+      <view class="hd_tp_r2">
+        <view class='index'>
+          <view wx:for="{{images}}" wx:key style='transform:translateX({{-index*10}}rpx);'>
+            <image class='text' src='{{item}}' mode='aspectFill'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 新品推荐 -->
+<view class="art_title">
+  <view class="artt_topic">新品推荐</view>
+</view>
+<view class="new_box">
+  <view class="new_item">
+    <view class="item_img">
+      <image src="../../../images/girl.jpg" mode="widthFix"></image>
+    </view>
+    <view>
+      <view class="news_topic">素以遇上情侣男女同 款仙鹤满绣琵琶袖汉服
+        <image src="../../../images/new_good.png" class="iconnew" mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+  <view class="new_item">
+    <view class="item_img">
+      <image src="../../../images/girl.jpg" mode="widthFix"></image>
+    </view>
+    <view>
+      <view class="news_topic">素以遇上情侣男女同 款仙鹤满绣琵琶袖汉服
+        <image src="../../../images/new_good.png" class="iconnew" mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+  <view class="new_item">
+    <view class="item_img">
+      <image src="../../../images/girl.jpg" mode="widthFix"></image>
+    </view>
+    <view>
+      <view class="news_topic">素以遇上情侣男女同 款仙鹤满绣琵琶袖汉服
+        <image src="../../../images/new_good.png" class="iconnew" mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 活动详情 -->
+<view class="art_title">
+  <view class="artt_topic">活动详情</view>
+</view>
+<view class="content">
+  本活动专门为义工朋友举办的长期活动，希望可以坚持锻炼。 
+
+目前都是人群缺少锻炼就会沦为亚健康，一人健康幸福三代人，和我们一起来太极吧！ 
+ 宝安新桥义工-艺术组有专人教授太极拳，无论你基础如何，相信自己, 坚持学习就会有意想不到的收获。  
+
+注意事项： 
+1、为保证学习的持续性，请上节课参加的义工积极参加，坚持学习，不断进步； 
+ 2、请大家注意一定要穿 运动鞋 ，不要穿裙子、短裤、拖鞋、高跟鞋等； 
+3、请报名参加活动的义工提前5分钟到达集合地点 (限新桥文化艺术中心市民广场U站的太极学习报名与签到，其他地点的太极学习请另外发起活动与签到，谢谢理解)； 
+4、如遇下雨，活动将自动取消，请留意； 
+5、若有事无法参加请提前与领队请假 
+活动时间：2019-12-15  12:30
+活动地址：江西南昌市高新大道艾溪湖A口 喜来登大酒店
+</view>
+<view class="footbtn">
+  立即报名
+</view>

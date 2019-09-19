@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/userpage/userpage"
+    "pages/userpage/userpage",
+    "pages/active/active",
+    "pages/active/hdarticle/index"
   ],
 
 "permission": {
@@ -13,7 +15,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "汉服执之星",
+    "navigationBarTitleText": "汉服之星",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -29,7 +31,7 @@
       {
         "iconPath": "images/huodong.png",
         "selectedIconPath": "images/huodong_h.png",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/active/active",
         "text": "活动"
       },
       {
