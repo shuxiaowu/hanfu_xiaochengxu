@@ -4,7 +4,10 @@
     "pages/logs/logs",
     "pages/userpage/userpage",
     "pages/active/active",
-    "pages/active/hdarticle/index"
+    "pages/active/hdarticle/index",
+    "pages/newgoods/newgoods",
+    "pages/newgoods/newarticle/index",
+    "pages/jifen/jifen"
   ],
 
 "permission": {
@@ -37,13 +40,13 @@
       {
         "iconPath": "images/shangxin.png",
         "selectedIconPath": "images/shangxin_h.png",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/newgoods/newgoods",
         "text": "上新"
       },
       {
         "iconPath": "images/jifen.png",
         "selectedIconPath": "images/jifen_h.png",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/jifen/jifen",
         "text": "积分"
       },
       {

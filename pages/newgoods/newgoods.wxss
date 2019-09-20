@@ -1,0 +1,18 @@
+/* pages/newgoods/newgoods.wxss */
+.news_text{margin:15rpx 0;}
+.new_content{width:100%;box-sizing:border-box;padding:30rpx;background-color:#f5f5f5;}
+.new_topic{}
+.new_item{width:100%;border-radius:8px;margin-bottom:60rpx;background-color:#fff;box-sizing:border-box;padding:30rpx;}
+.news_topic1{display:inline-block;font-size:30rpx;font-weight:700; color:#000;}
+.news_topic2{display:inline-block;vertical-align:middle;margin-left:10rpx;}
+.news_topic2>image{width:17px;height:17px}
+
+.new_img_box{display:flex;border-radius:8rpx;overflow:hidden;}
+.new_text{font-size:24rpx;color:#a9a9a9;margin:10rpx 0 30rpx 0;}
+.n_icon1,.n_icon2,.n_icon3{display:inline-block;height:17px;vertical-align:middle;margin-right:10rpx;}
+.n_icon1{width:17px;}
+.n_icon2{width:14px;}
+.n_icon3{width:14px;}
+.news_item_p{display:inline-block;font-size:26rpx;color:#9d9d9d;}
+.n1{margin-right:15rpx;}
+.new_icon1{display:flex;margin-bottom:30rpx;}

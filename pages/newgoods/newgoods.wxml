@@ -1,0 +1,69 @@
+<!--pages/newgoods/newgoods.wxml-->
+<view class="new_content">
+<!-- start item -->
+  <view class="new_item" bindtap="newarticle">
+    <view class="new_img_box">
+      <image src="../../images/girl1.jpg" style=" width:33.3%" mode="widthFix"></image>
+      <image src="../../images/girl1.jpg" style=" width:33.3%" mode="widthFix"></image>
+      <image src="../../images/girl1.jpg" style=" width:33.3%" mode="widthFix"></image>
+    </view>
+    <view class="news_text">
+      <view class="new_topic">
+        <view class="news_topic1">德云华服九月上新特惠~ 新品全场2折起</view>
+        <view class="news_topic2">
+          <image src="../../images/new_good.png"></image>
+        </view>
+      </view>
+      <view class="new_text">素梦云裳汉服 蕊香 夜幽 步步生莲</view>
+      <view class="new_icon1">
+        <view class="new_icon_item n1">
+          <image src="../../images/icon_sh.png" class="n_icon1"></image>
+          <view class="news_item_p">王姐锦衣素行</view>
+        </view>
+        <view class="new_icon_item">
+          <image src="../../images/icon_tel.png" class="n_icon2"></image>
+          <view class="news_item_p">18279559717</view>
+        </view>
+      </view>
+      <view class="new_icon1">
+        <view class="new_icon_item n1">
+          <image src="../../images/icon_ps.png" class="n_icon3"></image>
+          <view class="news_item_p">北京市西城区天安门门头沟大么庄255号</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- end item -->
+  <!-- start item -->
+  <view class="new_item">
+    <view class="new_img_box">
+      <image src="../../images/boy1.jpg" style=" width:100%" mode="widthFix"></image>
+    </view>
+    <view class="news_text">
+      <view class="new_topic">
+        <view class="news_topic1">德云华服九月上新特惠~ 新品全场2折起</view>
+        <view class="news_topic2">
+          <image src="../../images/new_good.png"></image>
+        </view>
+      </view>
+      <view class="new_text">素梦云裳汉服 蕊香 夜幽 步步生莲</view>
+      <view class="new_icon1">
+        <view class="new_icon_item n1">
+          <image src="../../images/icon_sh.png" class="n_icon1"></image>
+          <view class="news_item_p">王姐锦衣素行</view>
+        </view>
+        <view class="new_icon_item">
+          <image src="../../images/icon_tel.png" class="n_icon2"></image>
+          <view class="news_item_p">18279559717</view>
+        </view>
+      </view>
+      <view class="new_icon1">
+        <view class="new_icon_item n1">
+          <image src="../../images/icon_ps.png" class="n_icon3"></image>
+          <view class="news_item_p">北京市西城区天安门门头沟大么庄255号</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- end item -->
+</view>

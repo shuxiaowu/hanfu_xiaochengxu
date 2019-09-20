@@ -1,0 +1,45 @@
+<!--pages/newgoods/newarticle/index.wxml-->
+<swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image"data-id="{{index}}"  width="355"  mode="widthFix" bindtap="preview" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="new_item">
+  <view class="news_text">
+    <view class="new_topic">
+      <view class="news_topic1">德云华服九月上新特惠~ 新品全场2折起</view>
+      <view class="news_topic2">
+        <image src="../../../images/new_good.png"></image>
+      </view>
+    </view>
+    <view class="price">
+      <view class="price_account">￥80.00</view>
+      <view class="price_del_account">原价:￥120.00</view>
+    </view>
+    <view class="new_text">素梦云裳汉服 蕊香 夜幽 步步生莲</view>
+    <view class="new_icon1">
+      <view class="new_icon_item n1">
+        <image src="../../../images/icon_sh.png" class="n_icon1"></image>
+        <view class="news_item_p">王姐锦衣素行</view>
+      </view>
+      <view class="new_icon_item">
+        <image src="../../../images/icon_tel.png" class="n_icon2"></image>
+        <view class="news_item_p">18279559717</view>
+      </view>
+    </view>
+    <view class="new_icon1">
+      <view class="new_icon_item n1">
+        <image src="../../../images/icon_ps.png" class="n_icon3"></image>
+        <view class="news_item_p">北京市西城区天安门门头沟大么庄255号</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="shar_btn">
+  <button class="fixed-text fixed-button" open-type="share" title="分享美物，助力汉服文化" hover-class="none">
+    <image src="../../../images/link_icon.png" class="dis_line link-icon"></image>
+    <view class=" dis_line">分享美物，助力汉服文化</view>
+  </button>
+</view>
