@@ -2,7 +2,7 @@
     <view class="shop_list_warp row">
         <block wx:for="{{list}}" wx:key="item.id">
             <view class="shop_con">
-                <navigator class="shop_img" url="/pages/shopdetail/shopdetail?id={{item.id}}">
+                <navigator class="shop_img" url="jfarticle/jfarticle">
                     <image src="{{item}}" class="fill"  mode="aspectFill"/>
                 </navigator>
                 <view class="shop_info">

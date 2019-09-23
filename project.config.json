@@ -31,13 +31,53 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 4,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/jifen/jifen",
+					"pathName": "pages/jifen/jifen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/jifen/jifen",
+					"pathName": "pages/jifen/jfarticle/jfarticle",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/userpage",
+					"pathName": "pages/userpage/userpage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/userpage/userpage",
+					"pathName": "pages/userpage/integral/intgral",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/contact/contact",
+					"pathName": "pages/userpage/contact/contact",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }

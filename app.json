@@ -7,7 +7,10 @@
     "pages/active/hdarticle/index",
     "pages/newgoods/newgoods",
     "pages/newgoods/newarticle/index",
-    "pages/jifen/jifen"
+    "pages/jifen/jifen",
+    "pages/jifen/jfarticle/jfarticle",
+    "pages/userpage/integral/intgral",
+    "pages/userpage/contact/contact"
   ],
 
 "permission": {

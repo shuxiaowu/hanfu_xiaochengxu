@@ -41,6 +41,9 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onLoad: function () {
+    wx.setNavigationBarTitle({
+      title: '我的',
+    })
     var that = this
     wx.login({
       success: function (res) { //登录成功

@@ -1,0 +1,43 @@
+<!--pages/jifen/jfarticle/jfarticle.wxml-->
+<swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" mode="widthFix" bindtap="previewImg" data-id="{{index}}" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="box">
+  <view class="jf_topic">
+    凤仪（饰品）民族风发簪古典东陵玉平安扣木簪子古风发饰饰 品玉平安扣木簪子古风族风发簪古典东陵玉
+  </view>
+  <view class="jf_account">
+    <view class="jf_num">100积分</view>
+    <view class="jf_i"></view>
+    <view class="jf_kucun">库存5</view>
+  </view>
+  <view class="jf_recommond">
+    新平推荐
+  </view>
+  <view class="jf_content">
+  <image src="../../../images/jf.jpg" mode="widthFix" ></image>
+  </view>
+</view>
+<view class="footbtn" bindtap="dhbtn">
+  立即兑换
+</view>
+
+  <!--  -->
+  <view wx:if="{{isshow}}" class="mask" catchtap="" >
+      <view class="modelbox">
+          <view class="title_success">
+             打卡成功 
+          </view>
+          <view class="text_box">
+            <view class="text_1">
+              小主打卡成功了~
+            </view>
+            <view class="text_2">+5积分</view>
+          </view>
+          <view class="mask_btn" catchtap="maskclose">朕知道了</view>
+      </view>
+  </view>

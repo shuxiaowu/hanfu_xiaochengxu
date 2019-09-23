@@ -1,36 +1,15 @@
 /* pages/userpage/userpage.wxss */
-
-.header {
-    margin: 90rpx 0 90rpx 50rpx;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
-    width: 650rpx;
-    height: 300rpx;
-}
+.header {padding: 90rpx 0 20rpx 0;text-align: center;width: 100%;height: 300rpx; position: relative;z-index:99;}
+.userbg_box{position:relative;}
+.userbg{position:absolute;top:0;left:0;width:100%;z-index: 1}
  
-.header image {
-    width: 200rpx;
-    height: 200rpx;
-    border-radius: 60%;
-}
+.header image {width: 200rpx;height: 200rpx;border-radius: 60%;}
  
-.content {
-    margin-left: 50rpx;
-    margin-bottom: 90rpx;
-}
+.content {margin-left: 50rpx;margin-bottom: 90rpx;}
  
-.content text {
-    display: block;
-    color: #9d9d9d;
-    margin-top: 40rpx;
-}
+.content text {display: block;color: #9d9d9d;margin-top: 40rpx;}
  
-.bottom {
-    border-radius: 80rpx;
-    margin: 70rpx 50rpx;
-    font-size: 35rpx;
-
-}
+.bottom {border-radius: 80rpx;margin: 70rpx 50rpx;font-size: 35rpx;}
 
 .userinfo{display:flex;flex-direction:column;align-items:center;background:#f0145a;width:100%;height:300rpx}
 .userinfo-btn{margin-top:50rpx;background:0 0!important;color:#fff!important;font-size:40rpx}
@@ -46,7 +25,20 @@
 .nav-item .nav-image{width:55rpx;height:55rpx;margin:5rpx}
 .nav-item text{margin-top:20rpx;font-size:28rpx;color:gray}
 .person-list{display:flex;flex-direction:column;align-items:left}
-.list-item{display:flex;flex-direction:row;align-items:center;height:80rpx}
-.item-image{width:40rpx;height:40rpx;margin:20rpx}
-.item-text{color:gray;font-size:30rpx;margin-left:20rpx}
-.person-line{width:80%;height:2rpx;background:#d3d3d3;margin-left:90rpx}
+.list-item{display:flex;flex-direction:row;align-items:center;height:95rpx;justify-content:space-between;}
+.item-image{width:30rpx;height:30rpx;padding:10rpx; border: 1px solid #ddd;border-radius:60%;}
+.item-text{color:#000;font-size:24rpx;margin-left:20rpx;line-height:56rpx;}
+.person-line{width:100%;height:2rpx;background:#e5e5e5;}
+.user_box{box-sizing:border-box;padding:30rpx;}
+.list-item_left{display:flex;}
+.arrow{width:20rpx;height:32rpx;}
+.list-item_right{display:flex}
+.list_jf{font-size:24rpx;color:#7f7f7f;padding-right:20rpx;}
+
+.userbox{box-shadow:0 5px 15px #ddd;border-radius:16rpx;}
+.userbox2{box-shadow:0px 0px 12px #ddd;border-radius:16rpx;margin-top:50rpx;}
+.username{font-size:32rpx;color:#000;margin-top:10rpx;}
+.userphone{font-size:26rpx;color:#7b7b7b;margin-top:10rpx;}
+
+
+

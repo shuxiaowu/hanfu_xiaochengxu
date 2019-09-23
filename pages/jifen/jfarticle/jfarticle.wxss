@@ -1,0 +1,14 @@
+/* pages/jifen/jfarticle/jfarticle.wxss */
+swiper{height:240px!important;}
+.slide-image{width:100%;height: 100%;}
+
+
+.jf_topic{font-size:26rpx;line-height:44rpx;color:#000;box-sizing:border-box;}
+.jf_account{display:flex;margin-top:20rpx;}
+.jf_i{height:20rpx;width:1rpx;background-color:#c1c1c1;vertical-align:middle;position:relative;top:20rpx;margin:0 30rpx;}
+.jf_num{font-size:36rpx;color:#d12b27;}
+.jf_kucun{font-size:26rpx;color:#c1c1c1;padding-top:10rpx;vertical-align: bottom}
+.jf_recommond{font-size:30rpx;font-weight:700;color:#000;margin-top:70rpx;margin-bottom:40rpx;}
+.jf_content>image{width:100%;}
+
+.footbtn{position:fixed;width:100%; bottom:0;height:40px;background-color:#c44845;color:#fff;font-size:14px;line-height:40px;text-align:center;}
