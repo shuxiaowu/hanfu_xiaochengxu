@@ -10,7 +10,10 @@
     "pages/jifen/jifen",
     "pages/jifen/jfarticle/jfarticle",
     "pages/userpage/integral/intgral",
-    "pages/userpage/contact/contact"
+    "pages/userpage/contact/contact",
+    "pages/userpage/sendactive/sendactive",
+    "pages/userpage/praise/praise",
+    "pages/userpage/backproblem/backproblem"
   ],
 
 "permission": {

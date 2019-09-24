@@ -123,4 +123,9 @@ Page({
       })
     }
   },
+  activepage:function(e){
+    wx.switchTab({
+      url: '../active/active'
+    })
+  }
 })

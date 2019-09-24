@@ -1,0 +1,17 @@
+/* pages/userpage/praise/praise.wxss */
+.praise_item{display:flex;justify-content:space-between;padding:40rpx 0;border-bottom:1px solid #e5e5e5;}
+.praise_item .pri_img{width:230rpx;height:230rpx;overflow:hidden;position: relative;}
+.praise_item .pri_img>image{max-height: 100%;max-width: 100%; position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+.pri_right{width:420rpx;height:230rpx;}
+
+.pri_rt_top{display:flex;justify-content:space-between;}
+.pri_rt_top_left{display:flex}
+.pri_rt_top_left .name{font-size:24rpx;color:#000;padding-bottom:5rpx;}
+.pri_rt_top_left .date{font-size:20rpx;color:#787878;}
+.t_left_topic{width:64rpx;height:64rpx;border-radius:60%;margin-right:10rpx;margin-left:15rpx;}
+.heart_zan{width:40rpx;height:40rpx;}
+.intro{font-size:24rpx;color:#000;margin-top:30rpx;line-height:36rpx;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+
+.pri_position{position:relative;margin-top:10rpx;}
+.ps_img{width:20rpx;height:22rpx;vertical-align:middle;padding-right:10rpx;}
+.ps_topic{font-size:22rpx;color:#959595;}

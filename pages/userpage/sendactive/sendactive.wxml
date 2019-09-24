@@ -1,0 +1,78 @@
+<!--pages/userpage/sendactive/sendactive.wxml-->
+<view class="boss_list">
+  <view class="boss" bindtap="bossbtn">
+    <text class="{{isshow == true ? 'active' : ''}}">非商业活动</text>
+  </view>
+  <view class="noboss" bindtap="nobossbtn">
+    <text class="{{isshow == false ? 'active' : ''}}">商业类活动</text>
+  </view>
+</view>
+<!--  -->
+<view class="box" wx:if="{{isshow}}">
+  <view class="input_item">
+    <view class="lable">
+      活动名称
+      <text>*</text>
+    </view>
+    <input type="text" placeholder="请输入"></input>
+  </view>
+  <!--  -->
+  <view class="input_item">
+    <view class="lable">
+      活动时间
+      <text>*</text>
+    </view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+      <view class="picker">{{date}}</view>
+    </picker>
+   <image src="../../../images/arrow_icon.png" class="arrow"></image>
+  </view>
+  <!--  -->
+  <view class="input_item">
+    <view class="lable">
+      活动地址
+      <text>*</text>
+    </view>
+    <view class="position_box" bindtap="positionbtns">
+      <view class="position_text">{{positionname}}</view>
+    </view>
+  </view>
+  <!--  -->
+  <view class="input_itempic">
+    <view class="lable_img">
+      上传活动封面
+      <text>*</text>
+    </view>
+    <view class="volum_pic" wx:if="{{urls == '' ? true : false}}" bindtap="chooseImg">
+      <image src="../../../images/camera_icon.png" class="plusimg" mode="widthFile"></image>
+    </view>
+  </view>
+  <view wx:if="{{urls == '' ? false : true}}" wx:for="{{urls}}" class="prebox_img" wx:key="{{index}}">
+    <view class='preview-warp'>
+      <image src='{{item}}' bindtap='previewImg' data-id="{{index}}" />
+      <view class="close_img" bindtap="delimg">
+        <image src="../../../images/close.png"></image>
+      </view>
+      <view class="change_pic" bindtap="chooseImg">
+        点击更换图片
+      </view>
+    </view>
+  </view>
+  <!--  -->
+  <view class="input_item">
+    <view class="lable">
+      活动详情
+      <text>*</text>
+    </view>
+  </view>
+  <textarea placeholder="请输入活动详情..." name="textarea" class="textarea_box" />
+  <!--  -->
+  <view class="footbtn" bindtap="dhbtn">
+    立即发起
+  </view>
+</view>
+<!-- box2 -->
+<view class="box2" wx:if="{{!isshow}}">
+  <view>请联系微信客服</view>
+  <view>XV98547</view>
+</view>

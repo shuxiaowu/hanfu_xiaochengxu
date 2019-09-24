@@ -11,4 +11,3 @@ swiper{height:240px!important;}
 .jf_recommond{font-size:30rpx;font-weight:700;color:#000;margin-top:70rpx;margin-bottom:40rpx;}
 .jf_content>image{width:100%;}
 
-.footbtn{position:fixed;width:100%; bottom:0;height:40px;background-color:#c44845;color:#fff;font-size:14px;line-height:40px;text-align:center;}

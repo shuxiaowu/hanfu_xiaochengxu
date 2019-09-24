@@ -37,7 +37,7 @@
 
       <view class="person-line"></view>
 
-      <view class="list-item">
+      <navigator url="sendactive/sendactive" class="list-item">
         <view class="list-item_left">
           <image class="item-image" src="../../images/flag_icon.png"></image>
           <text class="item-text">发起活动</text>
@@ -46,9 +46,9 @@
           <view class="list_jf"></view>
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
-      </view>
+      </navigator>
       <view class="person-line"></view>
-      <view class="list-item">
+      <view  class="list-item" bindtap="activepage">
         <view class="list-item_left">
           <image class="item-image" src="../../images/star_icon.png"></image>
           <text class="item-text">我发起的活动</text>
@@ -59,7 +59,7 @@
         </view>
       </view>
       <view class="person-line"></view>
-      <view class="list-item">
+      <navigator url="praise/praise" class="list-item">
         <view class="list-item_left">
           <image class="item-image" src="../../images/heart.png"></image>
           <text class="item-text">我的点赞</text>
@@ -68,7 +68,7 @@
           <view class="list_jf"></view>
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
-      </view>
+      </navigator>
     </view>
   </view>
 
@@ -90,7 +90,7 @@
 
       <view class="person-line"></view>
 
-      <view class="list-item">
+      <navigator url="backproblem/backproblem" class="list-item">
         <view class="list-item_left">
           <image class="item-image" src="../../images/problem_icon.png"></image>
           <text class="item-text">问题反馈</text>
@@ -99,7 +99,7 @@
           <view class="list_jf"></view>
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
-      </view>
+      </navigator>
       <view class="person-line"></view>
       <view class="list-item">
         <view class="list-item_left">

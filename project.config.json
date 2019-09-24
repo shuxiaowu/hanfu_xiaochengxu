@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -75,6 +75,26 @@
 					"name": "pages/userpage/contact/contact",
 					"pathName": "pages/userpage/contact/contact",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/sendactive/sendactive",
+					"pathName": "pages/userpage/sendactive/sendactive",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/praise/praise",
+					"pathName": "pages/userpage/praise/praise",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/backproblem/backproblem",
+					"pathName": "pages/userpage/backproblem/backproblem",
 					"scene": null
 				}
 			]

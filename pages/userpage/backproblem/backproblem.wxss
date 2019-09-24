@@ -1,0 +1,18 @@
+/* pages/userpage/backproblem/backproblem.wxss */
+page{background-color:#f4f4f4}
+.pb_title{font-size:24rpx;color:#6b6b6b;padding:24rpx 30rpx;}
+.pb_list{background-color:#fff; padding:40rpx 0 60rpx;}
+.pb_list .text{display:inline-block; padding:20rpx 30rpx;border:1px solid #cecece;border-radius:8rpx; color:#5e5e5e;font-size:24rpx;margin:30rpx 0 0 30rpx ;}
+.pb_list .text.active{background-color:#c13b38;border:none;color:#fff;}
+.describ{height:200rpx;width:100%;padding:30rpx;box-sizing:border-box; background:#fff;overflow:hidden}
+.describ textarea{width:100%;height:100%;}
+
+.upload_img{padding:30rpx;background-color:#fff;}
+.previewimg{ display:inline-block;width:100rpx;height:100rpx;position:relative;border-radius:8rpx;z-index:1;}
+.previewimg .preview_pic{max-height: 100%;max-width: 100%; position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;z-index:10;}
+
+.close{position:absolute;top:-10rpx;right:-10rpx;z-index: 99999;width:20rpx;height:20rpx;}
+.upload_btn{width:100rpx;height:100rpx;position:relative;border:1px dashed #d4d4d4;display:inline-block;border-radius:8rpx;}
+.pre_box{width:100%;height:100%;overflow:hidden;border-radius:8rpx;position:relative}
+.plus{position:absolute;top:0;left:0;right:0;bottom:0;margin:0 auto; width:100rpx;height:100rpx;transform:scale(0.5,0.5)}
+.itemupload{margin-right:20rpx;}
