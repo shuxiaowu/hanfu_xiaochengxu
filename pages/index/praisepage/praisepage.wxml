@@ -1,0 +1,41 @@
+<!--pages/index/praisepage/praisepage.wxml-->
+<view class="box">
+  <view class="praise_pic">
+    <image src="../../../images/zan.jpg" mode="widthFile" class="imgtop"></image>
+    <view class="bottom_text">南方士大夫南方士大夫南方士大夫南方士大夫南方士大夫南方士大夫南方士大夫南方士大夫南方士大夫南方士大夫南方士大夫南方士大夫南方士大夫</view>
+  </view>
+  <view class="pri_rt_top">
+    <view class="pri_rt_top_left">
+      <image src="../../../images/headpic.jpg" class="t_left_topic"></image>
+      <view style="padding-left:10rpx;">
+        <view class="name">雪月花</view>
+        <view class="date">2019-08-01</view>
+      </view>
+    </view>
+    <view class="pri_rt_top_right">
+      <image src="../../../images/zan.png" class="heart_zan"></image>
+      <view class="praise_num">150</view>
+    </view>
+  </view>
+</view>
+<!--  -->
+<view class="box" style="border-top:10rpx solid #f5f5f5;">
+  <view class="evaluate">评价</view>
+  <!--  -->
+  <view class="evaluate_top">
+    <view class="pri_rt_top_left">
+      <image src="../../../images/headpic.jpg" class="evaluate_topic"></image>
+      <view style="padding-left:10rpx;">
+        <view class="name">雪月花</view>
+        <view class="date">2019-08-01</view>
+      </view>
+    </view>
+    <view class="evaluate_content">雪月花雪月花雪月花雪月花雪月花雪月花</view>
+  </view>
+  <!--  -->
+</view>
+<!--  -->
+<view class="evaluate_form">
+  <input type="text" class="input_border"></input>
+  <view class="evaluate_btn">评论</view>
+</view>

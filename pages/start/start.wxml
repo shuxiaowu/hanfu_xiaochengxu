@@ -1,0 +1,4 @@
+<!--pages/start/start.wxml-->
+<view  class="mark_img" bindtap="startindex" >
+  <image src="../../images/qidong.jpg" mode="widthFile">00</image>
+</view>

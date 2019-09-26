@@ -1,9 +1,50 @@
 Page({
   data: {
     isshow: false,
-    latitude: 28.68194,
-    longitude: 115.96191,
-    
+    markshow:true,
+    markers: [{
+      id: 1,
+      latitude: 28.674680,
+      longitude: 115.993401,
+      iconPath: '../../images/headpic.jpg',
+      callout: {
+        content: '汉服1',
+        color: '#fff',
+        fontSize: 12,
+        borderRadius: 25,
+        borderWidth: 5,
+        borderColor: '#666',
+        bgColor: '#666',
+        display: 'ALWAYS',
+      },
+      width: 30,
+      height: 30,
+    },
+    {
+      id: 2,
+      latitude: 28.674880,
+      longitude: 115.993601,
+      iconPath: '../../images/headpic.jpg',
+      callout: {
+        content: '汉服2',
+        color: '#fff',
+        fontSize: 12,
+        borderRadius: 25,
+        borderWidth: 5,
+        borderColor: '#666',
+        bgColor: '#666',
+        display: 'ALWAYS',
+      },
+      width: 30,
+      height: 30,
+    }
+    ],
+  },
+  bindmarkertap: function (e) {
+    console.log(e.markerId);
+    wx.navigateTo({
+      url: 'praisepage/praisepage',
+    })
   },
   onShow: function(e) {
     
@@ -24,12 +65,14 @@ Page({
         var longitude = res.longitude
         var speed = res.speed
         var accuracy = res.accuracy
-        
+        // console.log(latitude, longitude)
         that.setData({
-          longitude: longitude,
-          latitude: latitude,
+          latitude: 28.674880,
+          longitude: 115.993601,
           speed: speed,
-          accuracy: accuracy
+          accuracy: accuracy,
+
+         
         })
       },
       //定位失败回调
@@ -37,6 +80,7 @@ Page({
         wx.showToast({
           title: "定位失败",
           icon: "none"
+          
         })
       },
 

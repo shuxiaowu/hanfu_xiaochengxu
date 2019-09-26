@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -95,6 +95,21 @@
 					"id": -1,
 					"name": "pages/userpage/backproblem/backproblem",
 					"pathName": "pages/userpage/backproblem/backproblem",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/index/praisepage/praisepage",
+					"pathName": "pages /index/praisepage/praisepage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/praisepage/praisepage",
+					"pathName": "pages/index/praisepage/praisepage",
+					"query": "",
 					"scene": null
 				}
 			]
