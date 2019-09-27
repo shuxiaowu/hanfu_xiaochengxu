@@ -1,6 +1,6 @@
 <!--pages/jifen/jfarticle/jfarticle.wxml-->
 <swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+  <block wx:for="{{goods.thumb_arr}}" wx:key="{{index}}">
     <swiper-item>
       <image src="{{item}}" class="slide-image" mode="widthFix" bindtap="previewImg" data-id="{{index}}" />
     </swiper-item>
@@ -8,10 +8,10 @@
 </swiper>
 <view class="box">
   <view class="jf_topic">
-    凤仪（饰品）民族风发簪古典东陵玉平安扣木簪子古风发饰饰 品玉平安扣木簪子古风族风发簪古典东陵玉
+    {{goods.title}}
   </view>
   <view class="jf_account">
-    <view class="jf_num">100积分</view>
+    <view class="jf_num">{{goods.integral}}积分</view>
     <view class="jf_i"></view>
     <view class="jf_kucun">库存5</view>
   </view>

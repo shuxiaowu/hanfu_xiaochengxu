@@ -2,15 +2,14 @@
     <view class="shop_list_warp row">
         <block wx:for="{{list}}" wx:key="item.id">
             <view class="shop_con">
-                <navigator class="shop_img" url="jfarticle/jfarticle">
-                    <image src="{{item}}" class="fill"  mode="aspectFill"/>
+                <navigator class="shop_img" url="jfarticle/jfarticle?id={{item.id}}">
+                    <image src="{{item.thumb}}" class="fill"  mode="aspectFill"/>
                 </navigator>
                 <view class="shop_info">
-                    <view class="topic hides">超大毛领冬季斗篷</view>
+                    <view class="topic hides">{{item.title}}</view>
                     <view class="heart row">
-                        <view class="jf_num">100积分</view>
+                        <view class="jf_num">{{item.integral}}积分</view>
                         <view class="jf_kc"> 库存 5</view>
-                      
                     </view>
                 </view>
             </view>

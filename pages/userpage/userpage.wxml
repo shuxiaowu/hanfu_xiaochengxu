@@ -3,12 +3,15 @@
   <image src="../../images/userbg.png" class="userbg"></image>
   <view class='header'>
     <image src='../../images/headpic.jpg'></image>
-    <view class="username">大道花月娘</view>
-    <view class="userphone">182****717</view>
+    <view wx:if="{{islogin}}">
+      <view class="username">大道花月娘</view>
+      <view class="userphone">182****717</view>
+    </view>
+    <button wx:if="{{!islogin}}" class="login_btns" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
+      点击登录
+    </button>
   </view>
-  <!-- <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
-        授权登录
-    </button> -->
+
 </view>
 
 <view class="separate"></view>
@@ -48,7 +51,7 @@
         </view>
       </navigator>
       <view class="person-line"></view>
-      <view  class="list-item" bindtap="activepage">
+      <view class="list-item" bindtap="activepage">
         <view class="list-item_left">
           <image class="item-image" src="../../images/star_icon.png"></image>
           <text class="item-text">我发起的活动</text>

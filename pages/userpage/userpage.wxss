@@ -40,6 +40,9 @@
 .username{font-size:32rpx;color:#000;margin-top:10rpx;}
 .userphone{font-size:26rpx;color:#7b7b7b;margin-top:10rpx;}
 
+button::after {border: none;}
+button{background-color:#fff;}
+
 
 
 

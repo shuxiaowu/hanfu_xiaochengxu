@@ -1,5 +1,51 @@
 //app.js
 App({
+  base: {
+    pub_url: "http://www.hfzx.com/api/index/",
+    comefrom: "wxapp",
+    i: 2,
+    adshow: true,
+    tips: true,
+    typePage: function (type, id, news_id) {
+      if (type == 1) {
+        wx.navigateTo({
+          url: '/pages/culturedetal/culturedetail?news_id=' + news_id
+        });
+      }
+      if (type == 2) {
+        wx.navigateTo({
+          url: '/pages/imglist/imglist?id=' + id
+        });
+      }
+      if (type == 0) {
+        wx.navigateTo({
+          url: '/pages/culturelist/culturelist?id=' + id
+        });
+      }
+      if (type == 3) {
+        wx.navigateTo({
+          url: '/pages/myvideos/myvideos?news_id=' + news_id
+        })
+      }
+    },
+    toInfos: function (style, id) {
+      if (style == 0) {
+        wx.navigateTo({
+          url: '/pages/culturedetal/culturedetail?news_id=' + id
+        });
+      }
+      if (style == 1) {
+        wx.navigateTo({
+          url: '/pages/myvideos/myvideos?news_id=' + id
+        });
+      }
+      if (style == 2) {
+        wx.navigateTo({
+          url: '/pages/mydemo/mydemo?news_id=' + id
+        });
+      }
+    }
+  },
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

@@ -4,13 +4,21 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
-		"coverView": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.2",
@@ -40,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -110,6 +118,19 @@
 					"name": "pages/index/praisepage/praisepage",
 					"pathName": "pages/index/praisepage/praisepage",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/userpage",
+					"pathName": "pages/userpage/userpage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/jifen/jifen",
+					"pathName": "pages/jifen/jifen",
 					"scene": null
 				}
 			]
