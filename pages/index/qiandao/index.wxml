@@ -14,7 +14,7 @@
     <view class='upimg' bindtap='chooseImg'>添加图片</view>
     <view class="position_box" bindtap="positionbtns">
       <image src="../../../images/position.png" class="position_img"></image>
-      <view class="position_text">{{positionname}}</view>
+      <view class="position_text">{{positionname == '' ? '获取地理位置' : positionname}}</view>
     </view>
     <button form-type="submit" class="qd_btn">立即打卡 </button>
   </form>

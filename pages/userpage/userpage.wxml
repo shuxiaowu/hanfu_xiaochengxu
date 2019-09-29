@@ -2,10 +2,13 @@
 <view wx:if="{{canIUse}}" class="userbg_box">
   <image src="../../images/userbg.png" class="userbg"></image>
   <view class='header'>
-    <image src='../../images/headpic.jpg'></image>
     <view wx:if="{{islogin}}">
-      <view class="username">大道花月娘</view>
+      <image src='{{head_img}}' class="headpic"></image>
+      <view class="username">{{user_name}}</view>
       <view class="userphone">182****717</view>
+    </view>
+    <view wx:elif="{{!islogin}}">
+      <image src='../../images/default_head.png' class="default_head"></image>
     </view>
     <button wx:if="{{!islogin}}" class="login_btns" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
       点击登录

@@ -1,4 +1,5 @@
 // pages/index/qiandao/index.js
+const app = getApp()
 Page({
 
   /**
@@ -7,10 +8,33 @@ Page({
   data: {
     imgurl: [],
     urls: [],
-    positionname:'获取当前位置',
+    positionname: '',
+    signlatitude: '',
+    signlongitude: ''
   },
   bindFormSubmit: function(e) {
-    console.log(e.detail.value)
+    let that = this;
+    var url = app.base.pub_url;
+    var img = that.data.imgurl;
+    var signlatitude = that.data.signlatitude;
+    var signlongitude = that.data.signlongitude;
+    var content = e.detail.value.textarea;
+    var logins = wx.getStorageSync("xinli_logins");
+    wx.request({
+      url: url +'submitSignin',
+      method: "POST",
+      data: {
+        img:that.data.imgurl,
+        content: e.detail.value.textarea,
+        signlatitude:that.data.signlatitude,
+        signlongitude:that.data.signlongitude,
+        user_id: logins.user_id,
+        addname: that.data.positionname
+      },
+      success: function(reg) {
+        console.log(reg,img)
+      }
+    })
   },
   // 上传图片
   chooseImg: function() {
@@ -74,12 +98,11 @@ Page({
     wx.chooseLocation({
       success: function(res) {
         // success
-        console.log(res, "location")
-        console.log(res.name)
-        console.log(res.latitude)
-        console.log(res.longitude)
         that.setData({
-          positionname: res.name
+          positionname: res.name,
+          signlatitude: res.latitude,
+          signlongitude: res.longitude
+
         })
       },
       fail: function() {

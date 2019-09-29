@@ -132,6 +132,11 @@ Page({
     //   }
     // });
   },
+  getPhoneNumber(e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+  },
   onGotUserInfo: function (e) {
     let that = this;
     let url = that.data.url;
@@ -141,42 +146,52 @@ Page({
       success: function (res) {
         if (res.code) {
           var code = res.code;
-          wx.request({
-            url: url + "wxLogin",
-            method: "POST",
-            data: {
-              code: code,
-              nickName: my.userInfo.nickName,
-              avatarUrl: my.userInfo.avatarUrl,
-            },
-            success: function (res) {
-              console.log(res.data.arr);
-
-              if (res.data.code == 0) {
-                var logins = res.data.memberinfo;
-                wx.setStorageSync("xinli_logins", logins);
-                that.setData({
-                  islogin: true,
-                  head_img: logins.user_img,
-                  user_name: logins.user_name,
-                  fans: logins.integral,
-                  level: logins.level,
-                });
-                wx.showToast({
-                  title: '登录成功!',
-                  icon: "success",
-                  duration: 1000,
-                  success: function () {
-                    setTimeout(function () {
-                      wx.redirectTo({
-                        url: '/pages/index/index',
-                      });
-                    }, 1000);
+          wx.getUserInfo({
+            success: function (res2) {
+              var userInfo = res2.userInfo
+              var encryptedData = encodeURIComponent(res2.encryptedData);//一定要把加密串转成URI编码
+              var iv = res2.iv;
+              wx.request({
+                url: url + "wxLogin",
+                method: "POST",
+                data: {
+                  code: code,
+                  encryptedData: encryptedData,
+                  iv: iv,
+                  nickName: userInfo.nickName,
+                  avatarUrl: userInfo.avatarUrl,
+                },
+                success: function (res3) {
+                  console.log(res3);
+                  if (res3.data.code == 0) {
+                    var logins = res3.data.memberinfo;
+                    wx.setStorageSync("xinli_logins", logins);
+                    that.setData({
+                      islogin: true,
+                      head_img: logins.user_img,
+                      user_name: logins.user_name,
+                      fans: logins.integral,
+                      level: logins.level,
+                    });
+                    wx.showToast({
+                      title: '登录成功!',
+                      icon: "success",
+                      duration: 1000,
+                      success: function () {
+                        setTimeout(function () {
+                          wx.redirectTo({
+                            url: '/pages/index/index',
+                          });
+                        }, 1000);
+                      }
+                    });
                   }
-                });
-              }
+                }
+              });
             }
-          });
+
+          })
+
         }
       }
     })
