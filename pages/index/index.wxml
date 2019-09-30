@@ -5,7 +5,7 @@
   </view>
 
   <view class="absolute_box">
-    <navigator url="qiandao/index" class="play_ticke">立即打卡</navigator>
+    <view bindtap="{{issignin ? '' : 'playticket'}}" class="play_ticke" >{{issignin ? '已打卡' : '立即打卡'}}</view>
   </view>
   <!--  -->
   <view wx:if="{{isshow}}" class="mask" catchtap="maskbtn">

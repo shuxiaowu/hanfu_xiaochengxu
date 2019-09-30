@@ -2,9 +2,9 @@
 <view class="section">
   <form bindsubmit="bindFormSubmit">
     <textarea placeholder="这一刻的想法..." class="text_dream" name="textarea" />
-    <view wx:for="{{urls}}" wx:if="{{urls}}" class="prebox_img" wx:key="{{index}}">
+    <view  wx:if="{{urls}}" class="prebox_img" >
       <view class='preview-warp'>
-        <image src='{{item}}' bindtap='previewImg' data-id="{{index}}" />
+        <image src='{{urls}}' bindtap='previewImg'  />
         <view class="close_img" bindtap="delimg">
           <image src="../../../images/close.png"></image>
         </view>

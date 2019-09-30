@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgurl: [],
-    urls: [],
+    imgurl: '',
+    urls: '',
     positionname: '',
     signlatitude: '',
     signlongitude: ''
@@ -15,26 +15,58 @@ Page({
   bindFormSubmit: function(e) {
     let that = this;
     var url = app.base.pub_url;
-    var img = that.data.imgurl;
+    var img = that.data.urls;
     var signlatitude = that.data.signlatitude;
     var signlongitude = that.data.signlongitude;
     var content = e.detail.value.textarea;
     var logins = wx.getStorageSync("xinli_logins");
-    wx.request({
-      url: url +'submitSignin',
-      method: "POST",
-      data: {
-        img:that.data.imgurl,
-        content: e.detail.value.textarea,
-        signlatitude:that.data.signlatitude,
-        signlongitude:that.data.signlongitude,
-        user_id: logins.user_id,
-        addname: that.data.positionname
-      },
-      success: function(reg) {
-        console.log(reg,img)
-      }
-    })
+    // 图片上传
+    if (img != '') {
+      wx.uploadFile({
+        url: url + 'uploadImage', //仅为示例，非真实的接口地址
+        filePath: img,
+        name: 'file',
+        formData: {
+          'user': 'test'
+        },
+        success(res) {
+          var data = JSON.parse(res.data)
+          var upimgname = data.saveName;
+          console.log(upimgname);
+          console.log(data.status);
+          if (data.status == 0) {
+            wx.request({
+              url: url + 'submitSignin',
+              method: "POST",
+              data: {
+                img: upimgname,
+                content: e.detail.value.textarea,
+                signlatitude: that.data.signlatitude,
+                signlongitude: that.data.signlongitude,
+                user_id: logins.user_id,
+                addname: that.data.positionname
+              },
+              success: function(reg) {
+                if (reg.data.status==0){
+                  wx.reLaunch({
+                      url: '../index?id=' + logins.user_id,
+                    })
+                }
+              }
+            })
+          }
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '请上传图片',
+        icon: 'loading',
+        duration: 2000
+      })
+    }
+    // 
+
+
   },
   // 上传图片
   chooseImg: function() {
@@ -44,17 +76,18 @@ Page({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
-        console.log(res)
+
         var tempFilePaths = res.tempFilePaths
         that.data.images = tempFilePaths
+
         // 多图片
-        that.data.imgurl = that.data.imgurl.concat(tempFilePaths)
-        console.log(that.data.imgurl);
+        // that.data.imgurl = that.data.imgurl.concat(tempFilePaths)
+        // console.log(that.data.imgurl);
         // 单图片
-        // that.data.urls = tempFilePaths[0]
+        that.data.urls = tempFilePaths[0]
         that.setData({
           images: tempFilePaths[0],
-          urls: that.data.imgurl
+          urls: tempFilePaths[0]
         })
 
       }
@@ -72,7 +105,7 @@ Page({
   delimg: function(e) {
     let that = this;
     var index = e.currentTarget.dataset.id;
-    var imgurl = this.data.imgurl;
+    var imgurl = this.data.images;
 
 
     wx.showModal({
@@ -81,7 +114,8 @@ Page({
       success: function(res) {
         if (res.confirm) {
           console.log('点击确定了');
-          imgurl.splice(index, 1);
+          // imgurl.splice(index, 1);
+          imgurl = '';
         } else if (res.cancel) {
           console.log('点击取消了');
           return false;

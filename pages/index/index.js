@@ -1,7 +1,10 @@
+var app = getApp();
 Page({
   data: {
     isshow: false,
     markshow:true,
+    issignin:false,
+    signinurl:'qiandao/index',
     markers: [{
       id: 1,
       latitude: 28.674680,
@@ -46,15 +49,34 @@ Page({
       url: 'praisepage/praisepage',
     })
   },
-  onShow: function(e) {
+  onLoad: function (option) {
+    console.log(option.id)
     
-  },
-  onLoad: function () {
-    var that = this
-    wx.showLoading({
-      title: "定位中",
-      mask: true
-    })
+    var that = this;
+    if (option.id) {
+      that.setData({
+        isshow:true
+      })
+    }
+    var logins = wx.getStorageSync("xinli_logins");
+    var url = app.base.pub_url;
+    if(logins){
+      wx.request({
+        url: url + 'getsignin',
+        method: "POST",
+        data: {
+          user_id: logins.user_id
+        },
+        success: function (reg) {
+          if(reg.data.status==0){
+            that.data.signinurl = '';
+            that.setData({
+              issignin:true
+            })
+          }
+        }
+      })
+    }
     wx.getLocation({
       type: 'gcj02',
       altitude: true,//高精度定位
@@ -91,37 +113,13 @@ Page({
 
     })
   },
-  onReady: function(e) {
 
-  },
-  daka_btn: function() {
+  playticket: function(e) {
+     var that = this;
+     wx.navigateTo({
+       url: 'qiandao/index',
+     })
 
-    // var that = this;
-
-    // var isshow = that.data.isshow;
-    // console.log(isshow);
-    // that.setData({
-    //   isshow: !isshow,
-    // })
-    // 地图选择
-    wx.chooseLocation({
-      success: function (res) {
-        // success
-        console.log(res, "location")
-        console.log(res.name)
-        console.log(res.latitude)
-        console.log(res.longitude)
-        that.setData({
-          roomname: res.name
-        })
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
-    })
   },
   maskbtn: function() {
     var that = this;
@@ -136,25 +134,5 @@ Page({
       isshow: false,
     })
   },
-  getLocation: function () {
-    var _this = this;
-    // wx.chooseLocation({
-    //   success: function (res) {
-    //     var name = res.name
-    //     var address = res.address
-    //     var latitude = res.latitude
-    //     var longitude = res.longitude
-    //     console.log(address);
-    //     _this.setData({
-    //       name: name,
-    //       address: address,
-    //       latitude: latitude,
-    //       longitude: longitude
-    //     })
-    //   },
-    //   fail:function(){
-    //     console.log('12312');
-    //   }
-    // })
-  }
+
 })

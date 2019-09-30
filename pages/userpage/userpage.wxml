@@ -13,6 +13,7 @@
     <button wx:if="{{!islogin}}" class="login_btns" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
       点击登录
     </button>
+    <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
   </view>
 
 </view>
