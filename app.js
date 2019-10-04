@@ -1,7 +1,7 @@
 //app.js
 App({
   base: {
-    pub_url: "http://www.hfzx.com/api/index/",
+    pub_url: "http://www.amloveyou.com/api/index/",
     comefrom: "wxapp",
     i: 2,
     adshow: true,

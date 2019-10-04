@@ -5,15 +5,13 @@
     <view wx:if="{{islogin}}">
       <image src='{{head_img}}' class="headpic"></image>
       <view class="username">{{user_name}}</view>
-      <view class="userphone">182****717</view>
+      <view wx:if="{{phonenumber == '' ? false :true}}" class="userphone">{{phonenumber}}</view>
     </view>
     <view wx:elif="{{!islogin}}">
       <image src='../../images/default_head.png' class="default_head"></image>
     </view>
-    <button wx:if="{{!islogin}}" class="login_btns" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
-      点击登录
-    </button>
-    <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button>
+
+    <button wx:if="{{!islogin}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button>
   </view>
 
 </view>
@@ -118,7 +116,34 @@
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
       </view>
+      <view class="list-item" bindtap="exitpage">
+        <view class="list-item_left">
+          <image class="item-image" src="../../images/gzh_icon.png"></image>
+          <text class="item-text">退出登入</text>
+        </view>
+        <view class="list-item_right">
+          <view class="list_jf"></view>
+          <image src="../../images/arrow_icon.png" class="arrow"></image>
+        </view>
+      </view>
     </view>
   </view>
-
+  <!--  -->
+  <view wx:if="{{isshow}}" class="mask" catchtap="maskbtn">
+    <view class="modelbox">
+      <view class="title_success">
+        微信授权登入
+      </view>
+      <!-- <view class="text_box">
+        <view class="text_1">
+          小主打卡成功了~
+        </view>
+        <view class="text_2">+5积分</view>
+      </view> -->
+      <button class="login_btns" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
+        点击登录
+      </button>
+      <!-- <view class="mask_btn" catchtap="maskclose">朕知道了</view> -->
+    </view>
+  </view>
 </view>

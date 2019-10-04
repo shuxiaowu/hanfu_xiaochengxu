@@ -1,0 +1,6 @@
+<!--pages/userpage/exitlogin/exitlogin.wxml-->
+     <view class="list-item" bindtap="exitlogin">
+        <view class="list-item_left">
+          <text class="item-text">退出登入</text>
+        </view>
+      </view>

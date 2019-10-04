@@ -2,9 +2,11 @@
   "pages": [
     "pages/start/start",
     "pages/index/index",
+    "pages/index/qiandao/index",
     "pages/index/praisepage/praisepage",
     "pages/logs/logs",
     "pages/userpage/userpage",
+    "pages/userpage/exitlogin/exitlogin",
     "pages/active/active",
     "pages/active/hdarticle/index",
     "pages/newgoods/newgoods",

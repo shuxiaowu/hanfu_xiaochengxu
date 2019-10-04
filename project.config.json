@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 17,
 			"list": [
 				{
 					"id": -1,
@@ -166,6 +166,13 @@
 					"id": -1,
 					"name": "pages/userpage/sendactive/sendactive",
 					"pathName": "pages/userpage/sendactive/sendactive",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/qiandao/index",
+					"pathName": "pages/index/qiandao/index",
 					"scene": null
 				}
 			]

@@ -1,7 +1,7 @@
 /* pages/userpage/userpage.wxss */
 .header {padding: 90rpx 0 20rpx 0;text-align: center;width: 100%;height: 190rpx; position: relative;z-index:99;}
 .userbg_box{position:relative;}
-.userbg{position:absolute;top:0;left:0;width:100%;z-index: 1}
+.userbg{position:absolute;top:0;left:0;width:100%;z-index: 1;height:100%;}
  
 .headpic{width: 100rpx;height: 100rpx;border-radius: 60%;}
 .default_head{width: 100rpx;height: 100rpx;}

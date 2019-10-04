@@ -22,8 +22,9 @@ Page({
     var logins = wx.getStorageSync("xinli_logins");
     // 图片上传
     if (img != '') {
+      console.log(img);
       wx.uploadFile({
-        url: url + 'uploadImage', //仅为示例，非真实的接口地址
+        url: url + 'uploadImage', 
         filePath: img,
         name: 'file',
         formData: {
@@ -33,7 +34,7 @@ Page({
           var data = JSON.parse(res.data)
           var upimgname = data.saveName;
           console.log(upimgname);
-          console.log(data.status);
+          console.log(data);
           if (data.status == 0) {
             wx.request({
               url: url + 'submitSignin',
@@ -47,7 +48,9 @@ Page({
                 addname: that.data.positionname
               },
               success: function(reg) {
+                console.log(reg)
                 if (reg.data.status==0){
+                  console.log('上传成功');
                   wx.reLaunch({
                       url: '../index?id=' + logins.user_id,
                     })
@@ -151,16 +154,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // wx.getLocation({
-    //   type: 'gcj02',
-    //   success(res) {
-    //     var latitude = res.latitude
-    //     var longitude = res.longitude
-    //     var speed = res.speed
-    //     var accuracy = res.accuracy
-    //     console.log(res);
-    //   }
-    // })
     wx.setNavigationBarTitle({
       title: '签到',
     })
