@@ -1,8 +1,8 @@
 <!--pages/userpage/integral/intgral.wxml-->
 <view class="userbg_box">
   <view class='header'>
-    <image src='../../../images/headpic.jpg' class="headpic"></image>
-    <view class="username">15000</view>
+    <image src='{{head_img}}' class="headpic"></image>
+    <view class="username">{{integral}}</view>
     <view class="userphone">我的积分</view>
     <view class="integralpage" bindtap="pagebtn">
       <image src="../../../images/bag_icon.png" class="bag"></image>

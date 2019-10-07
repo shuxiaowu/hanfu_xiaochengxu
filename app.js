@@ -4,6 +4,7 @@ App({
     pub_url: "http://www.amloveyou.com/api/index/",
     comefrom: "wxapp",
     i: 2,
+    logins:'',
     adshow: true,
     tips: true,
     typePage: function (type, id, news_id) {

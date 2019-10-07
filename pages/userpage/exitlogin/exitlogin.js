@@ -9,7 +9,7 @@ Page({
   },
   exitlogin: function(e) {
     console.log('rgfg');
-    wx.removeStorageSync('xinli_logins');
+    wx.removeStorageSync('hanfu_logins');
     wx.switchTab({
       url: '../userpage',
     })

@@ -58,7 +58,7 @@ Page({
         isshow:true
       })
     }
-    var logins = wx.getStorageSync("xinli_logins");
+    var logins = wx.getStorageSync("hanfu_logins");
     var url = app.base.pub_url;
     if(logins){
       wx.request({
@@ -115,10 +115,22 @@ Page({
   },
 
   playticket: function(e) {
-     var that = this;
-     wx.navigateTo({
-       url: 'qiandao/index',
-     })
+    var logins = wx.getStorageSync("hanfu_logins");
+    var that = this;
+    if (logins){
+      wx.navigateTo({
+        url: 'qiandao/index',
+      })
+    }else{
+      wx.showToast({
+        title: '请先登入',
+      })
+      wx.switchTab({
+        url: '../userpage/userpage',
+      })
+    }
+    
+    
 
   },
   maskbtn: function() {

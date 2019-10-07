@@ -1,4 +1,6 @@
 var app = getApp();
+// var logins = wx.getStorageSync("hanfu_logins");
+// var phone = wx.getStorageSync("hanfu_phone");
 Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
@@ -9,7 +11,7 @@ Page({
     isphoneshow:false,
     signShow: false,
     height: "",
-    islogin: true,
+    islogin: false,
     head_img: "",
     user_name: "",
     fans: 0,
@@ -24,9 +26,10 @@ Page({
     })
     var that = this
     var that = this;
-    var logins = wx.getStorageSync("xinli_logins");
-    var phone = wx.getStorageSync("hanfu_phone");
+   
     var url = that.data.url;
+    var logins = wx.getStorageSync('hanfu_logins');
+    console.log(logins)
     wx.getSystemInfo({
       success(res) {
         var height = res.windowHeight;
@@ -46,6 +49,10 @@ Page({
           if (res.data.code == 0) {
             var data = res.data.memberinfo;
             console.log(res);
+            var phone = '';
+            if (data) {
+              phone = data.substring(0, 3) + '****' + data.substring(7, 11);
+            }
             that.setData({
               islogin: true,
               isphoneshow: true,
@@ -98,7 +105,7 @@ Page({
                   console.log('iv:' + iv);
                   console.log(res);
                   var phone = '';
-                  if (res.dat !=''){
+                  if (res.data){
                      phone = res.data.substring(0, 3) + '****' + res.data.substring(7, 11);
                   }
                  
@@ -154,10 +161,10 @@ Page({
                   avatarUrl: userInfo.avatarUrl,
                 },
                 success: function(res3) {
-                  console.log(res3.data);
+                  
                   if (res3.data.code == 0) {
                     var logins = res3.data.memberinfo;
-                    wx.setStorageSync("xinli_logins", logins);
+                    wx.setStorageSync("hanfu_logins", logins);
                     that.setData({
                       isshow:false,
                       islogin: true,
@@ -190,10 +197,20 @@ Page({
     })
   },
   exitpage:function(e){
-    console.log('rgfg');
-    wx.removeStorageSync('xinli_logins');
-    wx.navigateTo({
-      url: 'exitlogin/exitlogin',
+    var that = this;
+   var exitlogins = wx.removeStorageSync('hanfu_logins');
+    var logins = wx.getStorageSync('hanfu_logins');
+    if (logins ==''){
+      wx.showToast({
+        title: '成功退出登录',
+      })
+      console.log('dsds');
+    }
+    that.setData({
+      head_img: "",
+      user_name: "",
+      phonenumber:'',
+      islogin:false
     })
   },
   wxlogin:function(){
@@ -217,7 +234,7 @@ Page({
                   console.log(res3.data);
                   if (res3.data.code == 0) {
                     var logins = res3.data.memberinfo;
-                    wx.setStorageSync("xinli_logins", logins);
+                    wx.setStorageSync("hanfu_logins", logins);
                     that.setData({
                       islogin: true,
                       head_img: logins.user_img,
@@ -244,6 +261,48 @@ Page({
         }
       }
     })
+  },
+  // 我的积分
+  mypraise:function(e){
+    var logins = wx.getStorageSync('hanfu_logins');
+    if (logins){
+      wx.navigateTo({
+        url: 'integral/intgral',
+      })
+    }else{
+      wx.showLoading({
+        title: '清先登录',
+        duration:1000
+      })
+    }
+  },
+  // 发起活动
+  mysendactive: function (e) {
+    var logins = wx.getStorageSync('hanfu_logins');
+    if (logins) {
+      wx.navigateTo({
+        url: 'sendactive/sendactive',
+      })
+    } else {
+      wx.showLoading({
+        title: '清先登录',
+        duration: 1000
+      })
+    }
+  },
+  // 我的点赞
+  praisebtn: function (e) {
+    var logins = wx.getStorageSync('hanfu_logins');
+    if (logins) {
+      wx.navigateTo({
+        url: 'praise/praise',
+      })
+    } else {
+      wx.showLoading({
+        title: '清先登录',
+        duration: 1000
+      })
+    }
   },
   activepage: function(e) {
     wx.switchTab({

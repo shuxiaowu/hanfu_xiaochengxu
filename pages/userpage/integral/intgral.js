@@ -1,11 +1,14 @@
 // pages/userpage/integral/intgral.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    head_img:'',
+    integral:'',
+    logins:''
   },
  pagebtn:function(e){
    wx.switchTab({
@@ -16,7 +19,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var logins = wx.getStorageSync("hanfu_logins");
+    let that = this; 
+    var url = app.base.pub_url;
+    if (logins) {
+      wx.request({
+        url: url + "getUser",
+        method: "POST",
+        data: {
+          user_id: logins.user_id
+        },
+        success: function (res) {
+          if (res.data.code == 0) {
+            var data = res.data.memberinfo;
+            that.setData({
+              islogin: true,
+              isphoneshow: true,
+              phonenumber: data.phone,
+              head_img: data.user_img,
+              user_name: data.user_name,
+              level: data.level,
+              integral: data.integral,
+              user_id: logins.user_id
+            });
+          }
+        }
+      });
+    } else {
+      that.setData({
+        islogin: false
+      });
+    }
   },
 
   /**

@@ -29,20 +29,20 @@
 <view class="box">
   <view class="user_box userbox">
     <view class="person-list">
-      <navigator url="integral/intgral" class="list-item">
+      <view  class="list-item" bindtap="mypraise">
         <view class="list-item_left">
           <image class="item-image" src="../../images/jf_icon.png"></image>
           <text class="item-text">我的积分</text>
         </view>
         <view class="list-item_right">
-          <view class="list_jf">1500</view>
+          <view class="list_jf">{{fans ==0 ? '' : fans}}</view>
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
-      </navigator>
+      </view>
 
       <view class="person-line"></view>
 
-      <navigator url="sendactive/sendactive" class="list-item">
+      <view url="sendactive/sendactive" class="list-item" bindtap="mysendactive">
         <view class="list-item_left">
           <image class="item-image" src="../../images/flag_icon.png"></image>
           <text class="item-text">发起活动</text>
@@ -51,7 +51,7 @@
           <view class="list_jf"></view>
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
-      </navigator>
+      </view>
       <view class="person-line"></view>
       <view class="list-item" bindtap="activepage">
         <view class="list-item_left">
@@ -64,7 +64,7 @@
         </view>
       </view>
       <view class="person-line"></view>
-      <navigator url="praise/praise" class="list-item">
+      <view url="praise/praise" class="list-item" bindtap="praisebtn">
         <view class="list-item_left">
           <image class="item-image" src="../../images/heart.png"></image>
           <text class="item-text">我的点赞</text>
@@ -73,7 +73,7 @@
           <view class="list_jf"></view>
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
-      </navigator>
+      </view>
     </view>
   </view>
 
@@ -116,24 +116,18 @@
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
       </view>
-      <view class="list-item" bindtap="exitpage">
-        <view class="list-item_left">
-          <image class="item-image" src="../../images/gzh_icon.png"></image>
-          <text class="item-text">退出登入</text>
-        </view>
-        <view class="list-item_right">
-          <view class="list_jf"></view>
-          <image src="../../images/arrow_icon.png" class="arrow"></image>
-        </view>
-      </view>
+
     </view>
+  </view>
+  <view class="exitbutton" bindtap="exitpage" wx:if="{{islogin}}">
+    退出登入
   </view>
   <!--  -->
   <view wx:if="{{isshow}}" class="mask" catchtap="maskbtn">
     <view class="modelbox">
-      <view class="title_success">
-        微信授权登入
-      </view>
+      <!-- <view class="title_success">
+        
+      </view> -->
       <!-- <view class="text_box">
         <view class="text_1">
           小主打卡成功了~
@@ -141,7 +135,7 @@
         <view class="text_2">+5积分</view>
       </view> -->
       <button class="login_btns" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
-        点击登录
+       微信授权登入
       </button>
       <!-- <view class="mask_btn" catchtap="maskclose">朕知道了</view> -->
     </view>
