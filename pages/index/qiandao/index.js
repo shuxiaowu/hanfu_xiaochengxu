@@ -19,7 +19,7 @@ Page({
     var signlatitude = that.data.signlatitude;
     var signlongitude = that.data.signlongitude;
     var content = e.detail.value.textarea;
-    var logins = wx.getStorageSync("xinli_logins");
+    var logins = wx.getStorageSync("hanfu_logins");
     // 图片上传
     if (img != '') {
       console.log(img);

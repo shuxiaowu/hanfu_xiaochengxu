@@ -50,13 +50,13 @@ Page({
             var data = res.data.memberinfo;
             console.log(res);
             var phone = '';
-            if (data) {
-              phone = data.substring(0, 3) + '****' + data.substring(7, 11);
+            if (data.phone) {
+              phone = data.phone.substring(0, 3) + '****' + data.phone.substring(7, 11);
             }
             that.setData({
               islogin: true,
               isphoneshow: true,
-              phonenumber:data.phone,
+              phonenumber:phone,
               head_img: data.user_img,
               user_name: data.user_name,
               level: data.level,

@@ -2,27 +2,32 @@
 <view class="pb_title">
   问题分类
 </view>
-<view class="pb_list">
-  <block wx:for="{{prolist}}" wx:key="{{index}}">
-    <view class="text {{index ==num ? 'active' : ''}}"data-id="{{index}}"  bindtap="fixnum">{{item}}</view>
-  </block>
-</view>
-<view class="pb_title">
-  问题描述
-</view>
-<view class="describ">
-  <textarea name="describ" placeholder="详细描述一下你的信息..." placeholder-style="font-size:22rpx;"></textarea>
-</view>
-<view class="upload_img">
-  <block wx:if="{{urls}}" wx:for="{{urls}}" wx:key="{{index}}">
-    <view class="previewimg itemupload">
-      <view class="pre_box">
-        <image src="{{item}}" mode='aspectFill' class="preview_pic" data-id="{{index}}" bindtap='previewImg'></image>
-      </view>
-      <image src="../../../images/close.png" class="close" bindtap="delimg"></image>
-    </view>
-  </block>
-  <view class="upload_btn" bindtap='chooseImg'>
-    <image src="../../../images/plus.png" class="plus"></image>
+<form bindsubmit="bindFormSubmit">
+  <view class="pb_list">
+    <block wx:for="{{prolist}}" wx:key="{{index}}">
+      <view class="text {{index ==num ? 'active' : ''}}" data-id="{{index}}" bindtap="fixnum">{{item}}</view>
+    </block>
   </view>
-</view>
+  <view class="pb_title">
+    问题描述
+  </view>
+  <view class="describ">
+    <textarea name="describ" placeholder="详细描述一下你的信息..." placeholder-style="font-size:22rpx;"></textarea>
+  </view>
+  <view class="upload_img">
+    <block wx:if="{{urls}}" wx:for="{{urls}}" wx:key="{{index}}">
+      <view class="previewimg itemupload">
+        <view class="pre_box">
+          <image src="{{item}}" mode='aspectFill' class="preview_pic" data-id="{{index}}" bindtap='previewImg'></image>
+        </view>
+        <image src="../../../images/close.png" class="close" bindtap="delimg"></image>
+      </view>
+    </block>
+    <view class="upload_btn" bindtap='chooseImg'>
+      <image src="../../../images/plus.png" class="plus"></image>
+    </view>
+  </view>
+  <view class="box">
+     <button class="problem_btn" form-type="submit">  确定 </button>
+  </view>
+</form>

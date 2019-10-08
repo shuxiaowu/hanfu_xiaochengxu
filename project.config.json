@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 17,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -173,6 +173,13 @@
 					"id": -1,
 					"name": "pages/index/qiandao/index",
 					"pathName": "pages/index/qiandao/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/backproblem/backproblem",
+					"pathName": "pages/userpage/backproblem/backproblem",
 					"scene": null
 				}
 			]
