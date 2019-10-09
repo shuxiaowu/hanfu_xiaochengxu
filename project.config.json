@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 19,
 			"list": [
 				{
 					"id": -1,
@@ -180,6 +180,13 @@
 					"id": -1,
 					"name": "pages/userpage/backproblem/backproblem",
 					"pathName": "pages/userpage/backproblem/backproblem",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/active/active",
+					"pathName": "pages/active/active",
 					"scene": null
 				}
 			]

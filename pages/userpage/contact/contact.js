@@ -1,18 +1,40 @@
 // pages/userpage/contact/contact.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    imghead:'',
+    hottel:'',
+    businesstel:'',
+    faxtel:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var url = app.base.pub_url;
+    var that = this;
+    wx.setNavigationBarTitle({
+      title: '联系我们',
+    })
+    wx.request({
+      url: url+'getcontact',
+      method:'post',
+      data:{},
+      success:function(reg){
+        var addressurl = app.base.addressurl + reg.data.data.thumb
+        that.setData({
+          imghead: addressurl,
+          hottel: reg.data.data.hottel,
+          businesstel: reg.data.data.businesstel,
+          faxtel: reg.data.data.faxtel,
+        })
+      }
+    })
   },
 
   /**

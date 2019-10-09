@@ -19,6 +19,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '我的积分',
+    })
     var logins = wx.getStorageSync("hanfu_logins");
     let that = this; 
     var url = app.base.pub_url;

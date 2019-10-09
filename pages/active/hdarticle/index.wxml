@@ -1,6 +1,6 @@
 <!--pages/active/hdarticle/index.wxml-->
 <swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-  <block wx:for="{{imgUrls}}">
+  <block wx:for="{{imgUrls}}" wx:key="{{index}}">
     <swiper-item>
       <image src="{{item}}" class="slide-image" width="355" mode="widthFix" />
     </swiper-item>
@@ -37,7 +37,7 @@
       <view class="hd_tp_r1">150人已经报名</view>
       <view class="hd_tp_r2">
         <view class='index'>
-          <view wx:for="{{images}}" wx:key style='transform:translateX({{-index*10}}rpx);'>
+          <view wx:for="{{images}}" wx:key="{{index}}" style='transform:translateX({{-index*10}}rpx);'>
             <image class='text' src='{{item}}' mode='aspectFill'></image>
           </view>
         </view>

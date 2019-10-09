@@ -1,6 +1,7 @@
 //app.js
 App({
   base: {
+    addressurl:"http://www.amloveyou.com",
     pub_url: "http://www.amloveyou.com/api/index/",
     comefrom: "wxapp",
     i: 2,
@@ -82,6 +83,7 @@ App({
   },
   globalData: {
     ceshiUrl:'',
-    userInfo: null
+    userInfo: null,
+    imgss:[]
   }
 })

@@ -51,7 +51,7 @@
         "iconPath": "images/shangxin.png",
         "selectedIconPath": "images/shangxin_h.png",
         "pagePath": "pages/newgoods/newgoods",
-        "text": "上新"
+        "text": "新品"
       },
       {
         "iconPath": "images/jifen.png",

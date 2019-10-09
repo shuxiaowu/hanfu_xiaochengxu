@@ -30,13 +30,13 @@ Page({
     wx.setNavigationBarTitle({
       title: '详情',
     })
+    console.log(options.id);
   },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
     if (res.from == 'button') {
-      console.log(res.target, res)
     }
     // return {
     //   title: '这里是发送时候的标题',

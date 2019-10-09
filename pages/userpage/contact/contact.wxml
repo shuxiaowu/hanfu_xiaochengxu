@@ -1,16 +1,16 @@
 <!--pages/userpage/contact/contact.wxml-->
 <view class="box" >
-  <image src="../../../images/contactimg.jpg" mode="widthFix" class="contactimg"></image>
+  <image src="{{imghead}}" mode="widthFix" class="contactimg"></image>
 </view>
 <view class="item_contact">
     <view class="ct_title">热线电话:</view>
-    <view class="ct_intro">400-5861-3645</view>
+    <view class="ct_intro">{{hottel}}</view>
   </view>
   <view class="item_contact">
     <view class="ct_title">商务电话:</view>
-    <view class="ct_intro">400-5861-3645</view>
+    <view class="ct_intro">{{businesstel}}</view>
   </view>
   <view class="item_contact">
     <view class="ct_title">传真:</view>
-    <view class="ct_intro">400-5861-3645</view>
+    <view class="ct_intro">{{faxtel}}</view>
   </view>

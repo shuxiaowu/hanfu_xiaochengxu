@@ -23,7 +23,7 @@
         活动时间
         <text>*</text>
       </view>
-      <picker mode="date" value="{{date}}" name="date" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+      <picker mode="date" value="{{date}}" name="date" start="2000-01-01" end="3000-01-01" bindchange="bindDateChange">
         <view class="picker">{{date}}</view>
       </picker>
       <image src="../../../images/arrow_icon.png" class="arrow"></image>

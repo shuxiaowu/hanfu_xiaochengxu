@@ -1,11 +1,11 @@
 // pages/userpage/backproblem/backproblem.js
 const app = getApp();
-function uploadimg(img){
-  var upimgs = [];
+var ids =1;
+function uploadimg(img) {
+  return new Promise(function (resolve, reject){
+  var upimgs = new Array();
   var url = app.base.pub_url;
-  if (img) {
     for (let i = 0; i < img.length; i++) {
-      console.log(img[0]);
       wx.uploadFile({
         url: url + 'uploadImageProblem',
         filePath: img[i],
@@ -16,18 +16,58 @@ function uploadimg(img){
         success(res) {
           var data = JSON.parse(res.data)
           var upimgname = data.saveName;
-          
+          upimgs = upimgs.concat(upimgname);
           if (data.status == 0) {
-            console.log('上传成功');
-            upimgs = upimgs.concat(upimgname);
-            console.log(upimgs)
-            // var imgs = wx.setStorageSync('upimgs', upimgs)           
+            wx.setStorageSync('upimgs', upimgs);  
           }
         }
       })
     }
-  }
-  return upimgs;
+  
+  });
+  return wx.getStorageSync('upimgs');
+}
+
+function postrequest(protype,imgsss,describ,user_id) {
+  //
+  return new Promise(function (resolve, reject) {
+    var url = app.base.pub_url;
+    wx.request({
+      url: url + 'problemup',
+      method: "POST",
+      data: {
+        protype: protype,
+        img: imgsss,
+        describ: describ,
+        user_id: user_id
+      },
+      success: function (reg) {
+        if (reg.data.status == 0) {
+          wx.switchTab({
+            url: '../userpage',
+          })
+          wx.showToast({
+            title: '问题反馈成功',
+            duration: 2000
+
+          })
+          wx.removeStorageSync('upimgs')
+        } else if (reg.data.status == 1) {
+          wx.showToast({
+            title: '问题反馈失败',
+          })
+        } else if (reg.data.status == 2) {
+          wx.navigateTo({
+            url: '../userpage',
+          })
+          wx.showToast({
+            title: '请登录',
+          })
+        }
+      }
+    })
+  });
+
 }
 Page({
 
@@ -57,62 +97,64 @@ Page({
   bindFormSubmit: function(e) {
     let that = this;
     var describ = e.detail.value.describ;
-    // console.log(that.data.prolist[that.data.num]);
-    // console.log(e.detail.value.describ);
-    var url = app.base.pub_url;
-    var img = that.data.urls;
-    var upimgs = [];
-    var logins = wx.getStorageSync("hanfu_logins");
-    uploadimg(img);
-    var imgsss = wx.getStorageSync('upimgs');
-    console.log(imgsss);
-      // 
-      wx.request({
-        url: url + 'problemup',
-        method: "POST",
-        data: {
-          protype: that.data.prolist[that.data.num],
-          img: imgsss,
-          describ: e.detail.value.describ,
-          user_id: logins.user_id
-        },
-        success: function(reg) {
-          if (reg.data.status == 0) {
-            wx.switchTab({
-              url: '../userpage',
-            })
-            wx.showToast({
-              title: '问题反馈成功',
-              duration:2000
 
-            })
+    var url = app.base.pub_url;
+    var protype = that.data.prolist[that.data.num];
+    var img = that.data.urls;
+    var logins = wx.getStorageSync("hanfu_logins");
+    var user_id = logins.user_id;
+    
+    var upimgs = [];
+    console.log(ids + '---' + img)
+    ids++;
+    if(img){
+      // var imgss = uploadimg(img);
+      // console.log('---imgss--' + imgss)
+      // if(imgss){
+      //   postrequest(protype, imgss, describ, user_id);
+      // }
+      var upimgs = new Array();
+      var url = app.base.pub_url;
+      for (let i = 0; i < img.length; i++) {
+        wx.uploadFile({
+          url: url + 'uploadImageProblem',
+          filePath: img[i],
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success(res) {
+            var data = JSON.parse(res.data)
+            var upimgname = data.saveName;
+            upimgs = upimgs.concat(upimgname);
+            if (data.status == 0) {
+              if (i == img.length-1){
+                console.log(i + '----' + upimgs);
+                postrequest(protype, upimgs, describ, user_id);
+              }
+             
+            }
           }
-          else if (reg.data.status == 1){
-            wx.showToast({
-              title: '问题反馈失败',
-            })
-          }
-          else if (reg.data.status == 2) {
-            wx.navigateTo({
-              url: '../userpage',
-            })
-            wx.showToast({
-              title: '请登录',
-            })
-          }
-        }
-      })
+        })
+      }
+    }else{
+      postrequest(protype, [], describ, user_id);
+    }
+    
+    // var imgsss = wx.getStorageSync('upimgs');
+    // console.log(uploadimg(img));
+
   },
   // 上传图片
   chooseImg: function() {
     let that = this;
     var countimg = that.data.imgurl.length
-    if (countimg<3){
+    if (countimg < 3) {
       wx.chooseImage({
         count: 3, // 默认9
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-        success: function (res) {
+        success: function(res) {
           var tempFilePaths = res.tempFilePaths
           that.data.images = tempFilePaths
           // 多图片
@@ -126,9 +168,9 @@ Page({
 
         }
       })
-    }else{
+    } else {
       wx.showToast({
-        icon:"none",
+        icon: "none",
         title: '最多上传三张',
       })
     }
@@ -170,6 +212,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.removeStorageSync('upimgs')
     wx.setNavigationBarTitle({
       title: '问题反馈',
     })

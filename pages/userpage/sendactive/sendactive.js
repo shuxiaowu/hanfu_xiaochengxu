@@ -38,7 +38,7 @@ Page({
     var title = e.detail.value.title;
     var date = e.detail.value.date;
     var content = e.detail.value.textarea;
-    var logins = wx.getStorageSync("xinli_logins");
+    var logins = wx.getStorageSync("hanfu_logins");
     var img = that.data.urls[0];
     console.log(img)
     // 图片上传
@@ -72,6 +72,10 @@ Page({
                 if (reg.data.status == 0) {
                   wx.reLaunch({
                     url: '../userpage',
+                  })
+                  wx.showToast({
+                    icon:'none',
+                    title: '活动发起成功'
                   })
                 }
               }
@@ -151,7 +155,6 @@ Page({
   // 定位
   positionbtns: function(e) {
     let that = this;
-    console.log('圆桌或，村');
     wx.chooseLocation({
       success: function(res) {
         // success
@@ -178,7 +181,7 @@ Page({
    */
   onLoad: function(options) {
     wx.setNavigationBarTitle({
-      title: '发布活动',
+      title: '发起活动',
     })
   }
 })
