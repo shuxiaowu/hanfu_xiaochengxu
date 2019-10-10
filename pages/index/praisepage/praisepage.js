@@ -117,9 +117,10 @@ Page({
         success:function(reg){
           console.log(reg);
           if(reg.data.code==0){
-             that.setData({
-               comment: data.comment
-             })
+            that.setData({
+              comment: reg.data.comment
+            })
+
           }
           wx.showToast({
             title:reg.data.msg,

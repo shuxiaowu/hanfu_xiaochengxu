@@ -22,10 +22,10 @@
 <view class="box" style="border-top:10rpx solid #f5f5f5;">
   <view class="evaluate">评价</view>
   <!--  -->
-  <block wx:for="{{comment}}">
+  <block wx:for="{{comment}}" wx:key="{{index}}">
     <view class="evaluate_top">
       <view class="pri_rt_top_left">
-        <image src="../../../images/headpic.jpg" class="evaluate_topic"></image>
+        <image src="{{item.user_img}}" class="evaluate_topic"></image>
         <view style="padding-left:10rpx;">
           <view class="name">{{item.user_name}}</view>
           <view class="date">{{item.addtime}}</view>
