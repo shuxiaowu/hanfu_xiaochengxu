@@ -5,53 +5,17 @@ Page({
     markshow:true,
     issignin:false,
     signinurl:'qiandao/index',
-    markers: [{
-      id: 1,
-      latitude: 28.674680,
-      longitude: 115.993401,
-      iconPath: '../../images/headpic.jpg',
-      callout: {
-        content: '汉服1',
-        color: '#fff',
-        fontSize: 12,
-        borderRadius: 25,
-        borderWidth: 5,
-        borderColor: '#666',
-        bgColor: '#666',
-        display: 'ALWAYS',
-      },
-      width: 30,
-      height: 30,
-    },
-    {
-      id: 2,
-      latitude: 28.674880,
-      longitude: 115.993601,
-      iconPath: '../../images/headpic.jpg',
-      callout: {
-        content: '汉服2',
-        color: '#fff',
-        fontSize: 12,
-        borderRadius: 25,
-        borderWidth: 5,
-        borderColor: '#666',
-        bgColor: '#666',
-        display: 'ALWAYS',
-      },
-      width: 30,
-      height: 30,
-    }
-    ],
+    markers:[]
   },
   bindmarkertap: function (e) {
-    console.log(e.markerId);
+    var id = e.markerId;
     wx.navigateTo({
-      url: 'praisepage/praisepage',
+      url: 'praisepage/praisepage?id='+id,
     })
   },
   onLoad: function (option) {
     console.log(option.id)
-    
+ 
     var that = this;
     if (option.id) {
       that.setData({
@@ -60,7 +24,6 @@ Page({
     }
     var logins = wx.getStorageSync("hanfu_logins");
     var url = app.base.pub_url;
-    if(logins){
       wx.request({
         url: url + 'getsignin',
         method: "POST",
@@ -68,15 +31,20 @@ Page({
           user_id: logins.user_id
         },
         success: function (reg) {
+         
+          var data = reg.data.signdata;
           if(reg.data.status==0){
             that.data.signinurl = '';
             that.setData({
-              issignin:true
+              issignin:true,
+              markers:data
             })
           }
+          that.setData({
+            markers: data
+          })
         }
       })
-    }
     wx.getLocation({
       type: 'gcj02',
       altitude: true,//高精度定位
@@ -89,12 +57,10 @@ Page({
         var accuracy = res.accuracy
         // console.log(latitude, longitude)
         that.setData({
-          latitude: 28.674880,
-          longitude: 115.993601,
+          latitude: latitude,
+          longitude: longitude,
           speed: speed,
           accuracy: accuracy,
-
-         
         })
       },
       //定位失败回调
@@ -117,6 +83,7 @@ Page({
   playticket: function(e) {
     var logins = wx.getStorageSync("hanfu_logins");
     var that = this;
+
     if (logins){
       wx.navigateTo({
         url: 'qiandao/index',

@@ -50,7 +50,7 @@
     </view>
     <view wx:if="{{urls == '' ? false : true}}" wx:for="{{urls}}" class="prebox_img" wx:key="{{index}}">
       <view class='preview-warp'>
-        <image src='{{item}}' bindtap='previewImg' data-id="{{index}}" />
+        <image src='{{item}}' bindtap='previewImg' data-id="{{index}}" mode="aspectFill" />
         <view class="close_img" bindtap="delimg">
           <image src="../../../images/close.png"></image>
         </view>

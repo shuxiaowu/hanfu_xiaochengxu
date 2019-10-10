@@ -5,7 +5,7 @@
     <view class="hd_con">
       <!-- w:663px h:240px -->
       <view class="hd_conimg" bindtap="hdarticle" data-id="{{item.id}}">
-        <image src="{{url}}{{item.uploadimg}}"></image>
+        <image src="{{url}}{{item.uploadimg}}" mode="aspectFill"></image>
         <view class="hd_ps_text">
           <view class="hd_citop">
             <view class="hd_title">{{item.title}}</view>

@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgurl: '',
+    imgurl:[],
     urls: '',
     positionname: '',
     signlatitude: '',
@@ -88,9 +88,12 @@ Page({
         // console.log(that.data.imgurl);
         // 单图片
         that.data.urls = tempFilePaths[0]
+        var arr = new Array();
+        arr[0] = tempFilePaths[0];
         that.setData({
           images: tempFilePaths[0],
-          urls: tempFilePaths[0]
+          urls: tempFilePaths[0],
+          imgurl: arr
         })
 
       }
