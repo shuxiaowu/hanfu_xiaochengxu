@@ -22,10 +22,11 @@ swiper{height:270px!important}
 .n_icon1,.n_icon2,.n_icon3{display:inline-block;height:17px;vertical-align:middle;margin-right:10rpx;}
 .n_icon1{width:17px;}
 .n_icon2{width:14px;}
-.n_icon3{width:14px;}
+.n_icon3{width:14px; position:absolute;top:0;left:0;}
 .news_item_p{display:inline-block;font-size:26rpx;color:#9d9d9d;}
 .n1{margin-right:15rpx;}
 .new_icon1{display:flex;margin-bottom:30rpx;}
+.news_item_p_add{text-indent: 20px;position: relative;}
 
 .price{margin:30rpx 0;}
 .price_account{font-size:30rpx;color:#c44845;display:inline-block;margin-right:20rpx;}

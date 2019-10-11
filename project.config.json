@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 23,
 			"list": [
 				{
 					"id": -1,
@@ -180,6 +180,34 @@
 					"id": -1,
 					"name": "pages/userpage/backproblem/backproblem",
 					"pathName": "pages/userpage/backproblem/backproblem",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/active/active",
+					"pathName": "pages/active/active",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/newgoods/newgoods",
+					"pathName": "pages/newgoods/newgoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/active/active",
+					"pathName": "pages/active/active",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/start/start",
+					"pathName": "pages/start/start",
 					"query": "",
 					"scene": null
 				},

@@ -1,4 +1,5 @@
 // pages/newgoods/newgoods.js
+const app = getApp()
 Page({
 
   /**
@@ -10,11 +11,14 @@ Page({
     count3:3,
     img1:[],
     img2:[],
-    img3:[]
+    img3:[],
+    newlist:''
   },
   newarticle:function(e){
+    var id = e.currentTarget.dataset.id;
+    var title = e.currentTarget.dataset.title;
     wx.navigateTo({
-      url: 'newarticle/index',
+      url: 'newarticle/index?id='+id+'&title='+title,
     })
   },
   /**
@@ -22,8 +26,22 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var url = app.base.pub_url;
     wx.setNavigationBarTitle({
       title: '新品',
+    })
+    console.log(url);
+    wx.request({
+      
+      url: url +'getNewlist',
+      data:{},
+      method:'post',
+      success:function(reg){
+          console.log(reg);
+          that.setData({
+            newlist:reg.data.newslist
+          })
+      }
     })
   },
 

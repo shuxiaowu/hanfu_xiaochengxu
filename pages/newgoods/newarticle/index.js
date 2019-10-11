@@ -1,4 +1,5 @@
 // pages/newgoods/newarticle/index.js
+const app = getApp();
 Page({
 
   /**
@@ -16,25 +17,53 @@ Page({
       '../../../images/headpic.jpg',
       '../../../images/headpic.jpg',
     ],
+    url: app.base.addressurl,
     indicatorDots: true,
     autoplay: false,
     interval: 5000,
     indicatorcolor: '#c44845',
-    duration: 1000
+    duration: 1000,
+    artdata:''
   },
   preview:function(e){
     let that = this;
-    console.log(that.data.imgUrls[e.currentTarget.dataset.id]);
+    var arr = new Array();
+    var url = that.data.url;
+    var img = that.data.artdata.thumbs;
+    for(let i=0;i<img.length;i++){
+      arr[i] = url+img[i];
+    }
     wx.previewImage({
-      current:'http://pic25.nipic.com/20121112/9252150_150552938000_2.jpg',
-      urls:that.data.imgUrls,
+      current: arr[e.currentTarget.dataset.id],
+      urls: arr,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.id);
+    var that = this;
+    var id = options.id;
+    var title = options.title;
+    var url = app.base.pub_url;
+    var logins = wx.getStorageSync('hanfu_logins');
+    wx.setNavigationBarTitle({
+      title: title,
+    })
+    wx.request({
+      url: url + 'getNewArticle',
+      data: {
+        user_id: logins.user_id,
+        id:id
+      },
+      method: 'post',
+      success: function (reg) {
+        that.setData({
+          artdata: reg.data.data
+        })
+      }
+    })
   },
 
   /**

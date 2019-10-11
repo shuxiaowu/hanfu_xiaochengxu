@@ -14,11 +14,13 @@ Page({
       '../../images/headpic.jpg',
       ],
       isprince:'',
-      listdata:''
+      listdata:'',
+      status:1,
   },
   hdarticle:function(e){
     var id = e.currentTarget.dataset.id;
-    var url = 'hdarticle/index?id='+id;
+    var title = e.currentTarget.dataset.title;
+    var url = 'hdarticle/index?id='+id+'&title='+title;
     wx.navigateTo({
       url:url,
     })
@@ -37,9 +39,11 @@ Page({
       method:'post',
       success:function(reg){
         console.log(reg.data.data);
+        console.log(reg.data.data.apply_count);
+        console.log(reg.data.data.apply_headpic);
         if(reg.data.status==0){
           that.setData({
-            listdata: reg.data.data
+            listdata: reg.data.data,
           })
         }
       }
