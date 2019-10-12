@@ -8,6 +8,8 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.base_line_underscore{font-size:24rpx;color:#999;text-align:center;margin-top:20rpx;}
+
 .mask{position:fixed;width:100%;height:100%; top:0;left:0;background-color:rgba(0, 0, 0, 0.7); z-index:99;}
 .modelbox{padding:15px;box-sizing:border-box; width:80%;background-color:#fff;margin:0 auto;position:relative;top:30%;}
 .title_success{text-align:center;font-size:30rpx;font-weight:700;}

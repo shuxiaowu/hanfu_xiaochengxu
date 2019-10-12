@@ -29,7 +29,7 @@ Page({
    
     var url = that.data.url;
     var logins = wx.getStorageSync('hanfu_logins');
-    console.log(logins)
+    // console.log(logins)
     wx.getSystemInfo({
       success(res) {
         var height = res.windowHeight;
@@ -39,32 +39,33 @@ Page({
       }
     });
     if (logins) {
+      var phone = '';
+      if (logins.phone) {
+        phone = logins.phone.substring(0, 3) + '****' + logins.phone.substring(7, 11);
+      }
       wx.request({
-        url: url + "getUser",
-        method: "POST",
-        data: {
-          user_id: logins.user_id
+        url: url +'getUser',
+        method:'post',
+        data:{
+          user_id:logins.user_id
         },
-        success: function(res) {
-          if (res.data.code == 0) {
-            var data = res.data.memberinfo;
-            console.log(res);
-            var phone = '';
-            if (data.phone) {
-              phone = data.phone.substring(0, 3) + '****' + data.phone.substring(7, 11);
-            }
-            that.setData({
-              islogin: true,
-              isphoneshow: true,
-              phonenumber:phone,
-              head_img: data.user_img,
-              user_name: data.user_name,
-              level: data.level,
-              fans: data.integral,
-              user_id: logins.user_id
-            });
-          }
+        success:function(reg){
+          var integral = reg.data.memberinfo.integral;
+          console.log(integral)
+          that.setData({
+            fans: integral
+          })
         }
+      
+      })
+      that.setData({
+        islogin: true,
+        isphoneshow: true,
+        phonenumber: phone,
+        head_img: logins.user_img,
+        user_name: logins.user_name,
+        level: logins.level,
+        user_id: logins.user_id
       });
     } else {
       that.setData({
@@ -76,7 +77,7 @@ Page({
     var that = this;
     wx.login({
       success: function (res) {
-        console.log(res);
+        // console.log(res);
         var code = res.code;
         wx.checkSession({
           success: function () {
@@ -101,9 +102,6 @@ Page({
                   'content-type': 'application/json' // 默认值
                 },
                 success: (res) => {
-                  console.log('ency:' + ency);
-                  console.log('iv:' + iv);
-                  console.log(res);
                   var phone = '';
                   if (res.data){
                      phone = res.data.substring(0, 3) + '****' + res.data.substring(7, 11);
@@ -114,10 +112,6 @@ Page({
                     isphoneshow:false,
                     isshow: true
                   })
-                },
-                fail: function (res) {
-                  console.log("解密失败~~~~~~~~~~~~~");
-                  console.log(res);
                 }
               });
             }
@@ -213,55 +207,7 @@ Page({
       islogin:false
     })
   },
-  wxlogin:function(){
-    let that = this;
-    let url = that.data.url;
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-          var code = res.code;
-              wx.request({
-                url: url + "wxLogin",
-                method: "POST",
-                data: {
-                  code: code,
-                  encryptedData: encryptedData,
-                  iv: iv,
-                  nickName: userInfo.nickName,
-                  avatarUrl: userInfo.avatarUrl,
-                },
-                success: function (res3) {
-                  console.log(res3.data);
-                  if (res3.data.code == 0) {
-                    var logins = res3.data.memberinfo;
-                    wx.setStorageSync("hanfu_logins", logins);
-                    that.setData({
-                      islogin: true,
-                      head_img: logins.user_img,
-                      user_name: logins.user_name,
-                      fans: logins.integral,
-                      level: logins.level,
-                      sessionKey: res3.data.arr.session_key
-                    });
-                    wx.showToast({
-                      title: '登录成功!',
-                      icon: "success",
-                      duration: 1000,
-                      success: function () {
-                        setTimeout(function () {
-                          wx.redirectTo({
-                            url: '/pages/index/index',
-                          });
-                        }, 1000);
-                      }
-                    });
-                  }
-            }
-          })
-        }
-      }
-    })
-  },
+
   // 我的积分
   mypraise:function(e){
     var logins = wx.getStorageSync('hanfu_logins');

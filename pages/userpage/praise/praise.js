@@ -1,11 +1,13 @@
 // pages/userpage/praise/praise.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    addurl: app.base.addressurl,
+    praise_list:[]
   },
 
   /**
@@ -13,10 +15,28 @@ Page({
    */
   onLoad: function (options) {
     var logins = wx.getStorageSync('hanfu_logins');
-    
     wx.setNavigationBarTitle({
       title: '我的点赞',
     })
+    let that = this;
+    var url = app.base.pub_url;
+    if (logins) {
+      wx.request({
+        url: url + "getMyPraise",
+        method: "POST",
+        data: {
+          user_id: logins.user_id
+        },
+        success: function (res) {
+          console.log(logins.user_id)
+          console.log(res.data);
+          var data = res.data.data;
+          that.setData({
+            praise_list: data
+          });
+        }
+      });
+    } 
   },
 
   /**

@@ -12,7 +12,8 @@ Page({
       imgurl:[],
       enabled:false,
       praise:'',
-      comment:''
+      comment:'',
+      author_id:0
   },
 
   /**
@@ -31,11 +32,10 @@ Page({
         user_id:logins.user_id
       },
       success:function(reg){
-        console.log(logins)
         var data = reg.data.data;
         var arr = new Array();
         arr[0] = data.uploadimg;
-        console.log(data.ispraise)
+        console.log(reg)
         if(reg.data.status==0){
             that.setData({
               listdata: data,
@@ -54,6 +54,7 @@ Page({
     var logins = wx.getStorageSync('hanfu_logins');
     var url = app.base.pub_url;
     var that =this;
+    var author_id = that.data.listdata.user_id;
     var enabled = that.data.enabled ? false : true;
     var id = that.data.id;
     if (logins){
@@ -62,7 +63,8 @@ Page({
         data: {
           iszan: enabled,
           id: id,
-          user_id:logins.user_id
+          user_id:logins.user_id,
+          author_id: author_id
         },
         method: 'post',
         success: function (reg) {

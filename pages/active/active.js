@@ -1,5 +1,24 @@
 // pages/active/active.js
 var app = getApp();
+/**
+ * 旋转刷新图标
+ */
+function updateRefreshIcon() {
+  var deg = 0;
+  console.log('旋转开始了.....')
+  var animation = wx.createAnimation({
+    duration: 1000
+  });
+  var timer = setInterval(() => {
+    if (!this.data.loading)
+      clearInterval(timer);
+    animation.rotateZ(deg).step();//在Z轴旋转一个deg角度
+    deg += 360;
+    this.setData({
+      refreshAnimation: animation.export()
+    })
+  }, 2000);
+}
 Page({
 
   /**
@@ -82,8 +101,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
-  },
+    wx.showNavigationBarLoading();
+  },  
 
   /**
    * 页面上拉触底事件的处理函数

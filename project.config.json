@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 23,
+			"current": 26,
 			"list": [
 				{
 					"id": -1,
@@ -215,6 +215,27 @@
 					"id": -1,
 					"name": "pages/active/active",
 					"pathName": "pages/active/active",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/jifen/jifen",
+					"pathName": "pages/jifen/jifen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/active/active",
+					"pathName": "pages/active/active",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/integral/intgral",
+					"pathName": "pages/userpage/integral/intgral",
 					"scene": null
 				}
 			]

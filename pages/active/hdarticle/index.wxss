@@ -1,4 +1,5 @@
 /* pages/active/hdarticle/index.wxss */
+@import "../../../wxParse/wxParse.wxss";
 swiper{height:240px!important;}
 .slide-image{width:100%;}
 

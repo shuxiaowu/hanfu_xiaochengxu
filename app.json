@@ -26,10 +26,12 @@
   }
 },
   "window": {
-    "backgroundTextStyle": "light",
+    "navigationBarTextStyle": "#fff",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "汉服之星",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#000000",

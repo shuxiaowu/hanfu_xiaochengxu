@@ -1,18 +1,20 @@
 <view class="shop_warps">
-    <view class="shop_list_warp row">
-        <block wx:for="{{list}}" wx:key="item.id">
-            <view class="shop_con">
-                <navigator class="shop_img" url="jfarticle/jfarticle?id={{item.id}}">
-                    <image src="{{item.thumb}}" class="fill"  mode="aspectFill"/>
-                </navigator>
-                <view class="shop_info">
-                    <view class="topic hides">{{item.title}}</view>
-                    <view class="heart row">
-                        <view class="jf_num">{{item.integral}}积分</view>
-                        <view class="jf_kc"> 库存 5</view>
-                    </view>
-                </view>
-            </view>
-        </block>
-    </view>
+  <view class="shop_list_warp row">
+    <block wx:for="{{list}}" wx:key="item.id">
+      <view class="shop_con">
+        <navigator class="shop_img" url="jfarticle/jfarticle?id={{item.id}}&title={{item.title}}">
+          <image src="{{item.thumb}}" class="fill" mode="aspectFill" />
+        </navigator>
+        <view class="shop_info">
+          <view class="topic hides">{{item.title}}</view>
+          <view class="heart">
+            <view class="jf_num">{{item.integral}}积分</view>
+            <view class="jf_kc"> 库存{{item.limitquantity ==1 ? item.stock : '100000+'}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+  </view>
+  <view class="base_line_underscore">--我是有底线的--</view>
 </view>

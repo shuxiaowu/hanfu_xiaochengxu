@@ -31,7 +31,6 @@ Page({
           user_id: logins.user_id
         },
         success: function (reg) {
-         
           var data = reg.data.signdata;
           if(reg.data.status==0){
             that.data.signinurl = '';

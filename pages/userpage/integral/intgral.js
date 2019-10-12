@@ -1,14 +1,14 @@
 // pages/userpage/integral/intgral.js
 var app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     head_img:'',
     integral:'',
-    logins:''
+    logins:'',
+    integral_list:''
   },
  pagebtn:function(e){
    wx.switchTab({
@@ -27,26 +27,25 @@ Page({
     var url = app.base.pub_url;
     if (logins) {
       wx.request({
-        url: url + "getUser",
+        url: url + "getMyInteragal",
         method: "POST",
         data: {
           user_id: logins.user_id
         },
         success: function (res) {
-          if (res.data.code == 0) {
-            var data = res.data.memberinfo;
-            that.setData({
-              islogin: true,
-              isphoneshow: true,
-              phonenumber: data.phone,
-              head_img: data.user_img,
-              user_name: data.user_name,
-              level: data.level,
-              integral: data.integral,
-              user_id: logins.user_id
-            });
-          }
+          console.log(res.data.datalist);
+          that.setData({
+            integral_list: res.data.datalist,
+            integral: res.data.integral
+          });
         }
+      });
+      that.setData({
+        islogin: true,
+        isphoneshow: true,
+        phonenumber: logins.phone,
+        head_img: logins.user_img,
+        user_name: logins.user_name,
       });
     } else {
       that.setData({

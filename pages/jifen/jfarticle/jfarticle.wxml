@@ -1,4 +1,6 @@
 <!--pages/jifen/jfarticle/jfarticle.wxml-->
+<import src="../../../wxParse/wxParse.wxml"/>
+
 <swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{goods.thumb_arr}}" wx:key="{{index}}">
     <swiper-item>
@@ -13,31 +15,30 @@
   <view class="jf_account">
     <view class="jf_num">{{goods.integral}}积分</view>
     <view class="jf_i"></view>
-    <view class="jf_kucun">库存5</view>
+    <view class="jf_kucun">库存{{item.limitquantity ==1 ? item.stock : '100000+'}}</view>
   </view>
   <view class="jf_recommond">
-    新平推荐
+    新品推荐
   </view>
   <view class="jf_content">
-  <image src="../../../images/jf.jpg" mode="widthFix" ></image>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
   </view>
 </view>
 <view class="footbtn" bindtap="dhbtn">
   立即兑换
 </view>
-
   <!--  -->
   <view wx:if="{{isshow}}" class="mask" catchtap="" >
       <view class="modelbox">
           <view class="title_success">
-             打卡成功 
+             {{model_title}}
           </view>
           <view class="text_box">
             <view class="text_1">
-              小主打卡成功了~
+              {{model_content}}
             </view>
-            <view class="text_2">+5积分</view>
+            <!-- <view class="text_2"></view> -->
           </view>
-          <view class="mask_btn" catchtap="maskclose">朕知道了</view>
+          <view class="mask_btn" catchtap="maskclose">确定</view>
       </view>
   </view>

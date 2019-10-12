@@ -35,7 +35,7 @@
           <text class="item-text">我的积分</text>
         </view>
         <view class="list-item_right">
-          <view class="list_jf">{{fans ==0 ? '' : fans}}</view>
+          <view class="list_jf">{{fans}}</view>
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
       </view>

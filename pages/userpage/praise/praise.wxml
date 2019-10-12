@@ -1,165 +1,33 @@
 <!--pages/userpage/praise/praise.wxml-->
 <view class="box">
-<!-- item -->
-  <view class="praise_item">
-    <view class="pri_img">
-      <image src="../../../images/zan.jpg" mode="widthFile"></image>
-    </view>
-    <view class="pri_right">
-      <view class="pri_rt_top">
-        <view class="pri_rt_top_left">
-          <image src="../../../images/headpic.jpg" class="t_left_topic"></image>
-          <view>
-            <view class="name">雪月花</view>
-            <view class="date">2019-08-01</view>
-          </view>
-        </view>
-        <view class="pri_rt_top_right">
-          <image src="../../../images/zan.png" class="heart_zan"></image>
-        </view>
-      </view>
-      <view class="intro">
-        艾溪湖好漂亮啊~ 还有好多天鹅再游泳有同袍吗？一个人逛得有点无...
-      </view>
-      <view class="pri_position">
-        <image src="../../../images/zan_ps_icon.png" class="ps_img"></image>
-        <text class="ps_topic">南昌青山湖</text>
-      </view>
-    </view>
-  </view>
   <!-- item -->
-  <view class="praise_item">
-    <view class="pri_img">
-      <image src="../../../images/zan.jpg" mode="widthFile"></image>
-    </view>
-    <view class="pri_right">
-      <view class="pri_rt_top">
-        <view class="pri_rt_top_left">
-          <image src="../../../images/headpic.jpg" class="t_left_topic"></image>
-          <view>
-            <view class="name">雪月花</view>
-            <view class="date">2019-08-01</view>
+  <block wx:for="{{praise_list}}" wx:key="{{index}}">
+    <view class="praise_item">
+      <view class="pri_img">
+        <image src="{{addurl}}{{item.news.uploadimg}}" mode="widthFile"></image>
+      </view>
+      <view class="pri_right">
+        <view class="pri_rt_top">
+          <view class="pri_rt_top_left">
+            <image src="../../../images/headpic.jpg" class="t_left_topic"></image>
+            <view>
+              <view class="name">{{item.author_name}}</view>
+              <view class="date">{{item.addtime}}</view>
+            </view>
+          </view>
+          <view class="pri_rt_top_right">
+            <image src="../../../images/zan.png" class="heart_zan"></image>
           </view>
         </view>
-        <view class="pri_rt_top_right">
-          <image src="../../../images/zan.png" class="heart_zan"></image>
+        <view class="intro">
+          {{item.news.content}}
+        </view>
+        <view class="pri_position">
+          <image src="../../../images/zan_ps_icon.png" class="ps_img"></image>
+          <text class="ps_topic"> {{item.news.addname}}</text>
         </view>
       </view>
-      <view class="intro">
-        艾溪湖好漂亮啊~ 还有好多天鹅再游泳有同袍吗？一个人逛得有点无...
-      </view>
-      <view class="pri_position">
-        <image src="../../../images/zan_ps_icon.png" class="ps_img"></image>
-        <text class="ps_topic">南昌青山湖</text>
-      </view>
     </view>
-  </view>
-  <!-- item -->
-  <view class="praise_item">
-    <view class="pri_img">
-      <image src="../../../images/zan.jpg" mode="widthFile"></image>
-    </view>
-    <view class="pri_right">
-      <view class="pri_rt_top">
-        <view class="pri_rt_top_left">
-          <image src="../../../images/headpic.jpg" class="t_left_topic"></image>
-          <view>
-            <view class="name">雪月花</view>
-            <view class="date">2019-08-01</view>
-          </view>
-        </view>
-        <view class="pri_rt_top_right">
-          <image src="../../../images/zan.png" class="heart_zan"></image>
-        </view>
-      </view>
-      <view class="intro">
-        艾溪湖好漂亮啊~ 还有好多天鹅再游泳有同袍吗？一个人逛得有点无...
-      </view>
-      <view class="pri_position">
-        <image src="../../../images/zan_ps_icon.png" class="ps_img"></image>
-        <text class="ps_topic">南昌青山湖</text>
-      </view>
-    </view>
-  </view>
-  <!-- item -->
-  <view class="praise_item">
-    <view class="pri_img">
-      <image src="../../../images/zan.jpg" mode="widthFile"></image>
-    </view>
-    <view class="pri_right">
-      <view class="pri_rt_top">
-        <view class="pri_rt_top_left">
-          <image src="../../../images/headpic.jpg" class="t_left_topic"></image>
-          <view>
-            <view class="name">雪月花</view>
-            <view class="date">2019-08-01</view>
-          </view>
-        </view>
-        <view class="pri_rt_top_right">
-          <image src="../../../images/zan.png" class="heart_zan"></image>
-        </view>
-      </view>
-      <view class="intro">
-        艾溪湖好漂亮啊~ 还有好多天鹅再游泳有同袍吗？一个人逛得有点无...
-      </view>
-      <view class="pri_position">
-        <image src="../../../images/zan_ps_icon.png" class="ps_img"></image>
-        <text class="ps_topic">南昌青山湖</text>
-      </view>
-    </view>
-  </view>
-  <!-- item -->
-  <view class="praise_item">
-    <view class="pri_img">
-      <image src="../../../images/zan.jpg" mode="widthFile"></image>
-    </view>
-    <view class="pri_right">
-      <view class="pri_rt_top">
-        <view class="pri_rt_top_left">
-          <image src="../../../images/headpic.jpg" class="t_left_topic"></image>
-          <view>
-            <view class="name">雪月花</view>
-            <view class="date">2019-08-01</view>
-          </view>
-        </view>
-        <view class="pri_rt_top_right">
-          <image src="../../../images/zan.png" class="heart_zan"></image>
-        </view>
-      </view>
-      <view class="intro">
-        艾溪湖好漂亮啊~ 还有好多天鹅再游泳有同袍吗？一个人逛得有点无...
-      </view>
-      <view class="pri_position">
-        <image src="../../../images/zan_ps_icon.png" class="ps_img"></image>
-        <text class="ps_topic">南昌青山湖</text>
-      </view>
-    </view>
-  </view>
-  <!-- item -->
-  <view class="praise_item">
-    <view class="pri_img">
-      <image src="../../../images/zan.jpg" mode="widthFile"></image>
-    </view>
-    <view class="pri_right">
-      <view class="pri_rt_top">
-        <view class="pri_rt_top_left">
-          <image src="../../../images/headpic.jpg" class="t_left_topic"></image>
-          <view>
-            <view class="name">雪月花</view>
-            <view class="date">2019-08-01</view>
-          </view>
-        </view>
-        <view class="pri_rt_top_right">
-          <image src="../../../images/zan.png" class="heart_zan"></image>
-        </view>
-      </view>
-      <view class="intro">
-        艾溪湖好漂亮啊~ 还有好多天鹅再游泳有同袍吗？一个人逛得有点无...
-      </view>
-      <view class="pri_position">
-        <image src="../../../images/zan_ps_icon.png" class="ps_img"></image>
-        <text class="ps_topic">南昌青山湖</text>
-      </view>
-    </view>
-  </view>
+  </block>
+  <view class="base_line_underscore">--我是有底线的--</view>
 </view>
