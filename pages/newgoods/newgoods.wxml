@@ -34,5 +34,5 @@
   </view>
   <!-- end item -->
   </block>
-
+  <view class="base_line_underscore">--我是有底线的--</view>
 </view>

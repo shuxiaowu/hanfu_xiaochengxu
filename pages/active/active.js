@@ -35,6 +35,8 @@ Page({
       isprince:'',
       listdata:'',
       status:1,
+      page:1,
+      loading: false
   },
   hdarticle:function(e){
     var id = e.currentTarget.dataset.id;
@@ -102,6 +104,28 @@ Page({
    */
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
+    var that = this;
+    var url = app.base.pub_url;
+    var page = that.data.page+1;
+    wx.request({
+      url: url +'getactive',
+      data:{
+        page:page
+      },
+      method:'post',
+      success:function(reg){
+        var data = reg.data.data;
+        wx.stopshowNavigationBarLoading();
+        this.setData({ loading: true });
+        var listdata = that.data.listdata.concat(data);
+        setTimeout(() => {
+          that.setData({
+            listdata: listdata,
+            loading: false,
+          })
+        }, 2000)
+      }
+    })
   },  
 
   /**

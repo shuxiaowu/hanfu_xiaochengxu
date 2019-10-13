@@ -42,6 +42,9 @@
       </view>
     </view>
   </block>
-  <view class="base_line_underscore">--我是有底线的--</view>
+  <view class="base_line_underscore"  wx:if="{{!loading}}">--我是有底线的--</view>
+  <view class="refresh-block" wx:if="{{loading}}">
+      <image animation="{{refreshAnimation}}" src="../../resources/refresh.png"></image>
+  </view>
 </view>
 <!--  -->

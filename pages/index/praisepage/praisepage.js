@@ -35,7 +35,7 @@ Page({
         var data = reg.data.data;
         var arr = new Array();
         arr[0] = data.uploadimg;
-        console.log(reg)
+        console.log(data.comment)
         if(reg.data.status==0){
             that.setData({
               listdata: data,

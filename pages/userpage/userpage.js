@@ -1,6 +1,5 @@
 var app = getApp();
-// var logins = wx.getStorageSync("hanfu_logins");
-// var phone = wx.getStorageSync("hanfu_phone");
+
 Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
@@ -44,20 +43,18 @@ Page({
         phone = logins.phone.substring(0, 3) + '****' + logins.phone.substring(7, 11);
       }
       wx.request({
-        url: url +'getUser',
-        method:'post',
-        data:{
-          user_id:logins.user_id
+        url: url + "getMyInteragal",
+        method: "POST",
+        data: {
+          user_id: logins.user_id
         },
-        success:function(reg){
-          var integral = reg.data.memberinfo.integral;
-          console.log(integral)
+        success: function (res) {
+          console.log(res.data.datalist);
           that.setData({
-            fans: integral
-          })
+            fans: res.data.integral
+          });
         }
-      
-      })
+      });
       that.setData({
         islogin: true,
         isphoneshow: true,
