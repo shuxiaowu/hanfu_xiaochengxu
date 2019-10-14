@@ -3,7 +3,6 @@
     <map id="myMap" style="width: 100%; height: 100%;position:fixed;top:0;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" show-location bindmarkertap="bindmarkertap">
     </map>
   </view>
-
   <view class="absolute_box">
     <view bindtap="{{issignin ? '' : 'playticket'}}" class="play_ticke" >{{issignin ? '已打卡' : '立即打卡'}}</view>
   </view>

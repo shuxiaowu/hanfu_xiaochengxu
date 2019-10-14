@@ -1,11 +1,14 @@
 // pages/start/start.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    markshow:true
+    url: app.base.addressurl,
+    markshow:true,
+    imgstart:''
   },
   startindex:function(e){
     wx.switchTab({
@@ -16,7 +19,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    var url = app.base.pub_url;
+    wx.request({
+      url: url+'startpage',
+      data:{},
+      method:'post',
+      success:function(reg){
+        var data = reg.data;
+        if (data.status == 0){
+          that.setData({
+            imgstart: data.data.thumb
+          })
+          
+        }
+      }
+    })
   },
 
   /**

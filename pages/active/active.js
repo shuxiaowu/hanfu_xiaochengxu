@@ -26,16 +26,10 @@ Page({
    */
   data: {
     url: app.base.addressurl,
-    images:[
-      '../../images/headpic.jpg',
-      '../../images/headpic.jpg',
-      '../../images/headpic.jpg',
-      '../../images/headpic.jpg',
-      ],
       isprince:'',
       listdata:'',
       status:1,
-      page:1,
+      page:2,
       loading: false
   },
   hdarticle:function(e){
@@ -103,27 +97,21 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.showNavigationBarLoading();
     var that = this;
     var url = app.base.pub_url;
-    var page = that.data.page+1;
     wx.request({
       url: url +'getactive',
       data:{
-        page:page
+        page:1
       },
       method:'post',
       success:function(reg){
         var data = reg.data.data;
-        wx.stopshowNavigationBarLoading();
-        this.setData({ loading: true });
-        var listdata = that.data.listdata.concat(data);
-        setTimeout(() => {
-          that.setData({
-            listdata: listdata,
-            loading: false,
-          })
-        }, 2000)
+        // var listdata = that.data.listdata.concat(data);
+        console.log(data);
+        that.setData({
+          listdata: data,
+        })
       }
     })
   },  
@@ -132,7 +120,32 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var that = this;
+    var url = app.base.pub_url;
+    var page = that.data.page;
+    wx.request({
+      url: url + 'getactive',
+      data: {
+        page: page
+      },
+      method: 'post',
+      success: function (reg) {
+        var data = reg.data.data;
+        if(data.length >0){
+          that.setData({ loading: true, page: page+1 });
+          var listdata = that.data.listdata.concat(data);
+          setTimeout(() => {
+            that.setData({
+              listdata: listdata,
+              loading: false,
+            })
+          }, 2000)
+        }else{
+          that.setData({ loading: false, page: page });
+        }
 
+      }
+    })
   },
 
   /**

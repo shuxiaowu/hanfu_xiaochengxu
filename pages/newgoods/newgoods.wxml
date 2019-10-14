@@ -1,38 +1,43 @@
 <!--pages/newgoods/newgoods.wxml-->
 <view class="new_content">
-<block wx:for="{{newlist}}"wx:key="{{index}}">
-<!-- start item -->
-  <view class="new_item" bindtap="newarticle" data-id="{{item.id}}" data-title="{{item.title}}">
-    <view class="new_img_box">
-      <image src="../../images/girl1.jpg" style="width:100%" mode="aspectFill"></image>
+  <block wx:for="{{newlist}}" wx:key="{{index}}">
+    <!-- start item -->
+    <view class="new_item" bindtap="newarticle" data-id="{{item.id}}" data-title="{{item.title}}">
+      <view class="new_img_box">
+        <image src="{{url}}{{item.thumb}}" style="width:100%" mode="widthFix"></image>
 
+      </view>
+      <view class="news_text">
+        <view class="new_topic">
+          <view class="news_topic1">{{item.title}}</view>
+          <view class="news_topic2">
+            <image src="../../images/new_good.png"></image>
+          </view>
+        </view>
+        <view class="new_text">{{item.title_data}}</view>
+        <view class="new_icon1">
+          <view class="new_icon_item n1">
+            <image src="../../images/icon_sh.png" class="n_icon1"></image>
+            <view class="news_item_p">{{item.shopstore}}</view>
+          </view>
+          <view class="new_icon_item">
+            <image src="../../images/icon_tel.png" class="n_icon2"></image>
+            <view class="news_item_p">{{item.phone}}</view>
+          </view>
+        </view>
+        <view class="new_icon1">
+          <view class="new_icon_item n1">
+            <view class="news_item_p news_item_p_add">
+              <image src="../../images/icon_ps.png" class="n_icon3"></image>{{item.address}}</view>
+          </view>
+        </view>
+      </view>
     </view>
-    <view class="news_text">
-      <view class="new_topic">
-        <view class="news_topic1">{{item.title}}</view>
-        <view class="news_topic2">
-          <image src="../../images/new_good.png"></image>
-        </view>
-      </view>
-      <view class="new_text">{{item.title_data}}</view>
-      <view class="new_icon1">
-        <view class="new_icon_item n1">
-          <image src="../../images/icon_sh.png" class="n_icon1"></image>
-          <view class="news_item_p">{{item.shopstore}}</view>
-        </view>
-        <view class="new_icon_item">
-          <image src="../../images/icon_tel.png" class="n_icon2"></image>
-          <view class="news_item_p">{{item.phone}}</view>
-        </view>
-      </view>
-      <view class="new_icon1">
-        <view class="new_icon_item n1">
-          <view class="news_item_p news_item_p_add"><image src="../../images/icon_ps.png" class="n_icon3"></image>{{item.address}}</view>
-        </view>
-      </view>
-    </view>
-  </view>
-  <!-- end item -->
+    <!-- end item -->
   </block>
-  <view class="base_line_underscore">--我是有底线的--</view>
+  <view class="base_line_underscore" wx:if="{{!loading}}">--我是有底线的--</view>
+  <view class="refresh-block" wx:if="{{loading}}">
+    <image class="refresh-img" animation="{{refreshAnimation}}" src="../../images/timg.gif"></image>
+    <view class="base_line_underscore refresh_load">加载中</view>
+  </view>
 </view>

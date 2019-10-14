@@ -14,7 +14,7 @@ Page({
     })
   },
   onLoad: function (option) {
-    console.log(option.id)
+
  
     var that = this;
     if (option.id) {

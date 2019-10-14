@@ -33,7 +33,8 @@
           <view class="hd_tp_r1">{{item.apply_count}}人已经报名</view>
           <view class="hd_tp_r2">
             <view class='index'>
-              <view wx:for="{{item.apply_headpic}}" wx:key style='transform:translateX({{-index*20}}rpx);'>
+            <!-- style='transform:translateX({{-index*20}}rpx);' -->
+              <view wx:for="{{item.apply_headpic}}" wx:key  class="apply_head_img" style='transform:translateX({{-index*20}}rpx);'>
                 <image class='text' src='{{item}}' mode='aspectFill'></image>
               </view>
             </view>
@@ -44,7 +45,10 @@
   </block>
   <view class="base_line_underscore"  wx:if="{{!loading}}">--我是有底线的--</view>
   <view class="refresh-block" wx:if="{{loading}}">
-      <image animation="{{refreshAnimation}}" src="../../resources/refresh.png"></image>
+   <image class="refresh-img" animation="{{refreshAnimation}}" src="../../images/timg.gif"></image>
+      <view class="base_line_underscore refresh_load">加载中</view>
+     
+     
   </view>
 </view>
 <!--  -->

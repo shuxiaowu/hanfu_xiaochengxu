@@ -6,6 +6,7 @@
 .hd_title{color:#fff;font-size:30rpx;display:inline-block;margin-right:10rpx;}
 .hd_bm{display:inline-block;padding:4rpx 10rpx;font-size:24rpx; color:#fff;background-color:#c44845;}
 
+
 .hd_date{margin-right:30rpx;}
 .hd_date,.hd_position{display:inline-block;}
 .hd-icon{width:24rpx;height:24rpx;display:inline-block;vertical-align: middle;margin-right:10rpx;}
@@ -21,8 +22,8 @@
 .hd_tp_t2{font-size:28rpx;color:#c44845;display:inline-block;}
 .hd_tp_right{float:right;border-radius:25px;background-color:#ffefef;display:flex;justify-content: right;}
 .hd_tp_r1{font-size:24rpx;color:#c44845;padding:0 18rpx;line-height:40rpx;}
-.hd_tp_r2{}
-
+.hd_tp_r2,.index{position:relative;width:160rpx}
+/* .apply_head_img{position:absolute;left: 0} */
 /*  */
 .index {
   width: 100%;
