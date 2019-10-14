@@ -50,10 +50,24 @@ Page({
               success: function(reg) {
                 console.log(reg)
                 if (reg.data.status==0){
-                  console.log('上传成功');
-                  wx.reLaunch({
-                      url: '../index?id=' + logins.user_id,
-                    })
+                  var that = this;
+                  var url = app.base.pub_url;
+                  var logins = wx.getStorageSync('hanfu_logins');
+                  wx.request({
+                    url: url + 'addDaka',
+                    data: {
+                      user_id: logins.user_id
+                    },
+                    method: 'post',
+                    success: function (reg) {
+                      var daka_int = reg.data.daka;
+                      wx.reLaunch({
+                        url: '../index?id=' + logins.user_id+'&integral='+daka_int,
+                      })
+                    }
+
+                  })
+
                 }
               }
             })

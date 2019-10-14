@@ -5,7 +5,8 @@ Page({
     markshow:true,
     issignin:false,
     signinurl:'qiandao/index',
-    markers:[]
+    markers:[],
+    integral:0
   },
   bindmarkertap: function (e) {
     var id = e.markerId;
@@ -19,7 +20,8 @@ Page({
     var that = this;
     if (option.id) {
       that.setData({
-        isshow:true
+        isshow:true,
+        integral: option.integral
       })
     }
     var logins = wx.getStorageSync("hanfu_logins");

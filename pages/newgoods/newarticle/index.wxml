@@ -2,7 +2,7 @@
 <swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{artdata.thumbs}}" wx:key="{{index}}">
     <swiper-item>
-      <image src="{{url}}{{item}}" class="slide-image"data-id="{{index}}"  width="355"  mode="widthFix" bindtap="preview" />
+      <image src="{{url}}{{item}}" class="slide-image" data-id="{{index}}" width="355" mode="widthFix" bindtap="preview" />
     </swiper-item>
   </block>
 </swiper>
@@ -31,8 +31,9 @@
     </view>
     <view class="new_icon1">
       <view class="new_icon_item n1">
-        
-        <view class="news_item_p news_item_p_add"><image src="../../../images/icon_ps.png" class="n_icon3"></image>{{artdata.address}}</view>
+
+        <view class="news_item_p news_item_p_add">
+          <image src="../../../images/icon_ps.png" class="n_icon3"></image>{{artdata.address}}</view>
       </view>
     </view>
   </view>
@@ -42,15 +43,21 @@
     <image src="../../../images/link_icon.png" class="dis_line link-icon"></image>
     <view class=" dis_line" bind:tap="eventDraw">分享美物，助力汉服文化</view>
   </button> -->
-   <button bind:tap="eventDraw" class="fixed-text fixed-button" title="分享美物，助力汉服文化">
-     <image src="../../../images/link_icon.png" class="dis_line link-icon"></image>
-    <view class=" dis_line" bind:tap="eventDraw">分享美物，助力汉服文化</view>
-   </button>
+  <button bind:tap="eventDraw" class="fixed-text fixed-button" title="分享美物，助力汉服文化">
+    <image src="../../../images/link_icon.png" class="dis_line link-icon"></image>
+    <view class="dis_line" bind:tap="eventDraw">分享美物，助力汉服文化</view>
+  </button>
 </view>
 <!--index.wxml-->
-<view class="mask mask_box" wx:if="{{mask}}">
+<view class="mask_container" wx:if="{{mask}}">
+  <view class="mask mask_box" bindtap="maskbtn">
+  </view>
   <image src="{{shareImage}}" class="share-image" mode="widthFix"></image>
-  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+  <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage" />
   <!-- <button bind:tap="eventDraw">绘制</button> -->
-  <button bind:tap="eventSave" class="saveearth">保存到本地</button>
+  <view class="saveearth">
+    <button open-type="share" hover-class="none" >发给朋友</button>
+    <button bind:tap="eventSave">保存到本地</button>
+  </view>
+
 </view>

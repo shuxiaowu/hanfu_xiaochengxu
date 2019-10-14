@@ -16,7 +16,7 @@
         <view class="text_1">
           小主打卡成功了~
         </view>
-        <view class="text_2">+5积分</view>
+        <view class="text_2">+{{integral}}积分</view>
       </view>
       <view class="mask_btn" catchtap="maskclose">朕知道了</view>
     </view>

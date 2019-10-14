@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    id:0,
     url: app.base.addressurl,
     indicatorDots: true,
     autoplay: false,
@@ -51,7 +51,8 @@ Page({
       method: 'post',
       success: function (reg) {
         that.setData({
-          artdata: reg.data.data
+          artdata: reg.data.data,
+          id:id
         })
       }
     })
@@ -61,6 +62,8 @@ Page({
     var that = this;
     var logins = wx.getStorageSync('hanfu_logins');
     var url = app.base.pub_url;
+    var avatar = app.base.addressurl + that.data.artdata.thumbs[0];
+    console.log(avatar);
     wx.showLoading({
       title: '绘制分享图片中',
       mask: true
@@ -75,6 +78,7 @@ Page({
         success:function(reg){
           var data = reg.data.data;
           var img = 'data:image/png;base64,'+ data;
+        
           console.log(wx.arrayBufferToBase64(data));
           that.setData({
             mask: true,
@@ -112,7 +116,7 @@ Page({
                 },
                 {
                   type: 'image',
-                  url: '../../images/pic.jpg',
+                  url: avatar,
                   top: 110,
                   left: 32.5,
                   width: 310,
@@ -138,7 +142,7 @@ Page({
                   fontSize: 19,
                   color: '#E62004',
                   textAlign: 'left',
-                  top: 387,
+                  top: 346,
                   left: 90,
                   bolder: true
                 },
@@ -148,7 +152,7 @@ Page({
                   fontSize: 13,
                   color: '#7E7E8B',
                   textAlign: 'left',
-                  top: 391,
+                  top: 350,
                   left: 30,
                   // textDecoration: 'line-through'
                 },
@@ -160,6 +164,26 @@ Page({
                   borderRadius: 0.1,
                   width: 60,
                   height: 60
+                },
+                {
+                  type: 'text',
+                  content: logins.user_name ,
+                  fontSize: 18,
+                  color: '#000',
+                  textAlign: 'left',
+                  top: 495,
+                  left: 85,
+                  // textDecoration: 'line-through'
+                },
+                {
+                  type: 'text',
+                  content:'长按立即添加>>',
+                  fontSize: 13,
+                  color: '#c44845',
+                  textAlign: 'left',
+                  top: 520,
+                  left: 85,
+                  // textDecoration: 'line-through'
                 },
                 {
                   type: 'image',
@@ -178,19 +202,80 @@ Page({
     }
 
   },
-  eventSave() {
-    console.log(this.data.shareImage)
-    wx.saveImageToPhotosAlbum({
-      filePath: "http://pic39.nipic.com/20140307/13928177_195158772185_2.jpg",
-      success(res) {
-        wx.showToast({
-          title: '保存图片成功',
-          icon: 'success',
-          duration: 2000
-        })
-      }
-    })
+  //保存相册
+  eventSave: function () {
+    var that = this;
+    // that.buried('SaveAndShareToMoments');
+    //查看授权状态；
+    if (wx.getSetting) {//判断是否存在函数wx.getSetting在版本库1.2以上才能用
+      wx.getSetting({
+        success(res) {
+          if (!res.authSetting['scope.writePhotosAlbum']) {
+            wx.authorize({
+              scope: 'scope.writePhotosAlbum',
+              success(res) {
+                wx.saveImageToPhotosAlbum({
+                  filePath: that.data.shareImage,
+                  success: function (res) {
+                    wx.showToast({
+                      title: '图片保存成功',
+                    });
+                  },
+                  fail: function (res) {
+                    wx.showToast({
+                      title: '图片保存失败',
+                      icon: 'none',
+                    });
+                  }
+                })
+              },
+              fail: function (res) {
+                //拒绝授权时会弹出提示框，提醒用户需要授权
+                wx.showModal({
+                  title: '提示',
+                  content: '保存图片需要授权，是否去授权',
+                  success: function (res) {
+                    if (res.confirm) {
+                      wx.openSetting({
+                        success: function (res) {
+
+                        }
+                      })
+                    }
+                  }
+                })
+              }
+            })
+          } else {//已经授权
+            wx.saveImageToPhotosAlbum({
+              filePath: that.data.shareImage,
+              success: function (res) {
+                wx.showToast({
+                  title: '图片保存成功',
+                });
+              },
+              fail: function (res) {
+                wx.showToast({
+                  title: '图片保存失败',
+                  icon: 'none',
+                });
+              }
+            })
+          }
+        }
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '因当前微信版本过低导致无法下载，请更新至最新版本',
+        showCancel: false,
+        complete: function () {
+
+        }
+      })
+    }
   },
+
   eventGetImage(event) {
     console.log(event)
     wx.hideLoading()
@@ -200,5 +285,35 @@ Page({
         shareImage: tempFilePath
       })
     }
+  },
+  maskbtn: function () {
+    var that = this;
+    that.setData({
+      mask: false,
+    })
+  },
+  /**
+  * 用户点击右上角分享
+  */
+  onShareAppMessage: function () {
+    var that = this;
+    var url = app.base.pub_url;
+    var logins = wx.getStorageSync('hanfu_logins');
+    wx.request({
+      url: url+'addRepeat',
+      data: {
+        user_id:logins.user_id,
+        news_id:that.data.id
+      },
+      method:'post',
+      success:function(reg){
+       wx.showToast({
+         icon:'none',
+         title: reg.data.msg,
+         duration:3000
+       })
+      }
+      
+    })
   }
 })

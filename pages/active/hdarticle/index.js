@@ -119,12 +119,25 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    if (res.from == 'button') {
-    }
-    // return {
-    //   title: '这里是发送时候的标题',
-    //   path: '/pages/home/index',//这里是被分享的人点击进来之后的页面
-    //   imageUrl: '../../images/icon-logo.png'//这里是图片的路径
-    // }
+    var that = this;
+    var url = app.base.pub_url;
+    var logins = wx.getStorageSync('hanfu_logins');
+    wx.request({
+      url: url + 'addFxSshare',
+      data: {
+        user_id: logins.user_id,
+        news_id: that.data.id
+      },
+      method: 'post',
+      success: function (reg) {
+        wx.showToast({
+          icon: 'none',
+          title: reg.data.msg,
+          duration: 3000
+        })
+      }
+
+    })
+    
   }
 })
