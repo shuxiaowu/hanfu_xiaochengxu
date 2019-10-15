@@ -26,3 +26,5 @@
 
 .close_img{position: absolute;width:20px;height: 20px;z-index: 30;background-size: 100% 100%;top: 0;right: 0;}
 .close_img>image{width: 100%;height: 100%;}
+
+.phonex{padding-bottom:40rpx!important;}

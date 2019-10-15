@@ -20,11 +20,11 @@
   <view class="jf_recommond">
     新品推荐
   </view>
-  <view class="jf_content">
+  <view class="jf_content {{phonetype ? 'phonex' : ''}}">
     <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
   </view>
 </view>
-<view class="footbtn" bindtap="dhbtn">
+<view class="footbtn {{phonetype ? 'phonex' : ''}}" bindtap="dhbtn">
   立即兑换
 </view>
   <!--  -->

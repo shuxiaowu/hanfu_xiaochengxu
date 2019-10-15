@@ -82,7 +82,7 @@
 <view class="box">
   <view class="user_box userbox2">
     <view class="person-list">
-      <navigator url="contact/contact" class="list-item">
+      <view bindtap="contactbtn" class="list-item">
         <view class="list-item_left">
           <image class="item-image" src="../../images/contact_icon.png"></image>
           <text class="item-text">联系我们</text>
@@ -91,11 +91,11 @@
           <view class="list_jf"></view>
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
-      </navigator>
+      </view>
 
       <view class="person-line"></view>
 
-      <navigator url="backproblem/backproblem" class="list-item">
+      <view  bindtap="problembtn" class="list-item">
         <view class="list-item_left">
           <image class="item-image" src="../../images/problem_icon.png"></image>
           <text class="item-text">问题反馈</text>
@@ -104,7 +104,7 @@
           <view class="list_jf"></view>
           <image src="../../images/arrow_icon.png" class="arrow"></image>
         </view>
-      </navigator>
+      </view>
       <view class="person-line"></view>
       <view class="list-item">
         <view class="list-item_left">

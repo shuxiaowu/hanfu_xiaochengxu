@@ -14,7 +14,8 @@ Page({
       praise:'',
       comment:'',
       author_id:0,
-      comment_value:''
+      comment_value:'',
+     phonetype: app.base.mySystemInfo()
   },
 
   /**

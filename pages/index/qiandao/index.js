@@ -12,7 +12,9 @@ Page({
     signlatitude: '',
     signlongitude: '',
     self_latitude: '',
-    self_longitude:''
+    self_longitude:'',
+    
+    
   },
   bindFormSubmit: function(e) {
     let that = this;
@@ -179,6 +181,7 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
+    
     wx.setNavigationBarTitle({
       title: '签到',
     })

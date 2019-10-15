@@ -30,7 +30,8 @@ Page({
       listdata:'',
       status:1,
       page:2,
-      loading: false
+      loading: false,
+      iphone:false
   },
   hdarticle:function(e){
     var id = e.currentTarget.dataset.id;

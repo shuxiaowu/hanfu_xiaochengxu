@@ -66,9 +66,9 @@
 <view class="art_title">
   <view class="artt_topic">活动详情</view>
 </view>
-<view class="content">
+<view class="content {{phonetype ? 'phonex' : ''}}">
 {{artdata.content}}
 </view>
-<view class="footbtn" bindtap="applybtn">
+<view class="footbtn {{phonetype ? 'phonex' : ''}}" bindtap="applybtn">
   立即报名
 </view>

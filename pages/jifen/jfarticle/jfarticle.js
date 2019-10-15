@@ -40,7 +40,8 @@ Page({
     goodsaddress:'',
     goodstitle:'',
     model_title:'',
-    model_content:''
+    model_content:'',
+    phonetype: app.base.mySystemInfo()
   },
   maskclose: function() {
     var that = this;

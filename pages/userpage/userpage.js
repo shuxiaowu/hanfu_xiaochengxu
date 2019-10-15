@@ -248,6 +248,34 @@ Page({
       })
     }
   },
+  // 联系我们
+  contactbtn: function (e) {
+    var logins = wx.getStorageSync('hanfu_logins');
+    if (logins) {
+      wx.navigateTo({
+        url: 'contact/contact',
+      })
+    } else {
+      wx.showLoading({
+        title: '请登录',
+        duration: 1000
+      })
+    }
+  },
+  // 问题反馈
+  problembtn: function (e) {
+    var logins = wx.getStorageSync('hanfu_logins');
+    if (logins) {
+      wx.navigateTo({
+        url: 'backproblem/backproblem',
+      })
+    } else {
+      wx.showLoading({
+        title: '请登录',
+        duration: 1000
+      })
+    }
+  },
   activepage: function(e) {
     wx.switchTab({
       url: '../active/active'

@@ -103,16 +103,15 @@ Page({
     var img = that.data.urls;
     var logins = wx.getStorageSync("hanfu_logins");
     var user_id = logins.user_id;
-    
+    if (describ==''){
+      wx.showToast({
+        icon:'none',
+        title: '请填写描述',
+      })
+      return false;
+    }
     var upimgs = [];
-    console.log(ids + '---' + img)
-    ids++;
-    if(img){
-      // var imgss = uploadimg(img);
-      // console.log('---imgss--' + imgss)
-      // if(imgss){
-      //   postrequest(protype, imgss, describ, user_id);
-      // }
+    if(img.length>0){
       var upimgs = new Array();
       var url = app.base.pub_url;
       for (let i = 0; i < img.length; i++) {

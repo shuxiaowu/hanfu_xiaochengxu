@@ -22,7 +22,8 @@ Page({
     artdata:'',
     newgood:'',
     applyheadimg:'',
-    num:''
+    num:'',
+    
   },
   applybtn:function(e){
     var that = this;
