@@ -98,7 +98,7 @@ Page({
                 {
                   type: 'image',
                   url: '../../images/avatar.jpeg',
-                  top: 10,
+                  top: 15,
                   left: 100,
                   borderRadius: 0.1,
                   width: 60,

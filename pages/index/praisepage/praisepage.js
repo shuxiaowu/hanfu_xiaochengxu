@@ -13,7 +13,8 @@ Page({
       enabled:false,
       praise:'',
       comment:'',
-      author_id:0
+      author_id:0,
+      comment_value:''
   },
 
   /**
@@ -107,30 +108,40 @@ Page({
     var id = that.data.id;
     var comment = e.detail.value.comment;
     var logins = wx.getStorageSync('hanfu_logins');
-    if (logins){
-      wx.request({
-        url: url +'addComment',
-        method:'post',
-        data:{
-          user_id:logins.user_id,
-          news_id:id,
-          content: comment
-        },
-        success:function(reg){
-          console.log(reg);
-          if(reg.data.code==0){
-            that.setData({
-              comment: reg.data.comment
-            })
+    if (comment!=''){
+      if (logins) {
+        wx.request({
+          url: url + 'addComment',
+          method: 'post',
+          data: {
+            user_id: logins.user_id,
+            news_id: id,
+            content: comment
+          },
+          success: function (reg) {
+            console.log(reg);
+            if (reg.data.code == 0) {
+              that.setData({
+                comment: reg.data.comment,
+                comment_value: ''
+              })
 
+            }
+            wx.showToast({
+              title: reg.data.msg,
+              duration: 2000
+            })
           }
-          wx.showToast({
-            title:reg.data.msg,
-            duration:2000
-          })
-        }
+        })
+      }
+    }else{
+      wx.showToast({
+        icon:'none',
+        title: '输入不能为空',
+        duration: 2000
       })
     }
+
 
   },
   /**

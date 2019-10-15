@@ -115,6 +115,13 @@ Page({
 
     console.log(options.id);
   },
+  newbtn:function(e){
+    var id = e.currentTarget.dataset.id;
+    var title = e.currentTarget.dataset.title;
+    wx.navigateTo({
+      url: '../../newgoods/newarticle/index?id='+id+'&title='+title,
+    })
+  },
   /**
    * 用户点击右上角分享
    */

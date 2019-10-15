@@ -15,8 +15,6 @@ Page({
     })
   },
   onLoad: function (option) {
-
- 
     var that = this;
     if (option.id) {
       that.setData({
@@ -34,7 +32,14 @@ Page({
         },
         success: function (reg) {
           var data = reg.data.signdata;
+          var self_markdatas = reg.data.self_markdatas;
+          
           if(reg.data.status==0){
+            if (self_markdatas !=''){
+              data.push(self_markdatas);
+              console.log('sss')
+            }
+            console.log(data);
             that.data.signinurl = '';
             that.setData({
               issignin:true,

@@ -13,7 +13,7 @@ swiper{height:240px!important;}
 .hd_date,.hd_position{display:inline-block;}
 .hd-icon{width:24rpx;height:24rpx;display:inline-block;vertical-align: middle;margin-right:10rpx;}
 .hd-icon_ps{width:20rpx;height:24rpx;display:inline-block;vertical-align: middle;margin-right:10rpx}
-.hd_text{font-size:24rpx;color:#666;display:inline-block;}
+.hd_text{font-size:24rpx;color:#666;display:inline-block;vertical-align: middle;}
 /*  */
 .hd_tp{overflow: hidden;margin:15rpx 0;}
 .hd_tp .hd_tp_left{float: left}

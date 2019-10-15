@@ -7,7 +7,7 @@
 <view class="hd_ps_text">
   <view class="hd_citop">
     <view class="hd_title">{{artdata.title}}</view>
-    <view class="hd_bm">报名中</view>
+    <view class="hd_bm">{{artdata.status == 1 ? '报名中' : '报名截止'}}</view>
     <view class="shar_right">
 
       <button class="fixed-text fixed-button" open-type="share" title="分享" hover-class="none">
@@ -35,7 +35,7 @@
       <view class="hd_tp_r1">{{num}}人已经报名</view>
       <view class="hd_tp_r2">
         <view class='index'>
-          <view wx:for="{{applyheadimg}}" wx:key="{{index}}" style='transform:translateX({{-index*20}}rpx);'>
+          <view wx:for="{{applyheadimg}}" wx:key="{{index}}" style='transform:translateX({{-index*5}}rpx);'>
             <image class='text' src='{{item.headimg}}' mode='aspectFill'></image>
           </view>
         </view>
@@ -49,7 +49,7 @@
 </view>
 <view class="new_box">
 <block wx:for="{{newgood}}" wx:key="{{index}}">
-  <view class="new_item">
+  <view class="new_item" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="newbtn">
     <view class="item_img">
       <image src="{{url}}{{item.thumb}}" mode="widthFix"></image>
     </view>

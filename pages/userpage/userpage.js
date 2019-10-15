@@ -17,7 +17,8 @@ Page({
     level: 1,
     user_id: "",
     day: 1,
-    get_fans: 1
+    get_fans: 1,
+    allohone:''
   },
   onLoad: function() {
     wx.setNavigationBarTitle({
@@ -106,16 +107,13 @@ Page({
                  
                   that.setData({
                     phonenumber: phone,
+                    allohone: res.data,
                     isphoneshow:false,
                     isshow: true
                   })
                 }
               });
             }
-          },
-          fail: function () {
-            console.log("session_key 已经失效，需要重新执行登录流程");
-            that.wxlogin(); //重新登录
           }
         });
       }
@@ -130,7 +128,9 @@ Page({
   },
   onGotUserInfo: function(e) {
     let that = this;
+    let phone = that.data.allohone;
     let url = that.data.url;
+    console.log(phone)
     wx.login({
       success: function(res) {
         if (res.code) {
@@ -147,6 +147,7 @@ Page({
                 data: {
                   code: code,
                   encryptedData: encryptedData,
+                  phone: phone,
                   iv: iv,
                   nickName: userInfo.nickName,
                   avatarUrl: userInfo.avatarUrl,
@@ -214,7 +215,7 @@ Page({
       })
     }else{
       wx.showLoading({
-        title: '清先登录',
+        title: '请登录',
         duration:1000
       })
     }
@@ -228,7 +229,7 @@ Page({
       })
     } else {
       wx.showLoading({
-        title: '清先登录',
+        title: '请登录',
         duration: 1000
       })
     }
@@ -242,7 +243,7 @@ Page({
       })
     } else {
       wx.showLoading({
-        title: '清先登录',
+        title: '请登录',
         duration: 1000
       })
     }

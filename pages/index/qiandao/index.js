@@ -10,7 +10,9 @@ Page({
     urls: '',
     positionname: '',
     signlatitude: '',
-    signlongitude: ''
+    signlongitude: '',
+    self_latitude: '',
+    self_longitude:''
   },
   bindFormSubmit: function(e) {
     let that = this;
@@ -18,6 +20,11 @@ Page({
     var img = that.data.urls;
     var signlatitude = that.data.signlatitude;
     var signlongitude = that.data.signlongitude;
+    if(signlatitude =='' || signlongitude==''){
+      signlatitude = that.data.self_latitude;
+      signlongitude = that.data.self_longitude;
+    }
+    console.log(signlatitude)
     var content = e.detail.value.textarea;
     var logins = wx.getStorageSync("hanfu_logins");
     // 图片上传
@@ -42,8 +49,8 @@ Page({
               data: {
                 img: upimgname,
                 content: e.detail.value.textarea,
-                signlatitude: that.data.signlatitude,
-                signlongitude: that.data.signlongitude,
+                signlatitude: signlatitude,
+                signlongitude: signlongitude,
                 user_id: logins.user_id,
                 addname: that.data.positionname
               },
@@ -171,8 +178,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this;
     wx.setNavigationBarTitle({
       title: '签到',
+    })
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        var latitude = res.latitude
+        var longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy;
+        console.log(latitude, longitude)
+        that.setData({
+          self_latitude: latitude,
+          self_longitude: longitude
+        })
+      }
     })
   },
 

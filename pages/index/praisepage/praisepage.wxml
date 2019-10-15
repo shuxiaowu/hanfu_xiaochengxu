@@ -39,7 +39,7 @@
 <!--  -->
 <form bindsubmit="bindFormSubmit">
   <view class="evaluate_form">
-    <input type="text" class="input_border" name="comment"></input>
+    <input type="text" class="input_border" name="comment" value="{{comment_value}}"></input>
     <button form-type="submit" class="evaluate_btn">评论</button>
   </view>
 </form>

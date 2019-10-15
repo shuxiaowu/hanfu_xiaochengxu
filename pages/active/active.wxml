@@ -9,7 +9,7 @@
         <view class="hd_ps_text">
           <view class="hd_citop">
             <view class="hd_title">{{item.title}}</view>
-            <view class="hd_bm">{{item.status == 1 ? '报名中' : '报名停止'}}</view>
+            <view class="hd_bm">{{item.status == 1 ? '报名中' : '报名截止'}}</view>
 
           </view>
           <view class="hd_cidowm">
