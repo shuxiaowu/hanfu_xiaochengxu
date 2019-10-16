@@ -27,13 +27,13 @@
     </view>
   </view>
   <view class="hd_tp">
-    <view class="hd_tp_left">
+    <view class="hd_tp_left" wx:if="{{artdata.price ? true : false}}">
       <view class="hd_tp_t1">活动经费：</view>
-      <view class="hd_tp_t2">￥80.00</view>
+      <view class="hd_tp_t2">￥{{artdata.price}}</view>
     </view>
-    <view class="hd_tp_right">
+    <view class="hd_tp_right" wx:if="{{num ? true : false}}">
       <view class="hd_tp_r1">{{num}}人已经报名</view>
-      <view class="hd_tp_r2">
+      <view class="hd_tp_r2" style="width:{{applyheadimg.length*70}}rpx">
         <view class='index'>
           <view wx:for="{{applyheadimg}}" wx:key="{{index}}" style='transform:translateX({{-index*5}}rpx);'>
             <image class='text' src='{{item.headimg}}' mode='aspectFill'></image>
@@ -63,7 +63,7 @@
 </view>
 
 <!-- 活动详情 -->
-<view class="art_title">
+<view class="art_title {{phonetype ? 'phonex' : ''}}">
   <view class="artt_topic">活动详情</view>
 </view>
 <view class="content {{phonetype ? 'phonex' : ''}}">

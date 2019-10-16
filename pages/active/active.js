@@ -91,6 +91,7 @@ Page({
       url: url + 'getactive',
       method: 'post',
       success: function (reg) {
+        console.log(reg)
         if (reg.data.status == 0) {
           that.setData({
             listdata: reg.data.data,

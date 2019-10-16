@@ -25,13 +25,13 @@
         </view>
       </view>
       <view class="hd_tp">
-        <view class="hd_tp_left">
+        <view class="hd_tp_left" wx:if="{{item.price ? true : false}}">
           <view class="hd_tp_t1">活动经费：</view>
-          <view class="hd_tp_t2">￥80.00</view>
+          <view class="hd_tp_t2">￥{{item.price}}</view>
         </view>
-        <view class="hd_tp_right">
+        <view class="hd_tp_right" wx:if="{{item.apply_count ? true : false}}">
           <view class="hd_tp_r1">{{item.apply_count}}人已经报名</view>
-          <view class="hd_tp_r2">
+          <view class="hd_tp_r2" style="width:{{item.apply_headpic.length*70}}rpx">
             <view class='index'>
             <!-- style='transform:translateX({{-index*20}}rpx);' -->
               <view wx:for="{{item.apply_headpic}}" wx:key  class="apply_head_img" style='transform:translateX({{-index*20}}rpx);'>
