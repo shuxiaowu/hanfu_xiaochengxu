@@ -8,17 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      '../../../images/hd_article.jpg',
-      '../../../images/hd_article.jpg',
-      '../../../images/hd_article.jpg'
-    ],
-    images: [
-      '../../../images/headpic.jpg',
-      '../../../images/headpic.jpg',
-      '../../../images/headpic.jpg',
-      '../../../images/headpic.jpg',
-    ],
     isshow: false,
     indicatorDots: true,
     autoplay: false,
@@ -58,6 +47,7 @@ Page({
     })
   },
   dhbtn: function(e) {
+    var formId = e.detail.formId;
     var logins = wx.getStorageSync('hanfu_logins');
     var that = this;
     var url = that.data.url;
@@ -82,7 +72,8 @@ Page({
                   goods_id: good_id,
                   address: goodsaddress,
                   telphone: logins.phone,
-                  username: logins.user_name
+                  username: logins.user_name,
+                  formId: formId
                 },
                 success: function (res) {
                   console.log(res);
@@ -115,6 +106,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
     var WxParse = require('../../../wxParse/wxParse.js');
     var that = this;
     wx.getSystemInfo({

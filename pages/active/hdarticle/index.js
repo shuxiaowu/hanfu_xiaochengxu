@@ -8,12 +8,6 @@ Page({
   data: {
     url: app.base.addressurl,
     id:0,
-    images: [
-      '../../../images/headpic.jpg',
-      '../../../images/headpic.jpg',
-      '../../../images/headpic.jpg',
-      '../../../images/headpic.jpg',
-    ],
     indicatorDots: false,
     autoplay: false,
     interval: 5000,
@@ -23,6 +17,7 @@ Page({
     newgood:'',
     applyheadimg:'',
     num:'',
+    phonetype:app.base.mySystemInfo()
     
   },
   applybtn:function(e){
@@ -44,7 +39,6 @@ Page({
               },
               method: 'post',
               success: function (reg) {
-                console.log(reg.data);
                 wx.showToast({
                   icon:'none',
                   title: reg.data.msg,
@@ -75,11 +69,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
+    // console.log(app.base.mySystemInfo())
     var id = options.id;
     var that = this;
     var url = app.base.pub_url;
     var title = options.title;
     var logins = wx.getStorageSync('hanfu_logins');
+    // wx.getSystemInfo({
+      
+    //   success: function (res) {
+    //     var phonetype = false;
+    //     var modelce = 'wwiPhone XS';
+    //     if (res.model.indexOf('iPhone X')==0) {
+    //       phonetype = true;
+    //     } else {
+    //       phonetype = false;
+    //     }
+    //     console.log(phonetype);
+    //     that.setData({
+    //       phonetype:phonetype
+    //     })
+    //   }
+    // })
     wx.setNavigationBarTitle({
       title: title,
     })
@@ -92,8 +107,6 @@ Page({
         },
         method: 'post',
         success: function (reg) {
-          console.log(reg.data);
-          console.log(reg.data.newgood);
          that.setData({
            artdata:reg.data.data,
            newgood: reg.data.newgood,
@@ -114,7 +127,17 @@ Page({
       })
     }
 
-    console.log(options.id);
+  },
+  // 预览图片
+  previewImg: function (e) {
+    let that = this;
+    var imgurl = that.data.url +that.data.artdata.uploadimg;
+    var arr = new Array();
+    arr[0] = imgurl;
+    wx.previewImage({
+      current: arr[0],
+      urls: arr,
+    })
   },
   newbtn:function(e){
     var id = e.currentTarget.dataset.id;
@@ -144,8 +167,41 @@ Page({
           duration: 3000
         })
       }
-
     })
-    
+    console.log(res);
+    return {
+      title: '活动',
+      path: '/pages/active/hdarticle/index?id='+that.data.id,
+      success:function (res) {
+        var shareTickets = res.shareTickets,
+          shareTicket = shareTickets;
+        wx.getShareInfo({
+          shareTicket: shareTicket,
+          success: function (res) {
+            wx.showToast({
+              title: '转发成功',
+              duration: 5000
+            })
+
+          },
+          fail: function (res) {
+            wx.showToast({
+              title: 'fail:' + res.errMsg,
+              duration: 5000
+            })
+          }
+        });
+        console.log(res + '成功');
+       
+      },
+      fail: function (res) {
+        console.log(res + '失败');
+        // 转发失败
+      },
+      complete: function (res) {
+        // 不管成功失败都会执行
+        console.log(res + '123');
+      }
+    }
   }
 })

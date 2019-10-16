@@ -1,7 +1,7 @@
 <!--pages/active/hdarticle/index.wxml-->
 <swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <swiper-item>
-      <image src="{{url}}{{artdata.uploadimg}}" class="slide-image" width="355" mode="aspectFill" />
+      <image src="{{url}}{{artdata.uploadimg}}" class="slide-image" width="355" mode="aspectFill" bindtap='previewImg' />
     </swiper-item>
 </swiper>
 <view class="hd_ps_text">
@@ -51,7 +51,7 @@
 <block wx:for="{{newgood}}" wx:key="{{index}}">
   <view class="new_item" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="newbtn">
     <view class="item_img">
-      <image src="{{url}}{{item.thumb}}" mode="widthFix"></image>
+      <image src="{{url}}{{item.thumb}}" mode="aspectFill"></image>
     </view>
     <view>
       <view class="news_topic">{{item.title}}
@@ -69,6 +69,9 @@
 <view class="content {{phonetype ? 'phonex' : ''}}">
 {{artdata.content}}
 </view>
-<view class="footbtn {{phonetype ? 'phonex' : ''}}" bindtap="applybtn">
-  立即报名
+<view class="footbtn {{phonetype ? 'phonex' : ''}}" wx:if="{{artdata.status == 1 ? true :false}}" bindtap="applybtn">
+  报名中
+</view>
+<view class="footbtn {{phonetype ? 'phonex' : ''}}" wx:if="{{artdata.status == 2 ? true :false}}">
+  报名截止
 </view>

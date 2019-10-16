@@ -19,7 +19,7 @@
   </view>
 </view>
 <!--  -->
-<view class="box" style="border-top:10rpx solid #f5f5f5;">
+<view class="box {{phonetype ? 'phonex' : ''}}" style="border-top:10rpx solid #f5f5f5;" >
   <view class="evaluate">评价</view>
   <!--  -->
   <block wx:for="{{comment}}" wx:key="{{index}}">

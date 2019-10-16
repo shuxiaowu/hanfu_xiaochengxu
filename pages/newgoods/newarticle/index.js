@@ -33,7 +33,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id);
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
     var that = this;
     var id = options.id;
     var title = options.title;
@@ -63,7 +66,8 @@ Page({
     var logins = wx.getStorageSync('hanfu_logins');
     var url = app.base.pub_url;
     var avatar = app.base.addressurl + that.data.artdata.thumbs[0];
-    console.log(avatar);
+    var newsdata = that.data.artdata;
+    console.log(newsdata);
     wx.showLoading({
       title: '绘制分享图片中',
       mask: true
@@ -117,44 +121,125 @@ Page({
                 {
                   type: 'image',
                   url: avatar,
-                  top: 110,
-                  left: 32.5,
-                  width: 310,
+                  top: 90,
+                  left:11,
+                  width: 354,
                   height: 186
                 },
                 {
                   type: 'text',
-                  content: '七夕同袍面基约饭活动',
+                  content: newsdata.title.substring(0,10)+'...',
                   fontSize: 22,
                   lineHeight: 21,
                   color: '#000',
                   textAlign: 'left',
-                  top: 310,
+                  top: 295,
                   left: 30,
                   width: 287,
                   MaxLineNumber: 2,
                   breakWord: true,
                   bolder: true
                 },
+               
+ 
+                {
+                  type: 'image',
+                  url: '../../images/icon_sh.png',
+                  top: 330,
+                  left: 30,
+                  width: 20,
+                  height: 20
+                },
                 {
                   type: 'text',
-                  content: '￥80',
-                  fontSize: 19,
-                  color: '#E62004',
+                  content: newsdata.shopstore,
+                  fontSize: 13,
+                  color: '#7E7E8B',
                   textAlign: 'left',
-                  top: 346,
-                  left: 90,
-                  bolder: true
+                  top: 335,
+                  left: 55,
+                  // textDecoration: 'line-through'
                 },
+                // 
+                {
+                  type: 'image',
+                  url: '../../images/icon_tel.png',
+                  top: 360,
+                  left: 30,
+                  width: 20,
+                  height: 20
+                },
+                {
+                  type: 'text',
+                  content: newsdata.phone,
+                  fontSize: 13,
+                  color: '#7E7E8B',
+                  textAlign: 'left',
+                  top: 365,
+                  left: 55,
+                  // textDecoration: 'line-through'
+                },
+                // 
+                // 
+                {
+                  type: 'image',
+                  url: '../../images/position.png',
+                  top: 390,
+                  left: 30,
+                  width: 20,
+                  height: 20
+                },
+                {
+                  type: 'text',
+                  content: newsdata.address.substring(0,23)+'...',
+                  fontSize: 13,
+                  color: '#7E7E8B',
+                  textAlign: 'left',
+                  top: 395,
+                  left: 55
+                  // textDecoration: 'line-through'
+                },
+                // 
                 {
                   type: 'text',
                   content: '活动经费：',
                   fontSize: 13,
                   color: '#7E7E8B',
                   textAlign: 'left',
-                  top: 350,
+                  top: 424,
                   left: 30,
                   // textDecoration: 'line-through'
+                },
+                {
+                  type: 'text',
+                  content: '￥' + newsdata.saleprice,
+                  fontSize: 19,
+                  color: '#E62004',
+                  textAlign: 'left',
+                  top: 420,
+                  left: 90,
+                  bolder: true
+                },
+                {
+                  type: 'text',
+                  content: '原价：',
+                  fontSize: 13,
+                  color: '#7E7E8B',
+                  textAlign: 'left',
+                  top: 424,
+                  left: 185,
+                  // textDecoration: 'line-through'
+                },
+                {
+                  type: 'text',
+                  content: '￥' + newsdata.price,
+                  fontSize: 16,
+                  color: '#7E7E8B',
+                  textAlign: 'left',
+                  top: 424,
+                  left: 220,
+                  // bolder: true,
+                  textDecoration: 'line-through'
                 },
                 {
                   type: 'image',
@@ -189,7 +274,7 @@ Page({
                   type: 'image',
                   url: img,
                   top: 485,
-                  left: 300,
+                  left: 295,
                   borderRadius: 0.1,
                   width: 60,
                   height: 60

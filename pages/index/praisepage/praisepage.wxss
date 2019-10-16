@@ -9,13 +9,13 @@ button{padding:0!important}
 .pri_rt_top{display:flex;justify-content:space-between;margin:30rpx 0 10rpx;}
 .pri_rt_top_left{display:flex}
 
-.pri_rt_top_left .name{font-size:24rpx;color:#000;padding-bottom:5rpx;}
+.pri_rt_top_left .name{font-size:24rpx;color:#000;padding-bottom:10rpx;}
 .pri_rt_top_left .date{font-size:20rpx;color:#787878;}
-.t_left_topic{width:64rpx;height:64rpx;border-radius:60%;}
+.t_left_topic{width:80rpx;height:80rpx;border-radius:60%;}
 .evaluate_top{margin-bottom:40rpx;}
 .evaluate_topic{width:50rpx;height:50rpx;border-radius:60%;}
-.heart_zan{width:40rpx;height:40rpx;}
-.pri_rt_top_right{box-sizing:border-box;padding-top:6rpx;}
+.heart_zan{width:60rpx;height:60rpx;}
+.pri_rt_top_right{box-sizing:border-box;}
 .praise_num{font-size:20rpx;color:#c44845;line-height:18rpx;text-align: center;}
 .evaluate{font-size:28rpx;color:#000;font-weight:600;padding-bottom:30rpx;border-bottom:1px solid #dcdcdc;margin-bottom:50rpx;}
 .evaluate_content{box-sizing:border-box;padding-left:58rpx;font-size:24rpx;color:#000;margin-top:20rpx;}

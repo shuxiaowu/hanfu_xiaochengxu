@@ -69,6 +69,10 @@ Page({
                     },
                     method: 'post',
                     success: function (reg) {
+                      wx.showLoading({
+                        title: '加载中',
+                        duration: 1000
+                      })
                       var daka_int = reg.data.daka;
                       wx.reLaunch({
                         url: '../index?id=' + logins.user_id+'&integral='+daka_int,
@@ -86,7 +90,7 @@ Page({
     }else{
       wx.showToast({
         title: '请上传图片',
-        icon: 'loading',
+        icon: 'none',
         duration: 2000
       })
     }
@@ -180,6 +184,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
     let that = this;
     
     wx.setNavigationBarTitle({

@@ -42,4 +42,8 @@ swiper{height:270px!important}
 
 .share-image {width: 600rpx;height: 888rpx;margin: 0 75rpx;}
 
-button {margin-top: 20rpx;}
+button{margin-top: 20rpx;line-height:60rpx!important;}
+.button-hover{background-color:#fff;}
+.saveearth button{background:transparent!important}
+.saveearth button image{width:100rpx; height:100rpx;}
+.saveearth button view{line-height:24rpx;height:28rpx;font-size:26rpx;}

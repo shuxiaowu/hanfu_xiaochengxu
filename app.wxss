@@ -8,7 +8,7 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
-.base_line_underscore{font-size:24rpx;color:#999;text-align:center;margin-top:20rpx;}
+.base_line_underscore{font-size:24rpx;color:#999;text-align:center;margin:20rpx 0;}
 .refresh-img{display:inline-block;vertical-align:middle;width:80rpx;height:80rpx;}
 .refresh_load{display:inline-block}
 .refresh-block{text-align:center;}

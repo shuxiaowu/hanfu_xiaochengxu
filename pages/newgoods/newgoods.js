@@ -2,7 +2,6 @@
 const app = getApp()
 function updateRefreshIcon() {
   var deg = 0;
-  console.log('旋转开始了.....')
   var animation = wx.createAnimation({
     duration: 1000
   });
@@ -45,19 +44,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
     var that = this;
     var url = app.base.pub_url;
     wx.setNavigationBarTitle({
       title: '新品',
     })
-    console.log(url);
     wx.request({
       
       url: url +'getNewlist',
       data:{},
       method:'post',
       success:function(reg){
-          console.log(reg);
           that.setData({
             newlist:reg.data.newslist
           })
@@ -108,8 +109,6 @@ Page({
       method: 'post',
       success: function (reg) {
         var data = reg.data.newslist;
-        // var listdata = that.data.listdata.concat(data);
-        console.log(data);
         that.setData({
           newlist: data,
         })
@@ -135,8 +134,6 @@ Page({
         if (data.length >  0){
           that.setData({ loading: true, page: page+1 });
           var listdata = that.data.newlist.concat(data);
-          console.log(page)
-          console.log(data)
           setTimeout(() => {
             that.setData({
               newlist: listdata,

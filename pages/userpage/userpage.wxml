@@ -11,7 +11,7 @@
       <image src='../../images/default_head.png' class="default_head"></image>
     </view>
 
-    <button wx:if="{{!islogin}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button>
+    <button class="loginbtn" wx:if="{{!islogin}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button>
   </view>
 
 </view>
@@ -29,7 +29,7 @@
 <view class="box">
   <view class="user_box userbox">
     <view class="person-list">
-      <view  class="list-item" bindtap="mypraise">
+      <view class="list-item" bindtap="mypraise">
         <view class="list-item_left">
           <image class="item-image" src="../../images/jf_icon.png"></image>
           <text class="item-text">我的积分</text>
@@ -95,7 +95,7 @@
 
       <view class="person-line"></view>
 
-      <view  bindtap="problembtn" class="list-item">
+      <view bindtap="problembtn" class="list-item">
         <view class="list-item_left">
           <image class="item-image" src="../../images/problem_icon.png"></image>
           <text class="item-text">问题反馈</text>
@@ -124,18 +124,19 @@
   </view>
   <!--  -->
   <view wx:if="{{isshow}}" class="mask" catchtap="maskbtn">
-    <view class="modelbox">
-      <!-- <view class="title_success">
-        
-      </view> -->
-      <!-- <view class="text_box">
-        <view class="text_1">
-          小主打卡成功了~
-        </view>
-        <view class="text_2">+5积分</view>
-      </view> -->
-      <button class="login_btns" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
-       微信授权登入
+    <view class="modelboxlogin">
+      <view class="login_title">
+        微信授权
+      </view>
+      <view class="login_img">
+        <image src="../../images/avatar.jpeg"></image>
+      </view>
+      <view class='contents'>
+        <view>申请获取以下权限</view>
+        <text>获得您的公开信息(昵称，头像等)</text>
+      </view>
+      <button class="login_bottom" open-type="getUserInfo" bindgetuserinfo="onGotUserInfo">
+        确认
       </button>
       <!-- <view class="mask_btn" catchtap="maskclose">朕知道了</view> -->
     </view>

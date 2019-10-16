@@ -4,10 +4,10 @@ Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    isshow:false,
+    isshow: false,
     url: app.base.pub_url,
     navShow: false,
-    isphoneshow:false,
+    isphoneshow: false,
     signShow: false,
     height: "",
     islogin: false,
@@ -18,7 +18,7 @@ Page({
     user_id: "",
     day: 1,
     get_fans: 1,
-    allohone:''
+    allohone: ''
   },
   onLoad: function() {
     wx.setNavigationBarTitle({
@@ -26,7 +26,7 @@ Page({
     })
     var that = this
     var that = this;
-   
+
     var url = that.data.url;
     var logins = wx.getStorageSync('hanfu_logins');
     // console.log(logins)
@@ -49,7 +49,7 @@ Page({
         data: {
           user_id: logins.user_id
         },
-        success: function (res) {
+        success: function(res) {
           console.log(res.data.datalist);
           that.setData({
             fans: res.data.integral
@@ -74,11 +74,11 @@ Page({
   getPhoneNumber(e) {
     var that = this;
     wx.login({
-      success: function (res) {
+      success: function(res) {
         // console.log(res);
         var code = res.code;
         wx.checkSession({
-          success: function () {
+          success: function() {
             var ency = e.detail.encryptedData;
             var iv = e.detail.iv;
             // var sessionk = that.data.sessionKey;
@@ -89,10 +89,10 @@ Page({
               });
             } else { //同意授权
               wx.request({
-                method: "GET",
+                method: "POST",
                 url: url + 'getphonenumber',
                 data: {
-                  code:code,
+                  code: code,
                   encrypdata: ency,
                   ivdata: iv,
                 },
@@ -101,14 +101,14 @@ Page({
                 },
                 success: (res) => {
                   var phone = '';
-                  if (res.data){
-                     phone = res.data.substring(0, 3) + '****' + res.data.substring(7, 11);
+                  if (res.data) {
+                    phone = res.data.substring(0, 3) + '****' + res.data.substring(7, 11);
                   }
-                 
+
                   that.setData({
                     phonenumber: phone,
                     allohone: res.data,
-                    isphoneshow:false,
+                    isphoneshow: false,
                     isshow: true
                   })
                 }
@@ -120,7 +120,7 @@ Page({
     })
 
   },
-  maskclose: function () {
+  maskclose: function() {
     var that = this;
     that.setData({
       isshow: false,
@@ -153,19 +153,17 @@ Page({
                   avatarUrl: userInfo.avatarUrl,
                 },
                 success: function(res3) {
-                  
+
                   if (res3.data.code == 0) {
                     var logins = res3.data.memberinfo;
                     wx.setStorageSync("hanfu_logins", logins);
                     that.setData({
-                      isshow:false,
+                      isshow: false,
                       islogin: true,
                       isphoneshow: true,
                       head_img: logins.user_img,
                       user_name: logins.user_name,
-                      fans: logins.integral,
-                      level: logins.level,
-                      sessionKey: res3.data.arr.session_key
+                      fans: logins.integral
                     });
                     wx.showToast({
                       title: '登录成功!',
@@ -188,11 +186,11 @@ Page({
       }
     })
   },
-  exitpage:function(e){
+  exitpage: function(e) {
     var that = this;
-   var exitlogins = wx.removeStorageSync('hanfu_logins');
+    var exitlogins = wx.removeStorageSync('hanfu_logins');
     var logins = wx.getStorageSync('hanfu_logins');
-    if (logins ==''){
+    if (logins == '') {
       wx.showToast({
         title: '成功退出登录',
       })
@@ -201,27 +199,27 @@ Page({
     that.setData({
       head_img: "",
       user_name: "",
-      phonenumber:'',
-      islogin:false
+      phonenumber: '',
+      islogin: false
     })
   },
 
   // 我的积分
-  mypraise:function(e){
+  mypraise: function(e) {
     var logins = wx.getStorageSync('hanfu_logins');
-    if (logins){
+    if (logins) {
       wx.navigateTo({
         url: 'integral/intgral',
       })
-    }else{
+    } else {
       wx.showLoading({
         title: '请登录',
-        duration:1000
+        duration: 1000
       })
     }
   },
   // 发起活动
-  mysendactive: function (e) {
+  mysendactive: function(e) {
     var logins = wx.getStorageSync('hanfu_logins');
     if (logins) {
       wx.navigateTo({
@@ -235,7 +233,7 @@ Page({
     }
   },
   // 我的点赞
-  praisebtn: function (e) {
+  praisebtn: function(e) {
     var logins = wx.getStorageSync('hanfu_logins');
     if (logins) {
       wx.navigateTo({
@@ -249,7 +247,7 @@ Page({
     }
   },
   // 联系我们
-  contactbtn: function (e) {
+  contactbtn: function(e) {
     var logins = wx.getStorageSync('hanfu_logins');
     if (logins) {
       wx.navigateTo({
@@ -263,7 +261,7 @@ Page({
     }
   },
   // 问题反馈
-  problembtn: function (e) {
+  problembtn: function(e) {
     var logins = wx.getStorageSync('hanfu_logins');
     if (logins) {
       wx.navigateTo({
@@ -280,5 +278,48 @@ Page({
     wx.switchTab({
       url: '../active/active'
     })
-  }
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
+    var that = this;
+    var url = app.base.pub_url;
+    var logins = wx.getStorageSync('hanfu_logins');
+    if (logins){
+      wx.request({
+        url: url + 'getUser',
+        data: {
+          user_id:logins.user_id,
+        },
+        method: 'post',
+        success: function (reg) {
+          wx.showLoading({
+            title: '加载中',
+            duration: 1000
+          })
+          var data = reg.data.memberinfo;
+          // var listdata = that.data.listdata.concat(data);
+          var phone = '';
+          if (data.phone) {
+            phone = data.phone.substring(0, 3) + '****' + data.phone.substring(7, 11);
+          }
+          that.setData({
+            isshow: false,
+            islogin: true,
+            isphoneshow: true,
+            head_img: data.user_img,
+            user_name: data.user_name,
+            fans: data.integral
+          });
+        }
+      })
+    }
+
+  },
+
 })

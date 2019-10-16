@@ -45,6 +45,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
     var url = app.base.pub_url;
     var that = this;
     wx.setNavigationBarTitle({
@@ -54,9 +58,6 @@ Page({
       url: url+'getactive',
       method:'post',
       success:function(reg){
-        console.log(reg.data.data);
-        console.log(reg.data.data.apply_count);
-        console.log(reg.data.data.apply_headpic);
         if(reg.data.status==0){
           that.setData({
             listdata: reg.data.data,
@@ -77,7 +78,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.showLoading({
+      title: '加载中',
+      duration:1000
+    })
+    var url = app.base.pub_url;
+    var that = this;
+    wx.setNavigationBarTitle({
+      title: '活动',
+    })
+    wx.request({
+      url: url + 'getactive',
+      method: 'post',
+      success: function (reg) {
+        if (reg.data.status == 0) {
+          that.setData({
+            listdata: reg.data.data,
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -132,7 +152,7 @@ Page({
       method: 'post',
       success: function (reg) {
         var data = reg.data.data;
-        if(data.length >0){
+        if(data){
           that.setData({ loading: true, page: page+1 });
           var listdata = that.data.listdata.concat(data);
           setTimeout(() => {

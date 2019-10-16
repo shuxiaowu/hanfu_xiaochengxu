@@ -15,6 +15,10 @@ Page({
     })
   },
   onLoad: function (option) {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
     var that = this;
     if (option.id) {
       that.setData({
@@ -69,23 +73,63 @@ Page({
           accuracy: accuracy,
         })
       },
-      //定位失败回调
-      fail: function () {
-        wx.showToast({
-          title: "定位失败",
-          icon: "none"
-          
-        })
-      },
-
-      complete: function () {
-        //隐藏定位中信息进度
-        wx.hideLoading()
-      }
-
     })
   },
+  onShow: function (option) {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
+    var that = this;
+    var logins = wx.getStorageSync("hanfu_logins");
+    var url = app.base.pub_url;
+    wx.request({
+      url: url + 'getsignin',
+      method: "POST",
+      data: {
+        user_id: logins.user_id
+      },
+      success: function (reg) {
+        var data = reg.data.signdata;
+        var self_markdatas = reg.data.self_markdatas;
 
+        if (reg.data.status == 0) {
+          if (self_markdatas != '') {
+            data.push(self_markdatas);
+            console.log('sss')
+          }
+          console.log(data);
+          that.data.signinurl = '';
+          that.setData({
+            issignin: true,
+            markers: data
+          })
+        }
+        that.setData({
+          markers: data
+        })
+      }
+    })
+    wx.getLocation({
+      type: 'gcj02',
+      altitude: true,//高精度定位
+      //定位成功，更新定位结果
+      success: function (res) {
+        // console.log(res);
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var speed = res.speed
+        var accuracy = res.accuracy
+        // console.log(latitude, longitude)
+        that.setData({
+          latitude: latitude,
+          longitude: longitude,
+          speed: speed,
+          accuracy: accuracy,
+        })
+      },
+    })
+  },
   playticket: function(e) {
     var logins = wx.getStorageSync("hanfu_logins");
     var that = this;

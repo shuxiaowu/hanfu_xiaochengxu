@@ -51,8 +51,8 @@ App({
       var phonetype = false;
       wx.getSystemInfo({
         success: function (res) {
-          console.log(res.model)
-          if (res.model == 'iPhone XS Max' || res.model == 'iPhone XR' || res.model == 'iPhone X') {
+          console.log(res)
+          if (res.model.indexOf('iPhone X') == 0) {
             phonetype = true;
           }else{
             phonetype = false;
@@ -61,16 +61,6 @@ App({
       })
       return phonetype;
     }
-  },
-  onLoad: function (option) {
-    wx.getSystemInfo({
-      success: function (res) {
-        console.log(res.model)
-        if (res.model == 'iPhone XS Max' || res.model == 'iPhone XR' || res.model == 'iPhone X') {
-          iphonex: true
-        }
-      }
-    })
   },
   onLaunch: function () {
     // 展示本地存储能力
@@ -105,6 +95,7 @@ App({
       }
     })
   },
+
   globalData: {
     ceshiUrl:'',
     userInfo: null,

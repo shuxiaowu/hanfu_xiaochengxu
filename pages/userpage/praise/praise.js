@@ -14,6 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
     var logins = wx.getStorageSync('hanfu_logins');
     wx.setNavigationBarTitle({
       title: '我的点赞',

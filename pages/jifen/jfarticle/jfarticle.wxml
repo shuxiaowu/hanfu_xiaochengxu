@@ -1,5 +1,5 @@
 <!--pages/jifen/jfarticle/jfarticle.wxml-->
-<import src="../../../wxParse/wxParse.wxml"/>
+<import src="../../../wxParse/wxParse.wxml" />
 
 <swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{goods.thumb_arr}}" wx:key="{{index}}">
@@ -21,24 +21,29 @@
     新品推荐
   </view>
   <view class="jf_content {{phonetype ? 'phonex' : ''}}">
-    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
 </view>
-<view class="footbtn {{phonetype ? 'phonex' : ''}}" bindtap="dhbtn">
-  立即兑换
-</view>
-  <!--  -->
-  <view wx:if="{{isshow}}" class="mask" catchtap="" >
-      <view class="modelbox">
-          <view class="title_success">
-             {{model_title}}
-          </view>
-          <view class="text_box">
-            <view class="text_1">
-              {{model_content}}
-            </view>
-            <!-- <view class="text_2"></view> -->
-          </view>
-          <view class="mask_btn" catchtap="maskclose">确定</view>
+
+<form bindsubmit="dhbtn" report-submit='true'>
+  <view class="footbtn {{phonetype ? 'phonex' : ''}}">
+    <button form-type="submit">
+      立即兑换
+    </button>
+  </view>
+</form>
+<!--  -->
+<view wx:if="{{isshow}}" class="mask" catchtap="">
+  <view class="modelbox">
+    <view class="title_success">
+      {{model_title}}
+    </view>
+    <view class="text_box">
+      <view class="text_1">
+        {{model_content}}
       </view>
+      <!-- <view class="text_2"></view> -->
+    </view>
+    <view class="mask_btn" catchtap="maskclose">确定</view>
   </view>
+</view>

@@ -5,7 +5,6 @@ var app = getApp();
  */
 function updateRefreshIcon() {
   var deg = 0;
-  console.log('旋转开始了.....')
   var animation = wx.createAnimation({
     duration: 1000
   });
@@ -25,12 +24,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // list: [
-    //   '../../images/jinfen1.jpg',
-    //   '../../images/jinfen1.jpg',
-    //   '../../images/jinfen1.jpg',
-    //   '../../images/jinfen1.jpg'
-    // ],
     url: app.base.pub_url,
     page:2
   },
@@ -39,6 +32,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中',
+      duration: 1000
+    })
     var that = this;
     wx.getSystemInfo({
       success(res) {
@@ -55,7 +52,6 @@ Page({
       data: {},
       success: function(res) {
         if (res.data.code == 0) {
-          console.log(res.data);
           that.setData({
             top: res.data.top,
             list: res.data.list,
@@ -108,7 +104,6 @@ onPullDownRefresh: function() {
     success: function (reg) {
       var data = reg.data.data;
       // var listdata = that.data.listdata.concat(data);
-      console.log(data);
       that.setData({
         listdata: data,
       })

@@ -56,8 +56,14 @@
   <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage" />
   <!-- <button bind:tap="eventDraw">绘制</button> -->
   <view class="saveearth">
-    <button open-type="share" hover-class="none" >发给朋友</button>
-    <button bind:tap="eventSave">保存到本地</button>
+    <button open-type="share" hover-class="none" >
+      <image src="../../../images/weixinhead.png" mode="aspectFill"></image>
+      <view>发给朋友</view>
+    </button>
+    <button bind:tap="eventSave">
+      <image src="../../../images/download.png" mode="aspectFill"></image>
+      <view>保存至本地</view>
+    </button>
   </view>
 
 </view>
