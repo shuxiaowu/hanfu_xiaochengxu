@@ -77,14 +77,12 @@ Page({
                   that.setData({
                     goodsstock: that.data.goodsstock-1,
                     model_title:res.data.msg,
+                    isshow: !isshow,
                     model_content:res.data.backcontent
                   })
 
                 }
               });
-              that.setData({
-                isshow: !isshow,
-              })
             } else if (res.cancel) {
               console.log('用户点击取消')
             }
@@ -119,6 +117,9 @@ Page({
     });
     var goods_id = options.id;
     var title = options.title;
+    wx.setNavigationBarTitle({
+      title: title,
+    })
     var url = that.data.url;
     if (goods_id) {
       wx.request({

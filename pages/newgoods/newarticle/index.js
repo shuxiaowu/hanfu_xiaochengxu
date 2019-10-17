@@ -33,10 +33,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中',
-      duration: 1000
-    })
+
     var that = this;
     var id = options.id;
     var title = options.title;
@@ -53,6 +50,10 @@ Page({
       },
       method: 'post',
       success: function (reg) {
+        wx.showLoading({
+          title: '加载中',
+          duration: 1000
+        })
         that.setData({
           artdata: reg.data.data,
           id:id
@@ -147,8 +148,8 @@ Page({
                   url: '../../images/icon_sh.png',
                   top: 330,
                   left: 30,
-                  width: 20,
-                  height: 20
+                  width: 15,
+                  height: 15
                 },
                 {
                   type: 'text',
@@ -166,8 +167,8 @@ Page({
                   url: '../../images/icon_tel.png',
                   top: 360,
                   left: 30,
-                  width: 20,
-                  height: 20
+                  width: 15,
+                  height: 17
                 },
                 {
                   type: 'text',
@@ -384,21 +385,32 @@ Page({
     var that = this;
     var url = app.base.pub_url;
     var logins = wx.getStorageSync('hanfu_logins');
-    wx.request({
-      url: url+'addRepeat',
-      data: {
-        user_id:logins.user_id,
-        news_id:that.data.id
-      },
-      method:'post',
-      success:function(reg){
-       wx.showToast({
-         icon:'none',
-         title: reg.data.msg,
-         duration:3000
-       })
-      }
-      
-    })
+    if(logins){
+      wx.request({
+        url: url + 'addRepeat',
+        data: {
+          user_id: logins.user_id,
+          news_id: that.data.id
+        },
+        method: 'post',
+        success: function (reg) {
+          wx.showToast({
+            icon: 'none',
+            title: reg.data.msg,
+            duration: 3000
+          })
+        }
+
+      })
+    }else{
+      wx.switchTab({
+        url: '../../userpage/userpage',
+      })
+      wx.showToast({
+        icon:'none',
+        title: '请登录',
+      })
+    }
+
   }
 })

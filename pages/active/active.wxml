@@ -25,9 +25,9 @@
         </view>
       </view>
       <view class="hd_tp">
-        <view class="hd_tp_left" wx:if="{{item.price ? true : false}}">
-          <view class="hd_tp_t1">活动经费：</view>
-          <view class="hd_tp_t2">￥{{item.price}}</view>
+        <view class="hd_tp_left" >
+          <view class="hd_tp_t1" wx:if="{{item.price ? true : false}}">活动经费：</view>
+          <view class="hd_tp_t2 {{item.price ? '' : 'linethrough'}}">{{item.price<=0 ? '活动经费：￥0.00' : '￥'+item.price}}</view>
         </view>
         <view class="hd_tp_right" wx:if="{{item.apply_count ? true : false}}">
           <view class="hd_tp_r1">{{item.apply_count}}人已经报名</view>

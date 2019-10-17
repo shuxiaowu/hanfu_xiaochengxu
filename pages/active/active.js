@@ -45,10 +45,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中',
-      duration: 1000
-    })
+
     var url = app.base.pub_url;
     var that = this;
     wx.setNavigationBarTitle({
@@ -58,6 +55,10 @@ Page({
       url: url+'getactive',
       method:'post',
       success:function(reg){
+        wx.showLoading({
+          title: '加载中',
+          duration: 1000
+        })
         if(reg.data.status==0){
           that.setData({
             listdata: reg.data.data,
