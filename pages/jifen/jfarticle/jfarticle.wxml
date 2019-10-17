@@ -15,7 +15,7 @@
   <view class="jf_account">
     <view class="jf_num">{{goods.integral}}积分</view>
     <view class="jf_i"></view>
-    <view class="jf_kucun">库存{{item.limitquantity ==1 ? item.stock : '100000+'}}</view>
+    <view class="jf_kucun">库存{{goods.limitquantity ==1 ? goodsstock : '100000+'}}</view>
   </view>
   <view class="jf_recommond">
     新品推荐

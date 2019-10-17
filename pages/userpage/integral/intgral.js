@@ -1,5 +1,20 @@
 // pages/userpage/integral/intgral.js
 var app = getApp();
+function updateRefreshIcon() {
+  var deg = 0;
+  var animation = wx.createAnimation({
+    duration: 1000
+  });
+  var timer = setInterval(() => {
+    if (!this.data.loading)
+      clearInterval(timer);
+    animation.rotateZ(deg).step();//在Z轴旋转一个deg角度
+    deg += 360;
+    this.setData({
+      refreshAnimation: animation.export()
+    })
+  }, 2000);
+}
 Page({
   /**
    * 页面的初始数据
@@ -8,7 +23,9 @@ Page({
     head_img:'',
     integral:'',
     logins:'',
-    integral_list:''
+    integral_list:'',
+    loading:false,
+    page:2
   },
  pagebtn:function(e){
    wx.switchTab({
@@ -19,10 +36,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中',
-      duration: 1000
-    })
     wx.showLoading({
       title: '加载中',
       duration: 1000
@@ -38,7 +51,8 @@ Page({
         url: url + "getMyInteragal",
         method: "POST",
         data: {
-          user_id: logins.user_id
+          user_id: logins.user_id,
+          page:1
         },
         success: function (res) {
           console.log(res.data.datalist);
@@ -101,10 +115,38 @@ Page({
   },
 
   /**
-   * 页面上拉触底事件的处理函数
-   */
+  * 页面上拉触底事件的处理函数
+  */
   onReachBottom: function () {
+    var that = this;
+    var url = app.base.pub_url;
+    var page = that.data.page;
+    var logins = wx.getStorageSync("hanfu_logins");
+    wx.request({
+      url: url + 'getMyInteragal',
+      data: {
+        user_id: logins.user_id,
+        page: page
+      },
+      method: 'post',
+      success: function (reg) {
+        var data = reg.data.datalist;
+        console.log(data, page)
+        if (data.length > 0) {
+          that.setData({ loading: true, page: page + 1 });
+          var integral_list = that.data.integral_list.concat(data);
+          setTimeout(() => {
+            that.setData({
+              integral_list: integral_list,
+              loading: false,
+            })
+          }, 2000)
+        } else {
+          that.setData({ loading: false, page: page });
+        }
 
+      }
+    })
   },
 
   /**

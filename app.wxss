@@ -9,7 +9,7 @@
   box-sizing: border-box;
 } 
 .base_line_underscore{font-size:24rpx;color:#999;text-align:center;margin:20rpx 0;}
-.refresh-img{display:inline-block;vertical-align:middle;width:80rpx;height:80rpx;}
+.refresh-img{display:inline-block;vertical-align:middle;width:50rpx;height:50rpx;}
 .refresh_load{display:inline-block}
 .refresh-block{text-align:center;}
 
@@ -28,3 +28,5 @@
 .close_img>image{width: 100%;height: 100%;}
 
 .phonex{padding-bottom:40rpx!important;}
+
+/*  */

@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 35,
+			"current": 36,
 			"list": [
 				{
 					"id": -1,
@@ -299,6 +299,13 @@
 					"id": -1,
 					"name": "pages/newgoods/newgoods",
 					"pathName": "pages/newgoods/newgoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/userpage",
+					"pathName": "pages/userpage/userpage",
 					"scene": null
 				}
 			]

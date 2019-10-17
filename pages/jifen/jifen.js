@@ -72,7 +72,34 @@ onReady: function() {
  * 生命周期函数--监听页面显示
  */
 onShow: function() {
-
+  wx.showLoading({
+    title: '加载中',
+    duration: 1000
+  })
+  var that = this;
+  wx.getSystemInfo({
+    success(res) {
+      var height = res.windowHeight;
+      that.setData({
+        height: height + "px"
+      });
+    }
+  });
+  var url = that.data.url;
+  wx.request({
+    url: url + "getGoodlist",
+    method: "POST",
+    data: {},
+    success: function (res) {
+      if (res.data.code == 0) {
+        that.setData({
+          top: res.data.top,
+          list: res.data.list,
+          more: res.data.havenext
+        })
+      }
+    }
+  });
 },
 
 /**

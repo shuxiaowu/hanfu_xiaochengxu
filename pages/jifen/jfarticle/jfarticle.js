@@ -9,15 +9,10 @@ Page({
    */
   data: {
     isshow: false,
-    indicatorDots: true,
-    autoplay: false,
-    interval: 5000,
-    indicatorcolor: '#c44845',
-    duration: 1000,
     // 
     navShow: false,
     height: "",
-    indicatorDots: true,
+    indicatorDots: false,
     autoplay: true,
     interval: 3000,
     duration: 500,
@@ -30,6 +25,7 @@ Page({
     goodstitle:'',
     model_title:'',
     model_content:'',
+    goodsstock:'',
     phonetype: app.base.mySystemInfo()
   },
   maskclose: function() {
@@ -55,7 +51,7 @@ Page({
     var goodsintegral = that.data.goodsintegral;
     var good_id = that.data.goods_id;
     var goodsaddress = that.data.goodsaddress;
-    console.log(logins);
+    console.log(formId);
     if (logins) {
       if (good_id) {
         wx.showModal({
@@ -76,9 +72,10 @@ Page({
                   formId: formId
                 },
                 success: function (res) {
-                  console.log(res);
+                  that.onShow();
                  
                   that.setData({
+                    goodsstock: that.data.goodsstock-1,
                     model_title:res.data.msg,
                     model_content:res.data.backcontent
                   })
@@ -138,6 +135,7 @@ Page({
             var data = res.data.goods_info;
             that.setData({
               goods: data,
+              goodsstock:data.stock,
               goodstitle:title,
               goods_id: goods_id,
               goodsintegral: data.integral,
@@ -168,8 +166,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-
+  onShow: function (options) {
+    
   },
 
   /**

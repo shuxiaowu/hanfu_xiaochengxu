@@ -142,9 +142,7 @@ Page({
       wx.showToast({
         title: '请先登入',
       })
-      wx.switchTab({
-        url: '../userpage/userpage',
-      })
+
     }
     
     
