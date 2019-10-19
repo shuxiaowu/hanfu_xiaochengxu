@@ -12,7 +12,8 @@ Page({
     activelatitude: '',
     activelongitude: '',
     isshow: true,
-    positionname: '点击获取当前位置'
+    positionname: '点击获取当前位置',
+    phonetype: app.base.mySystemInfo()
   },
   bindDateChange: function(e) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)

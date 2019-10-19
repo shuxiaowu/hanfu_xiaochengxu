@@ -71,6 +71,7 @@ Page({
       });
     }
   },
+  
   getPhoneNumber(e) {
     var that = this;
     wx.login({
@@ -320,6 +321,9 @@ Page({
       })
     }
 
+  },
+  onShow: function () {
+    this.onLoad();
   },
 
 })

@@ -26,7 +26,7 @@
           <view class="int_date">{{item.addtime}}</view>
         </view>
         <view class="list-item_right">
-          <view class="list_jf">{{item.integral}}积分</view>
+          <view class="list_jf">{{item.integral>0 ? '+'+item.integral : item.integral}}积分</view>
         </view>
       </view>
       <view class="person-line"></view>

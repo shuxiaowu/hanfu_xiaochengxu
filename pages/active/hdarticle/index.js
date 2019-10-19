@@ -169,39 +169,5 @@ Page({
       }
     })
     console.log(res);
-    return {
-      title: '活动',
-      path: '/pages/active/hdarticle/index?id='+that.data.id,
-      success:function (res) {
-        var shareTickets = res.shareTickets,
-          shareTicket = shareTickets;
-        wx.getShareInfo({
-          shareTicket: shareTicket,
-          success: function (res) {
-            wx.showToast({
-              title: '转发成功',
-              duration: 5000
-            })
-
-          },
-          fail: function (res) {
-            wx.showToast({
-              title: 'fail:' + res.errMsg,
-              duration: 5000
-            })
-          }
-        });
-        console.log(res + '成功');
-       
-      },
-      fail: function (res) {
-        console.log(res + '失败');
-        // 转发失败
-      },
-      complete: function (res) {
-        // 不管成功失败都会执行
-        console.log(res + '123');
-      }
-    }
   }
 })
