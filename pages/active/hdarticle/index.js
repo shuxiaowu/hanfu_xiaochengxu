@@ -113,7 +113,8 @@ Page({
            id:id,
            isapply: reg.data.istrue,
            applyheadimg:reg.data.apply_img,
-           num: reg.data.apply_count
+           num: reg.data.apply_count,
+           isapply: reg.data.isapply
          })
         }
       })

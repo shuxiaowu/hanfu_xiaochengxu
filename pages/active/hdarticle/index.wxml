@@ -1,8 +1,8 @@
 <!--pages/active/hdarticle/index.wxml-->
 <swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <swiper-item>
-      <image src="{{url}}{{artdata.uploadimg}}" class="slide-image" width="355" mode="aspectFill" bindtap='previewImg' />
-    </swiper-item>
+  <swiper-item>
+    <image src="{{url}}{{artdata.uploadimg}}" class="slide-image" width="355" mode="aspectFill" bindtap='previewImg' />
+  </swiper-item>
 </swiper>
 <view class="hd_ps_text">
   <view class="hd_citop">
@@ -29,49 +29,57 @@
   <view class="hd_tp">
     <view class="hd_tp_left">
       <view class="hd_tp_t1" wx:if="{{artdata.price ? true : false}}">活动经费：</view>
-      <view class="hd_tp_t2 {{item.price ? '' : 'linethrough'}}">{{artdata.price<=0 ? '活动经费：￥0.00' : '￥'+artdata.price}}</view>
-    </view>
-    <view class="hd_tp_right" wx:if="{{num ? true : false}}">
-      <view class="hd_tp_r1">{{num}}人已经报名</view>
-      <view class="hd_tp_r2" style="width:{{applyheadimg.length*70}}rpx">
-        <view class='index'>
-          <view wx:for="{{applyheadimg}}" wx:key="{{index}}" style='transform:translateX({{-index*5}}rpx);'>
-            <image class='text' src='{{item.headimg}}' mode='aspectFill'></image>
+      <view class="hd_tp_t2 {{item.price ? '' : 'linethrough'}}">{{artdata.price
+        <=0 ? '活动经费：￥0.00' : '￥'+artdata.price}}</view>
+      </view>
+      <view class="hd_tp_right" wx:if="{{num ? true : false}}">
+        <view class="hd_tp_r1">{{num}}人已经报名</view>
+        <view class="hd_tp_r2" style="width:{{num==1 ? num*70 : num*40+10}}rpx">
+          <view class='index'>
+            <view wx:for="{{applyheadimg}}" wx:key="{{index}}" style='transform:translateX({{-index*15}}rpx);'>
+              <image class='text' src='{{item.headimg}}' mode='aspectFill'></image>
+            </view>
           </view>
         </view>
       </view>
     </view>
   </view>
-</view>
-<!-- 新品推荐 -->
-<view class="art_title">
-  <view class="artt_topic">新品推荐</view>
-</view>
-<view class="new_box">
-<block wx:for="{{newgood}}" wx:key="{{index}}">
-  <view class="new_item" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="newbtn">
-    <view class="item_img">
-      <image src="{{url}}{{item.thumb}}" mode="aspectFill"></image>
-    </view>
-    <view>
-      <view class="news_topic">{{item.title}}
-        <image src="../../../images/new_good.png" class="iconnew" mode="widthFix"></image>
-      </view>
-    </view>
+  <!-- 新品推荐 -->
+  <view class="art_title">
+    <view class="artt_topic">新品推荐</view>
   </view>
-</block>
-</view>
+  <view class="new_box">
+    <block wx:for="{{newgood}}" wx:key="{{index}}">
+      <view class="new_item" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="newbtn">
+        <view class="item_img">
+          <image src="{{url}}{{item.thumb}}" mode="aspectFill"></image>
+        </view>
+        <view>
+          <view class="news_topic">{{item.title}}
+            <image src="../../../images/new_good.png" class="iconnew" mode="widthFix"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
 
-<!-- 活动详情 -->
-<view class="art_title {{phonetype ? 'phonex' : ''}}">
-  <view class="artt_topic">活动详情</view>
-</view>
-<view class="content {{phonetype ? 'phonex' : ''}}">
-{{artdata.content}}
-</view>
-<view class="footbtn {{phonetype ? 'phonex' : ''}}" wx:if="{{artdata.status == 1 ? true :false}}" bindtap="applybtn">
-  报名中
-</view>
-<view class="footbtn {{phonetype ? 'phonex' : ''}}" wx:if="{{artdata.status == 2 ? true :false}}">
-  报名截止
-</view>
+  <!-- 活动详情 -->
+  <view class="art_title {{phonetype ? 'phonex' : ''}}">
+    <view class="artt_topic">活动详情</view>
+  </view>
+  <view class="content {{phonetype ? 'phonex' : ''}}">
+    {{artdata.content}}
+  </view>
+  <block wx:if="{{isapply}}">
+    <view class="footbtn {{phonetype ? 'phonex' : ''}}" wx:if="{{artdata.status == 1 ? true :false}}" bindtap="applybtn">
+      报名中
+    </view>
+    <view class="footbtn {{phonetype ? 'phonex' : ''}}" wx:if="{{artdata.status == 2 ? true :false}}">
+      报名截止
+    </view>
+  </block>
+  <block wx:if="{{!isapply}}">
+    <view class="footbtn {{phonetype ? 'phonex' : ''}}">
+      已报名
+    </view>
+  </block>

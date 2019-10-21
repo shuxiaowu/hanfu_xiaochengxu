@@ -11,7 +11,7 @@
 <form bindsubmit="avtiveFormSubmit">
   <view class="box" wx:if="{{isshow}}">
     <view class="input_item">
-      <view class="lable">
+      <view class="lable" style="width:{{isiphone5 ? '185rpx!important;' :''}}">
         活动名称
         <text>*</text>
       </view>
@@ -19,18 +19,18 @@
     </view>
     <!--  -->
     <view class="input_item">
-      <view class="lable">
+      <view class="lable" style="width:{{isiphone5 ? '185rpx!important;' :''}}">
         活动时间
         <text>*</text>
       </view>
-      <picker mode="date" value="{{date}}" name="date" start="2000-01-01" end="3000-01-01" bindchange="bindDateChange">
-        <view class="picker">{{date}}</view>
+      <picker mode="date" value="{{currenttime}}" name="date" start="2000-01-01" end="3000-01-01" bindchange="bindDateChange">
+        <view class="picker">{{currenttime}}</view>
       </picker>
       <image src="../../../images/arrow_icon.png" class="arrow"></image>
     </view>
     <!--  -->
     <view class="input_item">
-      <view class="lable">
+      <view class="lable" style="width:{{isiphone5 ? '185rpx!important;' :''}}">
         活动地址
         <text>*</text>
       </view>
@@ -61,7 +61,7 @@
     </view>
     <!--  -->
     <view class="input_item">
-      <view class="lable">
+      <view class="lable" style="width:{{isiphone5 ? '185rpx!important;' :''}}">
         活动详情
         <text>*</text>
       </view>

@@ -52,7 +52,7 @@
 <view class="mask_container" wx:if="{{mask}}">
   <view class="mask mask_box" bindtap="maskbtn">
   </view>
-  <image src="{{shareImage}}" class="share-image" mode="widthFix"></image>
+  <image src="{{shareImage}}" class="share-image" mode="widthFix" style="top:{{isiphone5 ? '4%!important;' : ''}}"></image>
   <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage" />
   <!-- <button bind:tap="eventDraw">绘制</button> -->
   <view class="saveearth">

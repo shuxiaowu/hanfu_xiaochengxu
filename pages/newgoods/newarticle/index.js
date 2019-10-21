@@ -35,6 +35,14 @@ Page({
   onLoad: function (options) {
 
     var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.model);
+        that.setData({
+          isiphone5: true
+        })
+      },
+    })
     var id = options.id;
     var title = options.title;
     var url = app.base.pub_url;

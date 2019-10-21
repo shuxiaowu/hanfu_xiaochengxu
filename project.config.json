@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 36,
+			"current": 39,
 			"list": [
 				{
 					"id": -1,
@@ -306,6 +306,27 @@
 					"id": -1,
 					"name": "pages/userpage/userpage",
 					"pathName": "pages/userpage/userpage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/newgoods/newarticle/index",
+					"pathName": "pages/newgoods/newarticle/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userpage/sendactive/sendactive",
+					"pathName": "pages/userpage/sendactive/sendactive",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/active/active",
+					"pathName": "pages/active/active",
 					"scene": null
 				}
 			]

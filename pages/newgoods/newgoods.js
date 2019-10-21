@@ -32,6 +32,7 @@ Page({
     page:2,
     painting: {},
     shareImage: ''
+    
   },
   newarticle:function(e){
     var id = e.currentTarget.dataset.id;
@@ -44,8 +45,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     var that = this;
+
+
     var url = app.base.pub_url;
     wx.setNavigationBarTitle({
       title: '新品',

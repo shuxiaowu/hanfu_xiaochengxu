@@ -1,5 +1,6 @@
 // pages/userpage/sendactive/sendactive.js
-const app = getApp()
+const app = getApp();
+var util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -75,7 +76,7 @@ Page({
                     url: '../userpage',
                   })
                   wx.showToast({
-                    icon:'none',
+                    icon: 'none',
                     title: '活动发起成功'
                   })
                 }
@@ -181,6 +182,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var time = util.formatTime(new Date());
+    var myDate = new Date();
+    var that = this;
+    myDate.getFullYear();
+    myDate.getMonth();
+    myDate.getDate();
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res.windowWidth);
+        if (res.windowWidth < 375) {
+          that.setData({
+            isiphone5: true
+          })
+        }
+
+      },
+    })
+    that.setData({
+      currenttime: myDate.getFullYear() + '-' + (myDate.getMonth() + 1) + '-' + myDate.getDate()
+    })
     wx.setNavigationBarTitle({
       title: '发起活动',
     })
