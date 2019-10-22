@@ -43,7 +43,6 @@ Page({
               data.push(self_markdatas);
               console.log('sss')
             }
-            console.log(data);
             that.data.signinurl = '';
             that.setData({
               issignin:true,
