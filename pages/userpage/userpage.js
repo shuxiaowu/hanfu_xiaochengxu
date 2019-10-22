@@ -276,9 +276,18 @@ Page({
     }
   },
   activepage: function(e) {
-    wx.switchTab({
-      url: '../active/active'
-    })
+    var logins = wx.getStorageSync('hanfu_logins');
+    if (logins) {
+      wx.navigateTo({
+        url: 'myactive/myactive'
+      })
+    } else {
+      wx.showLoading({
+        title: '请登录',
+        duration: 1000
+      })
+    }
+
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

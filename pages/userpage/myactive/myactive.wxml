@@ -1,0 +1,54 @@
+<!--pages/active/active.wxml-->
+<view class="hd_box">
+  <!-- item -->
+  <block wx:for="{{listdata}}" wx:key="{{index}}">
+    <view class="hd_con">
+      <!-- w:663px h:240px -->
+      <view class="hd_conimg" bindtap="hdarticle" data-id="{{item.id}}" data-title="{{item.title}}">
+        <image src="{{url}}{{item.uploadimg}}" mode="aspectFill"></image>
+        <view class="hd_ps_text">
+          <view class="hd_citop">
+            <view class="hd_title">{{item.title}}</view>
+            <view class="hd_bm">{{item.status == 1 ? '报名中' : '报名截止'}}</view>
+
+          </view>
+          <view class="hd_cidowm">
+            <view class="hd_date">
+              <image src="../../images/date1.png" class="hd-icon"></image>
+              <view class="hd_text">{{item.addtime}}</view>
+            </view>
+            <view class="hd_position">
+              <image src="../../images/psi1.png" class="hd-icon_ps"></image>
+              <view class="hd_text">{{item.addname}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="hd_tp">
+        <view class="hd_tp_left" >
+          <view class="hd_tp_t1" wx:if="{{item.price ? true : false}}">活动经费：</view>
+          <view class="hd_tp_t2 {{item.price ? '' : 'linethrough'}}">{{item.price<=0 ? '活动经费：￥0.00' : '￥'+item.price}}</view>
+        </view>
+        <view class="hd_tp_right" wx:if="{{item.apply_count ? true : false}}">
+          <view class="hd_tp_r1">{{item.apply_count}}人已经报名</view>
+          <view class="hd_tp_r2" style="width:{{item.apply_headpic.length*70}}rpx">
+            <view class='index'>
+            <!-- style='transform:translateX({{-index*20}}rpx);' -->
+              <view wx:for="{{item.apply_headpic}}" wx:key  class="apply_head_img" style='transform:translateX({{-index*20}}rpx);'>
+                <image class='text' src='{{item}}' mode='aspectFill'></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="base_line_underscore"  wx:if="{{!loading}}">--我是有底线的--</view>
+  <view class="refresh-block" wx:if="{{loading}}">
+   <image class="refresh-img" animation="{{refreshAnimation}}" src="../../images/timg.gif"></image>
+      <view class="base_line_underscore refresh_load">加载中</view>
+     
+     
+  </view>
+</view>
+<!--  -->

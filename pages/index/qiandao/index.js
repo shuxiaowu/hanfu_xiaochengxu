@@ -57,7 +57,6 @@ Page({
                 addname: that.data.positionname
               },
               success: function(reg) {
-                console.log(reg)
                 if (reg.data.status==0){
                   var that = this;
                   var url = app.base.pub_url;
@@ -68,12 +67,12 @@ Page({
                       user_id: logins.user_id
                     },
                     method: 'post',
-                    success: function (reg) {
+                    success: function (reg2) {
                       wx.showLoading({
                         title: '加载中',
                         duration: 1000
                       })
-                      var daka_int = reg.data.daka;
+                      var daka_int = reg2.data.daka;
                       wx.reLaunch({
                         url: '../index?id=' + logins.user_id+'&integral='+daka_int,
                       })
