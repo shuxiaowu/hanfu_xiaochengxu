@@ -50,10 +50,10 @@ Page({
           user_id: logins.user_id
         },
         success: function(res) {
-          console.log(res.data.datalist);
           that.setData({
             fans: res.data.integral
           });
+          wx.stopPullDownRefresh();
         }
       });
       that.setData({
@@ -131,7 +131,6 @@ Page({
     let that = this;
     let phone = that.data.allohone;
     let url = that.data.url;
-    console.log(phone)
     wx.login({
       success: function(res) {
         if (res.code) {
@@ -141,7 +140,6 @@ Page({
               var userInfo = res2.userInfo
               var encryptedData = encodeURIComponent(res2.encryptedData); //一定要把加密串转成URI编码
               var iv = res2.iv;
-              console.log(res2);
               wx.request({
                 url: url + "wxLogin",
                 method: "POST",
@@ -195,7 +193,6 @@ Page({
       wx.showToast({
         title: '成功退出登录',
       })
-      console.log('dsds');
     }
     that.setData({
       head_img: "",
@@ -293,42 +290,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    wx.showLoading({
-      title: '加载中',
-      duration: 1000
-    })
-    var that = this;
-    var url = app.base.pub_url;
-    var logins = wx.getStorageSync('hanfu_logins');
-    if (logins){
-      wx.request({
-        url: url + 'getUser',
-        data: {
-          user_id:logins.user_id,
-        },
-        method: 'post',
-        success: function (reg) {
-          wx.showLoading({
-            title: '加载中',
-            duration: 1000
-          })
-          var data = reg.data.memberinfo;
-          // var listdata = that.data.listdata.concat(data);
-          var phone = '';
-          if (data.phone) {
-            phone = data.phone.substring(0, 3) + '****' + data.phone.substring(7, 11);
-          }
-          that.setData({
-            isshow: false,
-            islogin: true,
-            isphoneshow: true,
-            head_img: data.user_img,
-            user_name: data.user_name,
-            fans: data.integral
-          });
-        }
-      })
-    }
+    this.onLoad();
 
   },
   onShow: function () {

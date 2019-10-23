@@ -55,7 +55,7 @@ Page({
           page:1
         },
         success: function (res) {
-          console.log(res.data.datalist);
+          wx.stopPullDownRefresh();
           that.setData({
             integral_list: res.data.datalist,
             integral: res.data.integral
@@ -111,7 +111,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onLoad();
   },
 
   /**
@@ -131,7 +131,6 @@ Page({
       method: 'post',
       success: function (reg) {
         var data = reg.data.datalist;
-        console.log(data, page)
         if (data.length > 0) {
           that.setData({ loading: true, page: page + 1 });
           var integral_list = that.data.integral_list.concat(data);

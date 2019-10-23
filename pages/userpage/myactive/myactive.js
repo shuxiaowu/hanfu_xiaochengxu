@@ -5,7 +5,6 @@ var app = getApp();
  */
 function updateRefreshIcon() {
   var deg = 0;
-  console.log('旋转开始了.....')
   var animation = wx.createAnimation({
     duration: 1000
   });
@@ -117,7 +116,6 @@ Page({
       success: function (reg) {
         var data = reg.data.data;
         // var listdata = that.data.listdata.concat(data);
-        console.log(data);
         that.setData({
           listdata: data,
         })

@@ -41,7 +41,6 @@ Page({
         var data = reg.data.data;
         var arr = new Array();
         arr[0] = data.uploadimg;
-        console.log(data.comment)
         if(reg.data.status==0){
             that.setData({
               listdata: data,
@@ -74,7 +73,6 @@ Page({
         },
         method: 'post',
         success: function (reg) {
-          console.log(reg.data.enabled);
           // console.log(reg.data);
           var priseid = that.data.praise;
           var enabled = reg.data.enabled;
@@ -107,7 +105,6 @@ Page({
     })
   },
   bindFormSubmit:function(e){
-    console.log(e.detail.value);
     var that = this;
     var url = app.base.pub_url;
     var id = that.data.id;
@@ -124,7 +121,6 @@ Page({
             content: comment
           },
           success: function (reg) {
-            console.log(reg);
             if (reg.data.code == 0) {
               that.setData({
                 comment: reg.data.comment,

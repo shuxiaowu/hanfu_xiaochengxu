@@ -6,87 +6,99 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgurl:[],
+    imgurl: [],
     urls: '',
     positionname: '',
     signlatitude: '',
     signlongitude: '',
     self_latitude: '',
-    self_longitude:'',
-    
-    
+    self_longitude: '',
+
+
   },
   bindFormSubmit: function(e) {
+
     let that = this;
     var url = app.base.pub_url;
     var img = that.data.urls;
     var signlatitude = that.data.signlatitude;
     var signlongitude = that.data.signlongitude;
-    if(signlatitude =='' || signlongitude==''){
-      signlatitude = that.data.self_latitude;
-      signlongitude = that.data.self_longitude;
-    }
-    console.log(signlatitude)
+    // if (signlatitude == '' || signlongitude == '') {
+    //   signlatitude = that.data.self_latitude;
+    //   signlongitude = that.data.self_longitude;
+    // }
     var content = e.detail.value.textarea;
     var logins = wx.getStorageSync("hanfu_logins");
     // 图片上传
     if (img != '') {
-      console.log(img);
-      wx.uploadFile({
-        url: url + 'uploadImage', 
-        filePath: img,
-        name: 'file',
-        formData: {
-          'user': 'test'
-        },
-        success(res) {
-          var data = JSON.parse(res.data)
-          var upimgname = data.saveName;
-          console.log(upimgname);
-          console.log(data);
-          if (data.status == 0) {
-            wx.request({
-              url: url + 'submitSignin',
-              method: "POST",
-              data: {
-                img: upimgname,
-                content: e.detail.value.textarea,
-                signlatitude: signlatitude,
-                signlongitude: signlongitude,
-                user_id: logins.user_id,
-                addname: that.data.positionname
-              },
-              success: function(reg) {
-                if (reg.data.status==0){
-                  var that = this;
-                  var url = app.base.pub_url;
-                  var logins = wx.getStorageSync('hanfu_logins');
-                  wx.request({
-                    url: url + 'addDaka',
-                    data: {
-                      user_id: logins.user_id
-                    },
-                    method: 'post',
-                    success: function (reg2) {
-                      wx.showLoading({
-                        title: '加载中',
-                        duration: 1000
-                      })
-                      var daka_int = reg2.data.daka;
-                      wx.reLaunch({
-                        url: '../index?id=' + logins.user_id+'&integral='+daka_int,
-                      })
-                    }
+      if (signlatitude != '' && signlongitude != '') {
+        wx.showToast({
+          title: '提交中',
+          icon: 'loading',
+          duration: 2000
+        })
+        wx.uploadFile({
+          url: url + 'uploadImage',
+          filePath: img,
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success(res) {
+            var data = JSON.parse(res.data)
+            var upimgname = data.saveName;
+            if (data.status == 0) {
+              wx.request({
+                url: url + 'submitSignin',
+                method: "POST",
+                data: {
+                  img: upimgname,
+                  content: e.detail.value.textarea,
+                  signlatitude: signlatitude,
+                  signlongitude: signlongitude,
+                  user_id: logins.user_id,
+                  addname: that.data.positionname
+                },
+                success: function(reg) {
+                  if (reg.data.status == 0) {
+                    var that = this;
+                    var url = app.base.pub_url;
+                    var logins = wx.getStorageSync('hanfu_logins');
+                    wx.request({
+                      url: url + 'addDaka',
+                      data: {
+                        user_id: logins.user_id
+                      },
+                      method: 'post',
+                      success: function(reg2) {
+                        wx.showLoading({
+                          title: '加载中',
+                          duration: 1000
+                        })
+                      wx.hideToast();
+                        var daka_int = reg2.data.daka;
+                        wx.reLaunch({
+                          url: '../index?id=' + logins.user_id + '&integral=' + daka_int,
+                        })
+                      }
 
-                  })
+                    })
 
+                  }
                 }
-              }
-            })
+              })
+            }
           }
-        }
-      })
-    }else{
+        })
+      }else{
+        wx.showToast({
+          title: '请选择坐标位置',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+
+    } else {
       wx.showToast({
         title: '请上传图片',
         icon: 'none',
@@ -188,7 +200,7 @@ Page({
       duration: 1000
     })
     let that = this;
-    
+
     wx.setNavigationBarTitle({
       title: '签到',
     })
@@ -199,7 +211,6 @@ Page({
         var longitude = res.longitude
         const speed = res.speed
         const accuracy = res.accuracy;
-        console.log(latitude, longitude)
         that.setData({
           self_latitude: latitude,
           self_longitude: longitude

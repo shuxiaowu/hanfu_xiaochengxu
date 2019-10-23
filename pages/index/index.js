@@ -41,7 +41,6 @@ Page({
           if(reg.data.status==0){
             if (self_markdatas !=''){
               data.push(self_markdatas);
-              console.log('sss')
             }
             that.data.signinurl = '';
             that.setData({
@@ -95,9 +94,7 @@ Page({
         if (reg.data.status == 0) {
           if (self_markdatas != '') {
             data.push(self_markdatas);
-            console.log('sss')
           }
-          console.log(data);
           that.data.signinurl = '';
           that.setData({
             issignin: true,

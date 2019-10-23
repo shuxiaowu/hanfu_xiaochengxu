@@ -59,6 +59,7 @@ Page({
           title: '加载中',
           duration: 1000
         })
+        wx.stopPullDownRefresh();
         if(reg.data.status==0){
           that.setData({
             listdata: reg.data.data,
@@ -100,23 +101,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    var that = this;
-    var url = app.base.pub_url;
-    wx.request({
-      url: url +'getactive',
-      data:{
-        page:1
-      },
-      method:'post',
-      success:function(reg){
-        var data = reg.data.data;
-        // var listdata = that.data.listdata.concat(data);
-        console.log(data);
-        that.setData({
-          listdata: data,
-        })
-      }
-    })
+    this.onLoad();
+    
   },  
 
   /**

@@ -68,7 +68,7 @@
     </view>
     <textarea placeholder="请输入活动详情..." name="textarea" class="textarea_box" />
     <!--  -->
-    <button form-type="submit" class="footbtn {{phonetype ? 'phonex' : ''}}">
+    <button form-type="submit" class="footbtn" style="{{phonetype ? 'padding-bottom:110rpx!important;' : ''}}">
       立即发起
     </button>
   </view>

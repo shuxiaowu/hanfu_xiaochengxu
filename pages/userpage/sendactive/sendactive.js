@@ -42,7 +42,6 @@ Page({
     var content = e.detail.value.textarea;
     var logins = wx.getStorageSync("hanfu_logins");
     var img = that.data.urls[0];
-    console.log(img)
     // 图片上传
     if (img != '') {
       wx.uploadFile({
@@ -70,7 +69,6 @@ Page({
                 addname: that.data.positionname
               },
               success: function(reg) {
-                console.log(reg.data);
                 if (reg.data.status == 0) {
                   wx.reLaunch({
                     url: '../userpage',
@@ -98,7 +96,6 @@ Page({
   // 预览图片
   previewImg: function(e) {
     let that = this;
-    console.log(that.data.imgurl);
     wx.previewImage({
       current: that.data.imgurl[e.currentTarget.dataset.id],
       urls: that.data.imgurl,
@@ -112,7 +109,6 @@ Page({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
-        console.log(res)
         var tempFilePaths = res.tempFilePaths
         that.data.images = tempFilePaths
         // 多图片
@@ -120,7 +116,6 @@ Page({
         // console.log(that.data.imgurl);
         // 单图片
         that.data.imgurl = tempFilePaths
-        console.log(that.data.imgurl);
         that.setData({
           images: that.data.imgurl,
           urls: that.data.imgurl
@@ -160,10 +155,6 @@ Page({
     wx.chooseLocation({
       success: function(res) {
         // success
-        console.log(res, "location")
-        console.log(res.name)
-        console.log(res.latitude)
-        console.log(res.longitude)
         that.setData({
           positionname: res.name,
           activelatitude: res.latitude,
@@ -190,7 +181,6 @@ Page({
     myDate.getDate();
     wx.getSystemInfo({
       success: function(res) {
-        console.log(res.windowWidth);
         if (res.windowWidth < 375) {
           that.setData({
             isiphone5: true

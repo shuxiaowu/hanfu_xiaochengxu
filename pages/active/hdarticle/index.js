@@ -169,6 +169,5 @@ Page({
         })
       }
     })
-    console.log(res);
   }
 })

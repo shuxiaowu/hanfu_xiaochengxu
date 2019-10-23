@@ -32,8 +32,6 @@ Page({
           user_id: logins.user_id
         },
         success: function (res) {
-          console.log(logins.user_id)
-          console.log(res.data);
           var data = res.data.data;
           that.setData({
             praise_list: data

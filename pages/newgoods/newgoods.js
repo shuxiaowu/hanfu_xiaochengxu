@@ -16,7 +16,6 @@ function updateRefreshIcon() {
   }, 2000);
 }
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -62,6 +61,7 @@ Page({
           title: '加载中',
           duration: 1000
         })
+        wx.stopPullDownRefresh();
           that.setData({
             newlist:reg.data.newslist
           })
@@ -102,22 +102,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    var that = this;
-    var url = app.base.pub_url;
-    var page = that.data.page + 1;
-    wx.request({
-      url: url + 'getNewlist',
-      data: {
-        page: 1
-      },
-      method: 'post',
-      success: function (reg) {
-        var data = reg.data.newslist;
-        that.setData({
-          newlist: data,
-        })
-      }
-    })
+    this.onLoad();
   },
 
   /**

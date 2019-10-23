@@ -112,6 +112,11 @@ Page({
     }
     var upimgs = [];
     if(img.length>0){
+      wx.showToast({
+        title: '提交中',
+        icon: 'loading',
+        duration: 5000
+      })
       var upimgs = new Array();
       var url = app.base.pub_url;
       for (let i = 0; i < img.length; i++) {
@@ -123,12 +128,12 @@ Page({
             'user': 'test'
           },
           success(res) {
+            wx.hideToast();
             var data = JSON.parse(res.data)
             var upimgname = data.saveName;
             upimgs = upimgs.concat(upimgname);
             if (data.status == 0) {
               if (i == img.length-1){
-                console.log(i + '----' + upimgs);
                 postrequest(protype, upimgs, describ, user_id);
               }
              
@@ -141,7 +146,6 @@ Page({
     }
     
     // var imgsss = wx.getStorageSync('upimgs');
-    // console.log(uploadimg(img));
 
   },
   // 上传图片

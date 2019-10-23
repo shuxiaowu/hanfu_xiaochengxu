@@ -8,7 +8,6 @@ Page({
 
   },
   exitlogin: function(e) {
-    console.log('rgfg');
     wx.removeStorageSync('hanfu_logins');
     wx.switchTab({
       url: '../userpage',
