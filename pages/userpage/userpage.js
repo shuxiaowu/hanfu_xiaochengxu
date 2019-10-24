@@ -198,6 +198,7 @@ Page({
       head_img: "",
       user_name: "",
       phonenumber: '',
+      fans:0,
       islogin: false
     })
   },

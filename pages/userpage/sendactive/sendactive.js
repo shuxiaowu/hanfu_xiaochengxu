@@ -43,46 +43,61 @@ Page({
     var logins = wx.getStorageSync("hanfu_logins");
     var img = that.data.urls[0];
     // 图片上传
-    if (img != '') {
-      wx.uploadFile({
-        url: url + 'uploadImage', //仅为示例，非真实的接口地址
-        filePath: img,
-        name: 'file',
-        formData: {
-          'user': 'test'
-        },
-        success(res) {
-          var data = JSON.parse(res.data)
-          var upimgname = data.saveName;
-          if (data.status == 0) {
-            wx.request({
-              url: url + 'sendActive',
-              method: "POST",
-              data: {
-                img: upimgname,
-                title: title,
-                date: date,
-                content: content,
-                activelatitude: that.data.activelatitude,
-                activelongitude: that.data.activelongitude,
-                user_id: logins.user_id,
-                addname: that.data.positionname
-              },
-              success: function(reg) {
-                if (reg.data.status == 0) {
-                  wx.reLaunch({
-                    url: '../userpage',
-                  })
-                  wx.showToast({
-                    icon: 'none',
-                    title: '活动发起成功'
-                  })
+    if (img) {
+      if (content && date && title){
+        wx.showToast({
+          title: '提交中...',
+          icon: 'loading',
+          duration: 2000
+        })
+        wx.uploadFile({
+          url: url + 'uploadImage', //仅为示例，非真实的接口地址
+          filePath: img,
+          name: 'file',
+          formData: {
+            'user': 'test'
+          },
+          success(res) {
+            var data = JSON.parse(res.data)
+            var upimgname = data.saveName;
+            if (data.status == 0) {
+              wx.request({
+                url: url + 'sendActive',
+                method: "POST",
+                data: {
+                  img: upimgname,
+                  title: title,
+                  date: date,
+                  content: content,
+                  activelatitude: that.data.activelatitude,
+                  activelongitude: that.data.activelongitude,
+                  user_id: logins.user_id,
+                  addname: that.data.positionname
+                },
+                success: function (reg) {
+                  wx.hideToast();
+                  if (reg.data.status == 0) {
+                    wx.reLaunch({
+                      url: '../userpage',
+                    })
+                    wx.showToast({
+                      icon: 'none',
+                      title: '活动发起成功'
+                    })
+                  }
                 }
-              }
-            })
+              })
+            }
           }
-        }
-      })
+        })
+      }else{
+        wx.showToast({
+          title: '请完善信息',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+
     } else {
       wx.showToast({
         title: '请上传图片',
