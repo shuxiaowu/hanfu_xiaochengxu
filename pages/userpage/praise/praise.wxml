@@ -9,7 +9,7 @@
       <view class="pri_right">
         <view class="pri_rt_top">
           <view class="pri_rt_top_left">
-            <image src="../../../images/headpic.jpg" class="t_left_topic"></image>
+            <image src="{{item.author_pic}}" class="t_left_topic"></image>
             <view>
               <view class="name">{{item.author_name}}</view>
               <view class="date">{{item.addtime}}</view>
@@ -29,5 +29,9 @@
       </view>
     </view>
   </block>
-  <view class="base_line_underscore">--我是有底线的--</view>
+  <view class="base_line_underscore" wx:if="{{!loading}}">--我是有底线的--</view>
+    <view class="refresh-block" wx:if="{{loading}}">
+   <image class="refresh-img" animation="{{refreshAnimation}}" src="../../images/timg.gif"></image>
+      <view class="base_line_underscore refresh_load">加载中</view>
+  </view>
 </view>

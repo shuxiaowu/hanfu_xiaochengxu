@@ -59,6 +59,10 @@ Page({
       })
 
     }else{
+      wx.showLoading({
+        title: '请登录',
+        duration: 1000
+      })
       wx.switchTab({
         url: '../../userpage/userpage',
       })
@@ -154,20 +158,35 @@ Page({
     var that = this;
     var url = app.base.pub_url;
     var logins = wx.getStorageSync('hanfu_logins');
-    wx.request({
-      url: url + 'addFxSshare',
-      data: {
-        user_id: logins.user_id,
-        news_id: that.data.id
-      },
-      method: 'post',
-      success: function (reg) {
-        wx.showToast({
-          icon: 'none',
-          title: reg.data.msg,
-          duration: 3000
-        })
-      }
-    })
+    if (logins) {
+      wx.request({
+        url: url + 'addFxSshare',
+        data: {
+          user_id: logins.user_id,
+          news_id: that.data.id
+        },
+        method: 'post',
+        success: function (reg) {
+          setTimeout(() => {
+            wx.showToast({
+              icon: 'none',
+              title: reg.data.msg,
+              duration: 3000
+            })
+          }, 2000)
+
+        }
+      })
+    }else{
+      wx.switchTab({
+        url: '../../userpage/userpage',
+      })
+      wx.showToast({
+        icon: 'none',
+        title: '请登录',
+        duration: 2000
+      })
+    }
+
   }
 })

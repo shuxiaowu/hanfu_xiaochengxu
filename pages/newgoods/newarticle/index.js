@@ -402,11 +402,15 @@ Page({
         },
         method: 'post',
         success: function (reg) {
-          wx.showToast({
-            icon: 'none',
-            title: reg.data.msg,
-            duration: 3000
-          })
+         
+          setTimeout(() => {
+            wx.showToast({
+              icon: 'none',
+              title: reg.data.msg,
+              duration: 3000
+            })
+          }, 2000)
+
         }
 
       })
@@ -417,6 +421,7 @@ Page({
       wx.showToast({
         icon:'none',
         title: '请登录',
+        duration:2000
       })
     }
 

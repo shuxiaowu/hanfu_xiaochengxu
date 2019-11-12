@@ -35,7 +35,7 @@
         <text>*</text>
       </view>
       <view class="position_box" bindtap="positionbtns">
-        <view class="position_text" >{{positionname}}</view>
+        <view class="position_text">{{positionname}}</view>
       </view>
     </view>
     <!--  -->
@@ -50,7 +50,7 @@
     </view>
     <view wx:if="{{urls == '' ? false : true}}" wx:for="{{urls}}" class="prebox_img" wx:key="{{index}}">
       <view class='preview-warp'>
-        <image src='{{item}}' bindtap='previewImg' data-id="{{index}}" mode="aspectFill" />
+        <image src='{{item}}' bindtap='previewImg' data-id="{{index}}" mode="aspectFit" />
         <view class="close_img" bindtap="delimg">
           <image src="../../../images/close.png"></image>
         </view>
@@ -66,7 +66,8 @@
         <text>*</text>
       </view>
     </view>
-    <textarea placeholder="请输入活动详情..." name="textarea" class="textarea_box" />
+      <textarea placeholder="请输入活动详情..." name="textarea"  class="textarea_box"/>
+
     <!--  -->
     <button form-type="submit" class="footbtn" style="{{phonetype ? 'padding-bottom:110rpx!important;' : ''}}">
       立即发起
@@ -76,5 +77,5 @@
 <!-- box2 -->
 <view class="box2" wx:if="{{!isshow}}">
   <view>请联系微信客服</view>
-  <view>XV98547</view>
+  <view>{{weixin}}</view>
 </view>

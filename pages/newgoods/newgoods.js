@@ -28,7 +28,7 @@ Page({
     img2:[],
     img3:[],
     newlist:'',
-    page:2,
+    page:1,
     painting: {},
     shareImage: ''
     
@@ -63,7 +63,8 @@ Page({
         })
         wx.stopPullDownRefresh();
           that.setData({
-            newlist:reg.data.newslist
+            newlist:reg.data.newslist,
+            page: 1
           })
       }
     })

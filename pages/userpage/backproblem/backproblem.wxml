@@ -20,7 +20,7 @@
         <view class="pre_box">
           <image src="{{item}}" mode='aspectFill' class="preview_pic" data-id="{{index}}" bindtap='previewImg'></image>
         </view>
-        <image src="../../../images/close.png" class="close" bindtap="delimg"></image>
+        <image src="../../../images/close.png" class="close" data-id="{{index}}" bindtap="delimg"></image>
       </view>
     </block>
     <view class="upload_btn" bindtap='chooseImg'>

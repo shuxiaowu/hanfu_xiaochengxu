@@ -16,7 +16,7 @@ page{background-color:#f5f5f5;position:relative;}
 .input_itempic .lable_img{width:100%;padding-bottom:60rpx;}
 .input_item input,.input_item picker{width:70%}
 .input_item .lable text,.input_itempic .lable_img text{color:#ff0000}
-.textarea_box{height:300rpx;margin-top:30rpx;width:100%;padding-bottom:100rpx;}
+.textarea_box{height:300rpx;margin-top:30rpx;width:100%;margin-bottom:200rpx;}
 
 /* 预览 */
 .prebox_img{overflow: hidden;display:flex;justify-content: center;}
@@ -30,5 +30,5 @@ background-color: #fff;position:relative;z-index: 10;width:100%; }
 .change_pic{position:absolute;width:100%;line-height:50rpx;text-align:center; bottom:0;height:50rpx;background-color:rgba(175, 57, 52, 0.5);font-size:24rpx;color:#fff;}
 
 .box2{text-align:center;padding-top:350rpx; font-size:36rpx;color:#c4c4c4;}
-
+.textarea_box{z-index:0;position:relative;overflow:hidden}
 button{border-radius:0;}

@@ -2,7 +2,7 @@
 page{padding-bottom:40rpx;}
 button::after {border: none;}
 button{padding:0!important}
-.praise_pic{position:relative;width:100%; height:240px;overflow:hidden}
+.praise_pic{position:relative;width:100%; height:240px;overflow:hidden;background-color:#000}
 .imgtop{width:100%;}
 .bottom_text{position:absolute;bottom:0;left:0;width:100%;color:#fff;padding:20rpx;box-sizing:border-box; font-size:24rpx; background:rgba(25,25, 25,0.5)}
 

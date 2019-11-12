@@ -75,15 +75,27 @@ Page({
                           title: '加载中',
                           duration: 1000
                         })
-                      wx.hideToast();
-                        var daka_int = reg2.data.daka;
-                        wx.reLaunch({
-                          url: '../index?id=' + logins.user_id + '&integral=' + daka_int,
-                        })
+                        if (reg2.data.code==0){
+                          wx.hideToast();
+                          var daka_int = reg2.data.daka;
+                          wx.reLaunch({
+                            url: '../index?id=' + logins.user_id + '&integral=' + daka_int,
+                          })
+                        } else if(reg2.data.code ==1){
+                          wx.showLoading({
+                            title: '授权失效，请重新授权登录',
+                            duration: 1000
+                          })
+                        }
+           
                       }
 
                     })
 
+                  }else{
+                    wx.showToast({
+                      title: '未知错误',
+                    })
                   }
                 }
               })

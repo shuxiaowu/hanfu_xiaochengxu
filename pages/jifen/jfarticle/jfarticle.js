@@ -75,7 +75,7 @@ Page({
                   that.onShow();
                  
                   that.setData({
-                    goodsstock: that.data.goodsstock-1,
+                    goodsstock: that.data.goodsstock>0 ? that.data.goodsstock-1 : 0,
                     model_title:res.data.msg,
                     isshow: !isshow,
                     model_content:res.data.backcontent

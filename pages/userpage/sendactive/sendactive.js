@@ -82,7 +82,8 @@ Page({
                     })
                     wx.showToast({
                       icon: 'none',
-                      title: '活动发起成功'
+                      title: '活动发起成功',
+                      duration:3000
                     })
                   }
                 }
@@ -191,6 +192,7 @@ Page({
     var time = util.formatTime(new Date());
     var myDate = new Date();
     var that = this;
+    var url = app.base.pub_url;
     myDate.getFullYear();
     myDate.getMonth();
     myDate.getDate();
@@ -203,6 +205,17 @@ Page({
         }
 
       },
+    })
+    wx.request({
+      url: url + 'getcontact',
+      method: 'post',
+      data: {},
+      success: function (reg) {
+        var addressurl = app.base.addressurl + reg.data.data.thumb
+        that.setData({
+          weixin: reg.data.data.weixin,
+        })
+      }
     })
     that.setData({
       currenttime: myDate.getFullYear() + '-' + (myDate.getMonth() + 1) + '-' + myDate.getDate()

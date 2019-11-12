@@ -23,11 +23,11 @@
 .text_1{color:#000;}
 .text_2{color:#c44845;}
 .box{box-sizing:border-box;padding:20rpx 30rpx;}
-.footbtn{position:fixed;width:100%; bottom:0;height:40px;background-color:#c44845;color:#fff;font-size:14px;line-height:40px;text-align:center;left:0;z-index:9999;}
+.footbtn{position:fixed;width:100%; bottom:0;height:40px;background-color:#c44845;color:#fff;font-size:14px;line-height:40px;text-align:center;left:0;z-index:999999999999999;overflow: hidden}
 
 .close_img{position: absolute;width:20px;height: 20px;z-index: 30;background-size: 100% 100%;top: 0;right: 0;}
 .close_img>image{width: 100%;height: 100%;}
-
+textarea {z-index:0!important;}
 .phonex{padding-bottom:40rpx!important;}
-
+.preview-warp{background-color:#000!important}
 /*  */

@@ -65,6 +65,7 @@ Page({
         if (reg.data.status == 0) {
           that.setData({
             listdata: reg.data.data,
+            page: 2,
           })
         }
       }
@@ -103,24 +104,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    var that = this;
-    var url = app.base.pub_url;
-    var logins = wx.getStorageSync('hanfu_logins');
-    wx.request({
-      url: url + 'getmyactive',
-      data: {
-        page: 1,
-        user_id:logins.user.id
-      },
-      method: 'post',
-      success: function (reg) {
-        var data = reg.data.data;
-        // var listdata = that.data.listdata.concat(data);
-        that.setData({
-          listdata: data,
-        })
-      }
-    })
+    this.onLoad();
   },
 
   /**

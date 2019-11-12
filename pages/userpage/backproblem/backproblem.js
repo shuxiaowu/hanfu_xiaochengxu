@@ -1,32 +1,7 @@
 // pages/userpage/backproblem/backproblem.js
 const app = getApp();
 var ids =1;
-function uploadimg(img) {
-  return new Promise(function (resolve, reject){
-  var upimgs = new Array();
-  var url = app.base.pub_url;
-    for (let i = 0; i < img.length; i++) {
-      wx.uploadFile({
-        url: url + 'uploadImageProblem',
-        filePath: img[i],
-        name: 'file',
-        formData: {
-          'user': 'test'
-        },
-        success(res) {
-          var data = JSON.parse(res.data)
-          var upimgname = data.saveName;
-          upimgs = upimgs.concat(upimgname);
-          if (data.status == 0) {
-            wx.setStorageSync('upimgs', upimgs);  
-          }
-        }
-      })
-    }
-  
-  });
-  return wx.getStorageSync('upimgs');
-}
+
 
 function postrequest(protype,imgsss,describ,user_id) {
   //
@@ -54,14 +29,18 @@ function postrequest(protype,imgsss,describ,user_id) {
           wx.removeStorageSync('upimgs')
         } else if (reg.data.status == 1) {
           wx.showToast({
+            icon:'none',
             title: '问题反馈失败',
+            duration: 3000
           })
         } else if (reg.data.status == 2) {
           wx.navigateTo({
             url: '../userpage',
           })
           wx.showToast({
+            icon: 'none',
             title: '请登录',
+            duration:3000
           })
         }
       }
@@ -110,16 +89,16 @@ Page({
       })
       return false;
     }
-    var upimgs = [];
+    var upimgss = [];
     if(img.length>0){
       wx.showToast({
         title: '提交中',
         icon: 'loading',
         duration: 5000
       })
-      var upimgs = new Array();
       var url = app.base.pub_url;
       for (let i = 0; i < img.length; i++) {
+        var j =i;
         wx.uploadFile({
           url: url + 'uploadImageProblem',
           filePath: img[i],
@@ -128,13 +107,18 @@ Page({
             'user': 'test'
           },
           success(res) {
+           
             wx.hideToast();
-            var data = JSON.parse(res.data)
+            var data = JSON.parse(res.data);
             var upimgname = data.saveName;
-            upimgs = upimgs.concat(upimgname);
+            upimgss = upimgss.concat(upimgname);
+           
             if (data.status == 0) {
-              if (i == img.length-1){
-                postrequest(protype, upimgs, describ, user_id);
+              if (j == img.length-1){
+                // console.log(img);
+                // console.log(j);
+                // console.log(upimgss);
+                postrequest(protype, upimgss, describ, user_id);
               }
              
             }
@@ -193,14 +177,19 @@ Page({
     var index = e.currentTarget.dataset.id;
     var imgurl = this.data.imgurl;
 
-
+    console.log(index);
     wx.showModal({
       title: '提示',
       content: '确定要删除此图片吗？',
       success: function(res) {
         if (res.confirm) {
           console.log('点击确定了');
-          imgurl.splice(index, 1);
+          if(index==0){
+            imgurl.splice(index, 1);
+          }else{
+            imgurl.splice(index, index);
+          }
+          
         } else if (res.cancel) {
           console.log('点击取消了');
           return false;

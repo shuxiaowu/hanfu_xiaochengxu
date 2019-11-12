@@ -58,7 +58,8 @@ Page({
           wx.stopPullDownRefresh();
           that.setData({
             integral_list: res.data.datalist,
-            integral: res.data.integral
+            integral: res.data.integral,
+            page: 2
           });
         }
       });

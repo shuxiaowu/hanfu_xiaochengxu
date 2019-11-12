@@ -4,7 +4,7 @@
     <textarea placeholder="这一刻的想法..." class="text_dream" name="textarea" />
     <view wx:if="{{urls}}" class="prebox_img">
       <view class='preview-warp'>
-        <image src='{{urls}}' bindtap='previewImg' mode="aspectFill" />
+        <image src='{{urls}}' bindtap='previewImg' mode="aspectFit" />
         <view class="close_img" bindtap="delimg">
           <image src="../../../images/close.png"></image>
         </view>

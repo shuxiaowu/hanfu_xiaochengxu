@@ -1,7 +1,7 @@
 <!--pages/index/praisepage/praisepage.wxml-->
 <view class="box">
   <view class="praise_pic" bindtap='previewImg'>
-    <image src="{{url}}{{listdata.uploadimg}}" mode="aspectFill" class="imgtop"></image>
+    <image src="{{url}}{{listdata.uploadimg}}" mode="aspectFit" class="imgtop"></image>
     <view class="bottom_text">{{listdata.content}}</view>
   </view>
   <view class="pri_rt_top">
@@ -22,7 +22,7 @@
 <view class="box {{phonetype ? 'phonex' : ''}}" style="border-top:10rpx solid #f5f5f5;" >
   <view class="evaluate">评价</view>
   <!--  -->
-  <block wx:for="{{comment}}" wx:key="{{index}}">
+  <block wx:for="{{comment}}" wx:key="{{index}}" wx:if="{{comment!='' ? true : false}}">
     <view class="evaluate_top">
       <view class="pri_rt_top_left">
         <image src="{{item.user_img}}" class="evaluate_topic"></image>
@@ -33,6 +33,9 @@
       </view>
       <view class="evaluate_content">{{item.content}}</view>
     </view>
+  </block>
+  <block wx:if="{{comment =='' ? true : false}}">
+  <view style="text-align:center;font-size:24rpx;color:#585858">暂无评论</view>
   </block>
   <!--  -->
 </view>

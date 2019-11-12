@@ -25,7 +25,7 @@ Page({
    */
   data: {
     url: app.base.pub_url,
-    page: 2
+    page: 1
   },
 
   /**
@@ -59,7 +59,8 @@ Page({
           that.setData({
             top: res.data.top,
             list: res.data.list,
-            more: res.data.havenext
+            more: res.data.havenext,
+            page:1
           })
         }
       }
@@ -104,9 +105,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    
     var that = this;
     var url = app.base.pub_url;
-    var page = that.data.page;
+    var page = that.data.page+1;
+    
     wx.request({
       url: url + 'getGoodlist',
       data: {
@@ -114,11 +117,14 @@ Page({
       },
       method: 'post',
       success: function(reg) {
-        var data = reg.data.data;
-        if (data.length > 0) {
+        var data = reg.data.list;
+        var havenext = reg.data.havenext;
+        console.log('page:'+page);
+        console.log(reg.data);
+        if (havenext) {
           that.setData({
             loading: true,
-            page: page + 1
+            page: page
           });
           var listdata = that.data.list.concat(data);
           setTimeout(() => {

@@ -3,6 +3,9 @@
 button::after{
     border: 0;
 }
+page{
+  padding-bottom:50px;
+}
 button::after{
   border: none;
 }

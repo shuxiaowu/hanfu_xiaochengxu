@@ -31,7 +31,7 @@
         </view>
         <view class="hd_tp_right" wx:if="{{item.apply_count ? true : false}}">
           <view class="hd_tp_r1">{{item.apply_count}}人已经报名</view>
-          <view class="hd_tp_r2" style="width:{{item.apply_headpic.length*70}}rpx">
+          <view class="hd_tp_r2" style="width:{{item.apply_headpic.length==1 ? item.apply_headpic.length*70 : item.apply_headpic.length*40/2+40}}rpx">
             <view class='index'>
             <!-- style='transform:translateX({{-index*20}}rpx);' -->
               <view wx:for="{{item.apply_headpic}}" wx:key  class="apply_head_img" style='transform:translateX({{-index*20}}rpx);'>

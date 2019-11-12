@@ -2,7 +2,7 @@
 <swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{artdata.thumbs}}" wx:key="{{index}}">
     <swiper-item>
-      <image src="{{url}}{{item}}" class="slide-image" data-id="{{index}}" width="355" mode="widthFix" bindtap="preview" />
+      <image src="{{url}}{{item}}" class="slide-image" data-id="{{index}}" width="355" mode="aspectFill" bindtap="preview" />
     </swiper-item>
   </block>
 </swiper>

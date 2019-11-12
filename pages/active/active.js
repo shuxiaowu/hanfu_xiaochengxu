@@ -29,7 +29,7 @@ Page({
       isprince:'',
       listdata:'',
       status:1,
-      page:2,
+      page:1,
       loading: false,
       iphone:false
   },
@@ -63,6 +63,7 @@ Page({
         if(reg.data.status==0){
           that.setData({
             listdata: reg.data.data,
+            page: 1
           })
         }
       }
@@ -111,7 +112,7 @@ Page({
   onReachBottom: function () {
     var that = this;
     var url = app.base.pub_url;
-    var page = that.data.page;
+    var page = that.data.page+1;
     wx.request({
       url: url + 'getactive',
       data: {
@@ -121,7 +122,7 @@ Page({
       success: function (reg) {
         var data = reg.data.data;
         if(data){
-          that.setData({ loading: true, page: page+1 });
+          that.setData({ loading: true, page: page });
           var listdata = that.data.listdata.concat(data);
           setTimeout(() => {
             that.setData({
