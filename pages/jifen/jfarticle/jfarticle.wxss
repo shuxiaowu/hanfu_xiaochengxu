@@ -9,7 +9,7 @@ swiper{height:240px!important;}
 .jf_i{height:20rpx;width:1rpx;background-color:#c1c1c1;vertical-align:middle;position:relative;top:20rpx;margin:0 30rpx;}
 .jf_num{font-size:36rpx;color:#d12b27;}
 .jf_kucun{font-size:26rpx;color:#c1c1c1;padding-top:10rpx;vertical-align: bottom}
-.jf_recommond{font-size:30rpx;font-weight:700;color:#000;margin-top:70rpx;margin-bottom:40rpx;}
+.jf_recommond{font-size:30rpx;font-weight:700;color:#000;margin-top:70rpx;margin-bottom:40rpx;border-bottom: 1px solid #dcdcdc;padding-bottom: 20rpx;}
 .jf_content>image{width:100%;}
 .jf_content{overflow: hidden}
 

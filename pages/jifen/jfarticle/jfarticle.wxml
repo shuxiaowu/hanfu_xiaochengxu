@@ -17,6 +17,9 @@
     <view class="jf_i"></view>
     <view class="jf_kucun">库存{{goods.limitquantity ==1 ? goodsstock : '100000+'}}</view>
   </view>
+  </view>
+  <view style="height:25rpx;width:100%;background-color:#f5f5f5"></view>
+  <view class="box">
   <view class="jf_recommond">
     新品推荐
   </view>

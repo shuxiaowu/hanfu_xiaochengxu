@@ -128,8 +128,7 @@ Page({
             }
             that.data.signinurl = '';
             that.setData({
-              issignin: true,
-              markers: data
+              issignin: true
             })
           }
           that.setData({
@@ -156,8 +155,6 @@ Page({
 
     }
     
-    
-
   },
   maskbtn: function() {
     var that = this;

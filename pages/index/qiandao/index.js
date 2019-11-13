@@ -72,7 +72,7 @@ Page({
                       method: 'post',
                       success: function(reg2) {
                         wx.showLoading({
-                          title: '加载中',
+                          title: '加载中11',
                           duration: 1000
                         })
                         if (reg2.data.code==0){
@@ -94,6 +94,7 @@ Page({
 
                   }else{
                     wx.showToast({
+                      icon:'none',
                       title: '未知错误',
                     })
                   }
@@ -126,7 +127,7 @@ Page({
     let that = this
     wx.chooseImage({
       count: 1, // 默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function(res) {
 
