@@ -25,7 +25,6 @@ Page({
       title: '我的',
     })
     var that = this
-    var that = this;
 
     var url = that.data.url;
     var logins = wx.getStorageSync('hanfu_logins');

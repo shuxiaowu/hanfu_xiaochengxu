@@ -9,7 +9,8 @@ Page({
     imghead:'',
     hottel:'',
     businesstel:'',
-    faxtel:''
+    faxtel:'',
+    content: ''
   },
 
   /**
@@ -17,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     var url = app.base.pub_url;
+    var WxParse = require('../../../wxParse/wxParse.js');
     var that = this;
     wx.setNavigationBarTitle({
       title: '联系我们',
@@ -26,12 +28,15 @@ Page({
       method:'post',
       data:{},
       success:function(reg){
-        var addressurl = app.base.addressurl + reg.data.data.thumb
+        var addressurl = app.base.addressurl + reg.data.data.thumb;
+        var content = reg.data.data.content;
+        WxParse.wxParse('article', 'html', content, that, 5)
         that.setData({
           imghead: addressurl,
           hottel: reg.data.data.hottel,
           businesstel: reg.data.data.businesstel,
           faxtel: reg.data.data.faxtel,
+          content: reg.data.data.content,
         })
       }
     })

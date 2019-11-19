@@ -1,7 +1,7 @@
 <!--pages/active/hdarticle/index.wxml-->
 <swiper indicator-active-color="{{indicatorcolor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <swiper-item>
-    <image src="{{url}}{{artdata.uploadimg}}" class="slide-image" width="355" mode="aspectFill" bindtap='previewImg' />
+    <image src="{{url}}{{artdata.uploadimg}}" class="slide-image" width="355" mode="aspectFit" bindtap='previewImg' />
   </swiper-item>
 </swiper>
 <view class="hd_ps_text">
@@ -76,12 +76,12 @@
     <view class="footbtn {{phonetype ? 'phonex' : ''}}" wx:if="{{artdata.status == 1 ? true :false}}" bindtap="applybtn">
       报名中
     </view>
-    <view class="footbtn {{phonetype ? 'phonex' : ''}}" wx:if="{{artdata.status == 2 ? true :false}}">
+    <view class="footbtn {{phonetype ? 'phonex' : ''}}" wx:if="{{artdata.status == 2 ? true :false}}" style="background-color:#707070;">
       报名截止
     </view>
   </block>
   <block wx:if="{{!isapply}}">
-    <view class="footbtn {{phonetype ? 'phonex' : ''}}">
+    <view class="footbtn {{phonetype ? 'phonex' : ''}}" style="background-color:#707070;">
       已报名
     </view>
   </block>

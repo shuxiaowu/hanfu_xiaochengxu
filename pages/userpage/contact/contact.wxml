@@ -1,4 +1,5 @@
 <!--pages/userpage/contact/contact.wxml-->
+<import src="../../../wxParse/wxParse.wxml" />
 <view class="box" >
   <image src="{{imghead}}" mode="widthFix" class="contactimg"></image>
 </view>
@@ -13,4 +14,8 @@
   <view class="item_contact">
     <view class="ct_title">传真:</view>
     <view class="ct_intro">{{faxtel}}</view>
+  </view>
+<view class="box" >
+    <!-- <view class="content">{{content}}</view> -->
+     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>

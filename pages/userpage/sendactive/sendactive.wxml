@@ -66,7 +66,7 @@
         <text>*</text>
       </view>
     </view>
-      <textarea placeholder="请输入活动详情..." name="textarea"  class="textarea_box"/>
+      <textarea placeholder="请输入活动详情..." name="textarea"  class="textarea_box" maxlength="1000"/>
 
     <!--  -->
     <button form-type="submit" class="footbtn" style="{{phonetype ? 'padding-bottom:110rpx!important;' : ''}}">

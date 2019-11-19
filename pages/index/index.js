@@ -103,41 +103,41 @@ Page({
     })
   },
   onShow: function (option) {
-    var that = this;
-    var url = app.base.pub_url;
-    var logins = wx.getStorageSync("hanfu_logins");
-    if(!logins){
-      that.setData({
-        issignin: false,
-        markers: []
-      })
-    }else{
-      wx.request({
-        url: url + 'getsignin',
-        method: "POST",
-        data: {
-          user_id: logins.user_id
-        },
-        success: function (reg) {
-          var data = reg.data.signdata;
-          var self_markdatas = reg.data.self_markdatas;
+    // var that = this;
+    // var url = app.base.pub_url;
+    // var logins = wx.getStorageSync("hanfu_logins");
+    // if(!logins){
+    //   that.setData({
+    //     issignin: false,
+    //     markers: []
+    //   })
+    // }else{
+    //   wx.request({
+    //     url: url + 'getsignin',
+    //     method: "POST",
+    //     data: {
+    //       user_id: logins.user_id
+    //     },
+    //     success: function (reg) {
+    //       var data = reg.data.signdata;
+    //       var self_markdatas = reg.data.self_markdatas;
 
-          if (reg.data.status == 0) {
-            if (self_markdatas != '') {
-              data.push(self_markdatas);
-            }
-            that.data.signinurl = '';
-            that.setData({
-              issignin: true
-            })
-          }
-          that.setData({
-            markers: data
-          })
-        }
-      })
-    }
-
+    //       if (reg.data.status == 0) {
+    //         if (self_markdatas != '') {
+    //           data.push(self_markdatas);
+    //         }
+    //         that.data.signinurl = '';
+    //         that.setData({
+    //           issignin: true
+    //         })
+    //       }
+    //       that.setData({
+    //         markers: data
+    //       })
+    //     }
+    //   })
+    // }
+    this.onLoad();
   },
   playticket: function(e) {
     var logins = wx.getStorageSync("hanfu_logins");

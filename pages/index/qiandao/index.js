@@ -72,19 +72,21 @@ Page({
                       method: 'post',
                       success: function(reg2) {
                         wx.showLoading({
-                          title: '加载中11',
+                          title: '加载中',
                           duration: 1000
                         })
+                        console.log(reg2.data.code);
                         if (reg2.data.code==0){
                           wx.hideToast();
                           var daka_int = reg2.data.daka;
                           wx.reLaunch({
                             url: '../index?id=' + logins.user_id + '&integral=' + daka_int,
                           })
-                        } else if(reg2.data.code ==1){
+                        } else{
                           wx.showLoading({
-                            title: '授权失效，请重新授权登录',
-                            duration: 1000
+                            icon:"none",
+                            title: '请授权登录',
+                            duration: 2000
                           })
                         }
            

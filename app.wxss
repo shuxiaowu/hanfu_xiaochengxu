@@ -8,6 +8,7 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+swiper-item{background-color:#000;}
 .base_line_underscore{font-size:24rpx;color:#999;text-align:center;margin:20rpx 0;}
 .refresh-img{display:inline-block;vertical-align:middle;width:50rpx;height:50rpx;}
 .refresh_load{display:inline-block}
